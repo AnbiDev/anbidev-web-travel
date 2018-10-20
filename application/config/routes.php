@@ -64,4 +64,4 @@ $route['Panels'] = 'C_Panels';
 $route['Profile'] = 'C_Profile';
 $route['Tables'] = 'C_Tables';
 $route['Typography'] = 'C_Typography';
-
+$route['Landing'] = 'C_Landing';
