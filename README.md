@@ -1,2 +1,8 @@
-# web-travel-anbidev
-Program Untuk Pembuatan Web Travel Versi AnbiDev
+<b><i>Bismillah..
+
+Semoga Rezekinya tambah banyaak...
+Semoga Dilancarkan Jodohnya
+Jadi Orang Sukses..
+
+Aamiin
+</i></b>
