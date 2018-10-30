@@ -5,22 +5,33 @@
         <!-- End Page wrapper  -->
     </div>
     <!-- End Wrapper -->
+
     <!-- All Jquery -->
     <script src="<?php echo base_url('assets/js/lib/jquery/jquery.min.js'); ?>"></script>
+    
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?php echo base_url('assets/js/lib/bootstrap/js/popper.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/lib/bootstrap/js/bootstrap.min.js'); ?>"></script>
+    
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="<?php echo base_url('assets/js/jquery.slimscroll.js'); ?>"></script>
+    
     <!--Menu sidebar -->
     <script src="<?php echo base_url('assets/js/sidebarmenu.js'); ?>"></script>
-    <!--stickey kit -->
+    
+   <!--stickey kit -->
     <script src="<?php echo base_url('assets/js/lib/sticky-kit-master/dist/sticky-kit.min.js'); ?>"></script>
+    
+   <!-- wysihtml5. -->
+    <script src="<?php echo base_url('assets/js/lib/html5-editor/wysihtml5-0.3.0.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/html5-editor/bootstrap-wysihtml5.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/html5-editor/wysihtml5-init.js'); ?>"></script>
+    
     <!--Custom JavaScript -->
 
 
     <!-- Amchart -->
-     <script src="<?php echo base_url('assets/js/lib/morris-chart/raphael-min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/morris-chart/raphael-min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/lib/morris-chart/morris.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/lib/morris-chart/dashboard1-init.js'); ?>"></script>
 
@@ -40,9 +51,16 @@
     <script src="<?php echo base_url('assets/js/scripts.js'); ?>"></script>
     <!-- scripit init-->
 
+    <!-- Datatable -->
+    <script src="<?php echo base_url('assets/js/lib/datatables/datatables.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/datatables/datatables-init.js'); ?>"></script>
+
+    
+
+
     <script src="<?php echo base_url('assets/js/custom.min.js'); ?>"></script>
     <script type="text/javascript">
-        document.getElementById('<?php echo $Menu; ?>').focus();
+        // document.getElementById('<?php echo $Menu; ?>').focus();
     </script>
 </body>
 

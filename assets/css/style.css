@@ -5403,7 +5403,7 @@ tbody tr th {
 }
 tbody tr td {
   font-family: 'Poppins', sans-serif;
-  color: #99abb4;
+  color: #000;
 }
 tbody tr td:last-child {
   text-align: right;

@@ -11,8 +11,13 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <title>Ela - Bootstrap Admin Dashboard Template</title>
+    
     <!-- Bootstrap Core CSS -->
-    <link href="<?php echo base_url('assets/css/lib/bootstrap/bootstrap.min.css'); ?>" rel="stylesheet">
+    <link  href="<?php echo base_url('assets/css/lib/bootstrap/bootstrap.min.css'); ?>" rel="stylesheet">
+    
+     <!--wysihtml5 kit -->
+    <link  href="<?php echo base_url('assets/css/lib/html5-editor/bootstrap-wysihtml5.css'); ?>" rel="stylesheet" />
+
     <!-- Custom CSS -->
 
     <link href="<?php echo base_url('assets/css/lib/calendar2/semantic.ui.min.css'); ?>" rel="stylesheet">

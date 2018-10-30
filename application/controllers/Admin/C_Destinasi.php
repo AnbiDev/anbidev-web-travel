@@ -22,7 +22,9 @@ class C_Destinasi extends CI_Controller {
 		  
     }
 	
-	//Dashboard Index
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= LOAD PAGE -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
+
+	//Destinasi Index
 	public function index(){
 		// $this->checkSession();
 		// $user_id = $this->session->userid;
@@ -31,11 +33,28 @@ class C_Destinasi extends CI_Controller {
 		
 		$this->load->view('Admin/V_Header',$data);
 		$this->load->view('Admin/V_Sidebar',$data);
-		$this->load->view('Admin/V_Dashboard',$data);
+		$this->load->view('Admin/Destinasi/V_Index',$data);
 		$this->load->view('Admin/V_Footer',$data);
 		
 	}
-	
+
+	//Create  Destinasi
+	public function Create(){
+		// $this->checkSession();
+		// $user_id = $this->session->userid;
+		
+		$data['Menu'] = 'Create';
+		
+		$this->load->view('Admin/V_Header',$data);
+		$this->load->view('Admin/V_Sidebar',$data);
+		$this->load->view('Admin/Destinasi/V_Create',$data);
+		$this->load->view('Admin/V_Footer',$data);
+		
+	}
+
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= FUNCTION SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
+
 	public function checkSession(){
 		if($this->session->is_logged){
 			
