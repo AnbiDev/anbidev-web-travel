@@ -21,7 +21,7 @@
     
    <!--stickey kit -->
     <script src="<?php echo base_url('assets/js/lib/sticky-kit-master/dist/sticky-kit.min.js'); ?>"></script>
-    
+
    <!-- wysihtml5. -->
     <script src="<?php echo base_url('assets/js/lib/html5-editor/wysihtml5-0.3.0.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/lib/html5-editor/bootstrap-wysihtml5.js'); ?>"></script>
@@ -55,8 +55,8 @@
     <script src="<?php echo base_url('assets/js/lib/datatables/datatables.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/lib/datatables/datatables-init.js'); ?>"></script>
 
-    
-
+    <!-- Dropzone -->
+    <script src="<?php echo base_url('assets/js/lib/dropzone/dropzone.js'); ?>"></script>
 
     <script src="<?php echo base_url('assets/js/custom.min.js'); ?>"></script>
     <script type="text/javascript">

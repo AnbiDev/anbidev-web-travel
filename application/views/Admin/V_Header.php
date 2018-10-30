@@ -18,6 +18,9 @@
      <!--wysihtml5 kit -->
     <link  href="<?php echo base_url('assets/css/lib/html5-editor/bootstrap-wysihtml5.css'); ?>" rel="stylesheet" />
 
+    <!-- Dropzone -->
+    <link href="<?php echo base_url('assets/css/lib/dropzone/dropzone.css'); ?>" rel="stylesheet">
+
     <!-- Custom CSS -->
 
     <link href="<?php echo base_url('assets/css/lib/calendar2/semantic.ui.min.css'); ?>" rel="stylesheet">
