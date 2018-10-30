@@ -53,15 +53,12 @@ $route['default_controller'] = 'C_Dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['Dashboard'] = 'C_Dashboard';
-$route['Charts'] = 'C_Charts';
-$route['Elements'] = 'C_Elements';
-$route['Icons'] = 'C_Icons';
-$route['Lockscreen'] = 'C_Lockscreen';
-$route['Login'] = 'C_Login';
-$route['Notifications'] = 'C_Notifications';
-$route['Panels'] = 'C_Panels';
-$route['Profile'] = 'C_Profile';
-$route['Tables'] = 'C_Tables';
-$route['Typography'] = 'C_Typography';
-$route['Landing'] = 'C_Landing';
+$route['Admin/Dashboard'] = 'Admin/C_Dashboard';
+$route['Admin/PaketWisata'] = 'Admin/C_PaketWisata';
+$route['Admin/Destinasi'] = 'Admin/C_Destinasi';
+$route['Admin/Pemesanan'] = 'Admin/C_Pemesanan';
+$route['Admin/ContactUs'] = 'Admin/C_ContactUs';
+$route['Admin/Galery'] = 'Admin/C_Gallery';
+$route['Admin/User'] = 'Admin/C_User';
+
+
