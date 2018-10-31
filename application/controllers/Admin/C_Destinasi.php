@@ -11,7 +11,9 @@ class C_Destinasi extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('html');	
        	$this->load->library('session');
-		//$this->load->library('Database');
+		$this->load->library('encrypt');
+
+		$this->load->model('Admin/M_destinasi');
 
 		// if($this->session->userdata('logged_in')!=TRUE) {
 		// 	$this->load->helper('url');
@@ -38,7 +40,7 @@ class C_Destinasi extends CI_Controller {
 		
 	}
 
-	//Create  Destinasi
+	//Create  Destinasi View
 	public function Create(){
 		// $this->checkSession();
 		// $user_id = $this->session->userid;
@@ -52,6 +54,79 @@ class C_Destinasi extends CI_Controller {
 		
 	}
 
+	//Upload Image View
+	public function Image($id){
+		$data['Menu'] = 'Image';
+
+		/* Decrypt ID */			
+		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+		$plaintext_string = $this->encrypt->decode($plaintext_string);
+
+	
+
+		$data['id_destinasi'] = $plaintext_string;
+
+		$this->load->view('Admin/V_Header',$data);
+		$this->load->view('Admin/V_Sidebar',$data);
+		$this->load->view('Admin/Destinasi/V_Image',$data);
+		$this->load->view('Admin/V_Footer',$data);
+		
+	}
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= INSERT SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
+	
+	// Insert Destinasi
+	public function Insert(){
+		
+		$nama_destinasi = $this->input->post('nama_destinasi');
+		$deskripsi = $this->input->post('deskripsi');
+
+		$data = array( 
+				'nama_destinasi' => $nama_destinasi,
+				'deskripsi' => $deskripsi
+			);
+		
+		if($id = $this->M_destinasi->insert($data)){
+			
+			/* Encrypt ID */
+			$encrypted_string = $this->encrypt->encode($value['id_dok']);
+			$id = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string);
+			
+			redirect('Admin/Destinasi/Image/'.$id);
+		}else{
+			$this->session->set_flashdata('error','Terjadi error saat insert destinasi');
+			redirect('Admin/Destinasi');
+		}
+
+	}
+
+	// Upload Image Destinasi
+	public function UploadImage(){
+		$id = $this->input->post('id_destinasi');
+
+		$config['upload_path'] = './assets/images/';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['max_size']             = 1024;
+ 
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('file')){
+
+			$upload_data = $this->upload->data();
+			$data = array(
+						'id' => $id,
+						'status' => 'destinasi',
+						'file_name' => $upload_data['file_name'],
+						'location' => $upload_data['full_path'],
+					);			
+		if($this->M_destinasi->insertImage($data))
+			$this->session->set_flashdata('success' , "Destinasi berhasil ditambahkan");
+			redirect('Admin/Destinasi');
+		}else{
+			$this->session->set_flashdata('error' ,$this->upload->display_errors());
+			redirect('Admin/Destinasi');
+		}
+	}
+	
 
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= FUNCTION SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 
