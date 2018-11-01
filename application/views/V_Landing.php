@@ -20,33 +20,33 @@
 	<meta name="twitter:url" content="" />
 	<meta name="twitter:card" content="" />
 
-	<link href="<?php echo base_url('assets/css/font_poppins.css') ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/css/font_playfair_display.css'); ?>" rel="stylesheet">
+	<link href="<?php echo base_url('assets/css/font-poppins-landing.css') ?>" rel="stylesheet">
+	<link href="<?php echo base_url('assets/css/font-playfair-display-landing.css'); ?>" rel="stylesheet">
 	
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/animate.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/animate-landing.css'); ?>">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/icomoon.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/icomoon-landing.css'); ?>">
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-landing.css'); ?>">
 
 	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/magnific-popup.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/magnific-popup-landing.css'); ?>">
 
 	<!-- Flexslider  -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/flexslider.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/flexslider-landing.css'); ?>">
 
 	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/owl.carousel.min.css'); ?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/owl.theme.default.min.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/owl.carousel-landing.min.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/owl.theme.default.min-landing.css'); ?>">
 	
 	<!-- Date Picker -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-datepicker.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-datepicker-landing.css'); ?>">
 	<!-- Flaticons  -->
-	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/fonts/flaticon/font/flaticon.css'); ?>">
 
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/style-landing.css'); ?>">
 
 	<!-- Modernizr JS -->
 	<script src="<?php echo base_url('assets/js/modernizr-2.6.2.min.js'); ?>"></script>
@@ -84,7 +84,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="index.html">Luxehotel</a></div>
+							<div id="colorlib-logo"><a href="#">Luxehotel</a></div>
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
@@ -98,11 +98,11 @@
 										<li><a href="#">API</a></li>
 									</ul>
 								</li>
-								<li><a href="dining-bar.html">Dining &amp; Bar</a></li>
-								<li><a href="aminities.html">Aminities</a></li>
-								<li><a href="blog.html">Blog</a></li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="#">Dining &amp; Bar</a></li>
+								<li><a href="#">Aminities</a></li>
+								<li><a href="#">Blog</a></li>
+								<li><a href="#">About</a></li>
+								<li><a href="#">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -291,10 +291,10 @@
 					<div class="col-md-12 animate-box">
 						<div class="owl-carousel owl-carousel2">
 							<div class="item">
-								<a href="images/room-1.jpg" class="room image-popup-link" style="background-image: url(<?php echo base_url(); ?>assets/images/landing/room-1.jpg);"></a>
+								<a href="<?php echo base_url(); ?>assets/images/landing/room-1.jpg" class="room image-popup-link" style="background-image: url(<?php echo base_url(); ?>assets/images/landing/room-1.jpg);"></a>
 								<div class="desc text-center">
 									<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span>
-									<h3><a href="rooms-suites.html">Suite</a></h3>
+									<h3><a href="#">Suite</a></h3>
 									<p class="price">
 										<span class="currency">$</span>
 										<span class="price-room">99</span>
@@ -309,7 +309,7 @@
 								</div>
 							</div>
 							<div class="item">
-								<a href="images/room-2.jpg" class="room image-popup-link" style="background-image: url(<?php echo base_url(); ?>assets/images/landing/room-2.jpg);"></a>
+								<a href="<?php echo base_url(); ?>assets/images/landing/room-2.jpg" class="room image-popup-link" style="background-image: url(<?php echo base_url(); ?>assets/images/landing/room-2.jpg);"></a>
 								<div class="desc text-center">
 									<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i></span>
 									<h3><a href="rooms-suites.html">Double Room</a></h3>
@@ -327,7 +327,7 @@
 								</div>
 							</div>
 							<div class="item">
-								<a href="images/room-3.jpg" class="room image-popup-link" style="background-image: url(<?php echo base_url(); ?>assets/images/landing/room-3.jpg);"></a>
+								<a href="<?php echo base_url(); ?>assets/images/landing/room-3.jpg" class="room image-popup-link" style="background-image: url(<?php echo base_url(); ?>assets/images/landing/room-3.jpg);"></a>
 								<div class="desc text-center">
 									<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i></span>
 									<h3><a href="rooms-suites.html">Family Room</a></h3>
@@ -345,7 +345,7 @@
 								</div>
 							</div>
 							<div class="item">
-								<a href="images/room-4.jpg" class="room image-popup-link" style="background-image: url(<?php echo base_url(); ?>assets/images/landing/room-4.jpg);"></a>
+								<a href="<?php echo base_url(); ?>assets/images/landing/room-4.jpg" class="room image-popup-link" style="background-image: url(<?php echo base_url(); ?>assets/images/landing/room-4.jpg);"></a>
 								<div class="desc text-center">
 									<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i></span>
 									<h3><a href="rooms-suites.html">Classic Double Room</a></h3>
@@ -363,7 +363,7 @@
 								</div>
 							</div>
 							<div class="item">
-								<a href="images/room-5.jpg" class="room image-popup-link" style="background-image: url(<?php echo base_url(); ?>assets/images/landing/room-5.jpg);"></a>
+								<a href="<?php echo base_url(); ?>assets/images/landing/room-5.jpg" class="room image-popup-link" style="background-image: url(<?php echo base_url(); ?>assets/images/landing/room-5.jpg);"></a>
 								<div class="desc text-center">
 									<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i></span>
 									<h3><a href="rooms-suites.html">Superior Double Room</a></h3>
@@ -381,7 +381,7 @@
 								</div>
 							</div>
 							<div class="item">
-								<a href="images/room-6.jpg" class="room image-popup-link" style="background-image: url(<?php echo base_url(); ?>assets/images/landing/room-6.jpg);"></a>
+								<a href="<?php echo base_url(); ?>assets/images/landing/room-6.jpg" class="room image-popup-link" style="background-image: url(<?php echo base_url(); ?>assets/images/landing/room-6.jpg);"></a>
 								<div class="desc text-center">
 									<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i></span>
 									<h3><a href="rooms-suites.html">Superior Family Room</a></h3>
@@ -432,7 +432,7 @@
 										<div class="col-md-12">
 											<ul class="menu-dish">
 							              <li>
-							                <figure class="image"><img src="images/menu-1.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
+							                <figure class="image"><img src="<?php echo base_url(); ?>assets/images/landing/menu-1.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
 							                <div class="text">
 							                  <span class="price">$25.99</span>
 							                  <h3>Grilled Pork</h3>
@@ -440,7 +440,7 @@
 							                </div>
 							              </li>
 							              <li>
-							                <figure class="image"><img src="images/menu-2.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
+							                <figure class="image"><img src="<?php echo base_url(); ?>assets/images/landing/menu-2.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
 							                <div class="text">
 							                  <span class="price">$30.99</span>
 							                  <h3>Tuna Roast Source</h3>
@@ -448,7 +448,7 @@
 							                </div>
 							              </li>
 							              <li>
-							                <figure class="image"><img src="images/menu-3.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
+							                <figure class="image"><img src="<?php echo base_url(); ?>assets/images/landing/menu-3.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
 							                <div class="text">
 							                  <span class="price">$40.00</span>
 							                  <h3>Roast Beef (4 sticks)</h3>
@@ -456,7 +456,7 @@
 							                </div>
 							              </li>
 							              <li>
-							                <figure class="image"><img src="images/menu-4.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
+							                <figure class="image"><img src="<?php echo base_url(); ?>assets/images/landing/menu-4.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
 							                <div class="text">
 							                  <span class="price">$20.50</span>
 							                  <h3>Salted Fried Chicken</h3>
@@ -473,7 +473,7 @@
 										<div class="col-md-12">
 											<ul class="menu-dish">
 							              <li>
-							                <figure class="image"><img src="images/menu-1.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
+							                <figure class="image"><img src="<?php echo base_url(); ?>assets/images/landing/menu-1.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
 							                <div class="text">
 							                  <span class="price">$39.90</span>
 							                  <h3>Fried Potatoes with Garlic</h3>
@@ -481,7 +481,7 @@
 							                </div>
 							              </li>
 							              <li>
-							                <figure class="image"><img src="images/menu-3.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
+							                <figure class="image"><img src="<?php echo base_url(); ?>assets/images/landing/menu-3.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
 							                <div class="text">
 							                  <span class="price">$20.99</span>
 							                  <h3>Tuna Roast Source</h3>
@@ -489,7 +489,7 @@
 							                </div>
 							              </li>
 							              <li>
-							                <figure class="image"><img src="images/menu-3.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
+							                <figure class="image"><img src="<?php echo base_url(); ?>assets/images/landing/menu-3.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
 							                <div class="text">
 							                  <span class="price">$50.00</span>
 							                  <h3>Roast Beef (4 sticks)</h3>
@@ -497,7 +497,7 @@
 							                </div>
 							              </li>
 							              <li>
-							                <figure class="image"><img src="images/menu-4.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
+							                <figure class="image"><img src="<?php echo base_url(); ?>assets/images/landing/menu-4.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
 							                <div class="text">
 							                  <span class="price">$29.00</span>
 							                  <h3>Salted Fried Chicken</h3>
@@ -514,7 +514,7 @@
 										<div class="col-md-12">
 											<ul class="menu-dish">
 							              <li>
-							                <figure class="image"><img src="images/menu-8.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
+							                <figure class="image"><img src="<?php echo base_url(); ?>assets/images/landing/menu-8.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
 							                <div class="text">
 							                  <span class="price">$25.00</span>
 							                  <h3>Fried Potatoes with Garlic</h3>
@@ -522,7 +522,7 @@
 							                </div>
 							              </li>
 							              <li>
-							                <figure class="image"><img src="images/menu-9.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
+							                <figure class="image"><img src="<?php echo base_url(); ?>assets/images/landing/menu-9.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
 							                <div class="text">
 							                  <span class="price">$20.50</span>
 							                  <h3>Tuna Roast Source</h3>
@@ -530,7 +530,7 @@
 							                </div>
 							              </li>
 							              <li>
-							                <figure class="image"><img src="images/menu-3.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
+							                <figure class="image"><img src="<?php echo base_url(); ?>assets/images/landing/menu-3.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
 							                <div class="text">
 							                  <span class="price">$30.00</span>
 							                  <h3>Roast Beef (4 sticks)</h3>
@@ -538,7 +538,7 @@
 							                </div>
 							              </li>
 							              <li>
-							                <figure class="image"><img src="images/menu-4.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
+							                <figure class="image"><img src="<?php echo base_url(); ?>assets/images/landing/menu-4.jpg" alt="Free Bootstrap Template by colorlib.com"></figure>
 							                <div class="text">
 							                  <span class="price">$29.99</span>
 							                  <h3>Salted Fried Chicken</h3>

@@ -84,5 +84,5 @@ $route['Admin/User/(:any)'] = 'Admin/C_User/$1';
 $route['Admin/User/(:any)/(:any)'] = 'Admin/C_User/$1/$2';
 
 $route['Landing']= 'C_Landing';
-
+$route['Login']= 'C_Login';
 
