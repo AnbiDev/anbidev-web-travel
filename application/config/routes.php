@@ -49,19 +49,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'C_Dashboard';
+$route['default_controller'] = 'Admin/C_Dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['Dashboard'] = 'C_Dashboard';
-$route['Charts'] = 'C_Charts';
-$route['Elements'] = 'C_Elements';
-$route['Icons'] = 'C_Icons';
-$route['Lockscreen'] = 'C_Lockscreen';
-$route['Login'] = 'C_Login';
-$route['Notifications'] = 'C_Notifications';
-$route['Panels'] = 'C_Panels';
-$route['Profile'] = 'C_Profile';
-$route['Tables'] = 'C_Tables';
-$route['Typography'] = 'C_Typography';
+/* Admin Stuff */
+
+$route['Admin/Dashboard'] = 'Admin/C_Dashboard';
+$route['Admin/Dashboard/(:any)'] = 'Admin/C_Dashboard/$1';
+$route['Admin/Dashboard/(:any)/(:any)'] = 'Admin/C_Dashboard/$1/$2';
+
+$route['Admin/PaketWisata'] = 'Admin/C_PaketWisata';
+$route['Admin/PaketWisata/(:any)'] = 'Admin/C_PaketWisata/$1';
+$route['Admin/PaketWisata/(:any)/(:any)'] = 'Admin/C_PaketWisata/$1/$2';
+
+$route['Admin/Destinasi'] = 'Admin/C_Destinasi';
+$route['Admin/Destinasi/(:any)'] = 'Admin/C_Destinasi/$1';
+$route['Admin/Destinasi/(:any)/(:any)'] = 'Admin/C_Destinasi/$1/$2';
+
+$route['Admin/Pemesanan'] = 'Admin/C_Pemesanan';
+$route['Admin/Pemesanan/(:any)'] = 'Admin/C_Pemesanan/$1';
+$route['Admin/Pemesanan/(:any)/(:any)'] = 'Admin/C_Pemesanan/$1/$2';
+
+$route['Admin/ContactUs'] = 'Admin/C_ContactUs';
+$route['Admin/ContactUs/(:any)'] = 'Admin/C_ContactUs/$1';
+$route['Admin/ContactUs/(:any)/(:any)'] = 'Admin/C_ContactUs/$1/$2';
+
+$route['Admin/Galery'] = 'Admin/C_Gallery';
+$route['Admin/Galery/(:any)'] = 'Admin/C_Gallery/$1';
+$route['Admin/Galery/(:any)/(:any)'] = 'Admin/C_Gallery/$1/$2';
+
+$route['Admin/User'] = 'Admin/C_User';
+$route['Admin/User/(:any)'] = 'Admin/C_User/$1';
+$route['Admin/User/(:any)/(:any)'] = 'Admin/C_User/$1/$2';
+
+
+
 
