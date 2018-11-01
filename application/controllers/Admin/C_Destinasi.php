@@ -4,13 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class C_Destinasi extends CI_Controller {
 
 	public function __construct()
-    {
-        parent::__construct();
-		  
-        $this->load->helper('form');
-        $this->load->helper('url');
-        $this->load->helper('html');	
-       	$this->load->library('session');
+	{
+		parent::__construct();
+
+		$this->load->helper('form');
+		$this->load->helper('url');
+		$this->load->helper('html');	
+		$this->load->library('session');
 		$this->load->library('encrypt');
 
 		$this->load->model('Admin/M_destinasi');
@@ -21,10 +21,10 @@ class C_Destinasi extends CI_Controller {
 		// 	redirect('index');
 		// 	$this->session->set_userdata('Responsbility', 'some_value');
 		// }
-		  
-    }
+
+	}
 	
-/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= LOAD PAGE -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= LOAD PAGE -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 
 	//Destinasi Index
 	public function index(){
@@ -62,17 +62,15 @@ class C_Destinasi extends CI_Controller {
 		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
 		$plaintext_string = $this->encrypt->decode($plaintext_string);
 
-	
-
 		$data['id_destinasi'] = $plaintext_string;
-
+	
 		$this->load->view('Admin/V_Header',$data);
 		$this->load->view('Admin/V_Sidebar',$data);
 		$this->load->view('Admin/Destinasi/V_Image',$data);
 		$this->load->view('Admin/V_Footer',$data);
 		
 	}
-/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= INSERT SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= INSERT SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 	
 	// Insert Destinasi
 	public function Insert(){
@@ -81,14 +79,14 @@ class C_Destinasi extends CI_Controller {
 		$deskripsi = $this->input->post('deskripsi');
 
 		$data = array( 
-				'nama_destinasi' => $nama_destinasi,
-				'deskripsi' => $deskripsi
-			);
+			'nama_destinasi' => $nama_destinasi,
+			'deskripsi' => $deskripsi
+		);
 		
 		if($id = $this->M_destinasi->insert($data)){
 			
 			/* Encrypt ID */
-			$encrypted_string = $this->encrypt->encode($value['id_dok']);
+			$encrypted_string = $this->encrypt->encode($id);
 			$id = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string);
 			
 			redirect('Admin/Destinasi/Image/'.$id);
@@ -101,24 +99,61 @@ class C_Destinasi extends CI_Controller {
 
 	// Upload Image Destinasi
 	public function UploadImage(){
-		$id = $this->input->post('id_destinasi');
+		$id = $this->input->post('id');
+		$token = $this->input->post('token');
 
 		$config['upload_path'] = './assets/images/';
-		$config['allowed_types']        = 'gif|jpg|png';
-		$config['max_size']             = 1024;
- 
+		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		// $config['max_size']             = 1024;
+
 		$this->load->library('upload', $config);
 
 		if ($this->upload->do_upload('file')){
 
 			$upload_data = $this->upload->data();
 			$data = array(
-						'id' => $id,
-						'status' => 'destinasi',
-						'file_name' => $upload_data['file_name'],
-						'location' => $upload_data['full_path'],
-					);			
-		if($this->M_destinasi->insertImage($data))
+				'id' => $id,
+				'status' => 'destinasi',
+				'file_name' => $upload_data['file_name'],
+				'location' => $upload_data['full_path'],
+				'token' => $token
+			);			
+			$this->M_destinasi->insertImage($data);
+		}else{
+			echo $this->upload->display_errors();
+		}
+
+	}
+	
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= DELETE SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+	
+	//Untuk menghapus foto
+	function RemoveImage(){
+
+		//Ambil token foto
+		$token = $this->input->post('token');
+
+		$data  = array(
+			'token' => $token
+		);
+
+		if($result = $this->M_destinasi->getImage($data)){
+		
+			$filename = $result[0]['file_name'];
+		
+			if(file_exists($file = base_url('assets/images/'.$filename))){
+				unlink($file);
+			}
+			$this->M_destinasi->removeImage($data);
+		}
+
+		echo "{}";
+	}	
+
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= FUNCTION SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
+	
+	public function goAhead(){
+		if(true){
 			$this->session->set_flashdata('success' , "Destinasi berhasil ditambahkan");
 			redirect('Admin/Destinasi');
 		}else{
@@ -126,13 +161,10 @@ class C_Destinasi extends CI_Controller {
 			redirect('Admin/Destinasi');
 		}
 	}
-	
-
-/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= FUNCTION SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 
 	public function checkSession(){
 		if($this->session->is_logged){
-			
+
 		}else{
 			redirect('');
 		}

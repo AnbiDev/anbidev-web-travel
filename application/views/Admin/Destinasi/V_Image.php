@@ -23,12 +23,15 @@
                         <div class="card-body">
                             <h4 class="card-title">Gambar</h4>
                             <h6 class="card-subtitle">Upload gambar untuk ke dalam untuk destinasi ini.</h6>
-                            <form action="<?php echo base_url('Admin/Destinasi/UploadImage'); ?>" class="dropzone">
-                                <input type="hidden" value="<?php echo $id_destinasi; ?>" name="id_destinasi">
-                                <div class="fallback">
-                                    <input name="file" type="file" multiple/>
+                            <div class="dropzone">
+                                <input type="hidden" value="<?php echo $id_destinasi; ?>" name="id_dropzone" id="id_dropzone">
+                                <div class="dz-message">
+                                    <h3> Klik atau Drop gambar disini</h3>
                                 </div>
-                            </form>
+                                <!-- <div class="fallback">
+                                    <input name="file" type="file" multiple/>
+                                </div> -->
+                            </div>
 
                         </div>
                     </div>

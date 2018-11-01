@@ -64,7 +64,7 @@
 <!--costum -->
 <script src="<?php echo base_url('assets/js/custom.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/custom.js'); ?>"></script>
-
+<script type="text/javascript" > console.log('dsasdasds'); </script>
 
 <script type="text/javascript">
     <?php if($this->session->flashdata('success')){ ?>
