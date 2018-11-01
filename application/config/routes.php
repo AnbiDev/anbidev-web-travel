@@ -58,30 +58,42 @@ $route['translate_uri_dashes'] = FALSE;
 $route['Admin/Dashboard'] = 'Admin/C_Dashboard';
 $route['Admin/Dashboard/(:any)'] = 'Admin/C_Dashboard/$1';
 $route['Admin/Dashboard/(:any)/(:any)'] = 'Admin/C_Dashboard/$1/$2';
+$route['Admin/Dashboard/(:any)/(:any)/(:any)'] = 'Admin/C_Dashboard/$1/$2/$3';
 
 $route['Admin/PaketWisata'] = 'Admin/C_PaketWisata';
 $route['Admin/PaketWisata/(:any)'] = 'Admin/C_PaketWisata/$1';
 $route['Admin/PaketWisata/(:any)/(:any)'] = 'Admin/C_PaketWisata/$1/$2';
+$route['Admin/PaketWisata/(:any)/(:any)/(:any)'] = 'Admin/C_PaketWisata/$1/$2/$3';
 
 $route['Admin/Destinasi'] = 'Admin/C_Destinasi';
 $route['Admin/Destinasi/(:any)'] = 'Admin/C_Destinasi/$1';
 $route['Admin/Destinasi/(:any)/(:any)'] = 'Admin/C_Destinasi/$1/$2';
+$route['Admin/Destinasi/(:any)/(:any)/(:any)'] = 'Admin/C_Destinasi/$1/$2/$3';
 
 $route['Admin/Pemesanan'] = 'Admin/C_Pemesanan';
 $route['Admin/Pemesanan/(:any)'] = 'Admin/C_Pemesanan/$1';
 $route['Admin/Pemesanan/(:any)/(:any)'] = 'Admin/C_Pemesanan/$1/$2';
+$route['Admin/Pemesanan/(:any)/(:any)/(:any)'] = 'Admin/C_Pemesanan/$1/$2/$3';
+
 
 $route['Admin/ContactUs'] = 'Admin/C_ContactUs';
 $route['Admin/ContactUs/(:any)'] = 'Admin/C_ContactUs/$1';
 $route['Admin/ContactUs/(:any)/(:any)'] = 'Admin/C_ContactUs/$1/$2';
+$route['Admin/ContactUs/(:any)/(:any)/(:any)'] = 'Admin/C_ContactUs/$1/$2/$3';
 
 $route['Admin/Galery'] = 'Admin/C_Gallery';
 $route['Admin/Galery/(:any)'] = 'Admin/C_Gallery/$1';
 $route['Admin/Galery/(:any)/(:any)'] = 'Admin/C_Gallery/$1/$2';
+$route['Admin/Galery/(:any)/(:any)/(:any)'] = 'Admin/C_Gallery/$1/$2/$3';
 
 $route['Admin/User'] = 'Admin/C_User';
 $route['Admin/User/(:any)'] = 'Admin/C_User/$1';
 $route['Admin/User/(:any)/(:any)'] = 'Admin/C_User/$1/$2';
+$route['Admin/User/(:any)/(:any)/(:any)'] = 'Admin/C_User/$1/$2/$3';
+
+
+
+/* User Stuff */
 
 $route['Landing']= 'C_Landing';
 $route['Login']= 'C_Login';

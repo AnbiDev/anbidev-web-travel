@@ -70,7 +70,7 @@
     <?php if($this->session->flashdata('success')){ ?>
 
         toastr.success("<?php echo $this->session->flashdata('success'); ?>",'Success',{
-            timeOut: 5000,
+            timeOut: 8000,
             "closeButton": true,
             "debug": false,
             "newestOnTop": true,
@@ -89,11 +89,11 @@
 
         });
 
-        <?php }elseif($this->session->flashdata('error')) { ?>
+        <?php }elseif($this->session->flashdata('error')){ ?>
 
             toastr.error("<?php echo $this->session->flashdata('error'); ?>",'Error',{
                 "positionClass": "toast-top-right",
-                timeOut: 5000,
+                timeOut: 8000,
                 "closeButton": true,
                 "debug": false,
                 "newestOnTop": true,
