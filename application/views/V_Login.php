@@ -12,10 +12,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <title>Ela - Bootstrap Admin Dashboard Template</title>
     <!-- Bootstrap Core CSS -->
-    <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>asstes/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="css/helper.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>asstes/css/helper-login.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>asstes/css/style-login.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -73,18 +73,18 @@
     </div>
     <!-- End Wrapper -->
     <!-- All Jquery -->
-    <script src="js/lib/jquery/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/lib/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="js/lib/bootstrap/js/popper.min.js"></script>
-    <script src="js/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/lib/bootstrap/js/popper.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/lib/bootstrap/js/bootstrap.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="js/jquery.slimscroll.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/jquery-login.slimscroll.js"></script>
     <!--Menu sidebar -->
-    <script src="js/sidebarmenu.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/sidebarmenu-login.js"></script>
     <!--stickey kit -->
-    <script src="js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
     <!--Custom JavaScript -->
-    <script src="js/custom.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/custom-login.min.js"></script>
 
 </body>
 
