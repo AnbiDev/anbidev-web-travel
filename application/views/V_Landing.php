@@ -20,28 +20,28 @@
 	<meta name="twitter:url" content="" />
 	<meta name="twitter:card" content="" />
 
-	<link href="<?php echo base_url('assets/css/font-poppins-landing.css') ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/css/font-playfair-display-landing.css'); ?>" rel="stylesheet">
+	<link href="<?php echo base_url('assets/css/font-poppins.css') ?>" rel="stylesheet">
+	<link href="<?php echo base_url('assets/css/font-playfair-display.css'); ?>" rel="stylesheet">
 	
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/animate-landing.css'); ?>">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/icomoon-landing.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/icomoon.css'); ?>">
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-landing.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.css'); ?>">
 
 	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/magnific-popup-landing.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/magnific-popup.css'); ?>">
 
 	<!-- Flexslider  -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/flexslider-landing.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/flexslider.css'); ?>">
 
 	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/owl.carousel-landing.min.css'); ?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/owl.theme.default.min-landing.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/owl.carousel.min.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/owl.theme.default.min.css'); ?>">
 	
 	<!-- Date Picker -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-datepicker-landing.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-datepicker.css'); ?>">
 	<!-- Flaticons  -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/fonts/flaticon/font/flaticon.css'); ?>">
 
