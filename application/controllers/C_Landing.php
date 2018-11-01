@@ -6,6 +6,10 @@ class C_Landing extends CI_Controller {
 	//Landing Page
 	public function index(){
 		
-		$this->load->view('V_Landing');
+		$data = array();
+
+		$this->load->view('V_Header',$data);
+		$this->load->view('V_Landing',$data);
+		$this->load->view('V_Footer',$data);
 	}
 }
