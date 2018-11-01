@@ -32,7 +32,12 @@ class C_Destinasi extends CI_Controller {
 		// $user_id = $this->session->userid;
 		
 		$data['Menu'] = 'Dashboard';
-		
+		$data['data'] = $this->M_destinasi->selectAll();
+
+		// echo "<pre>";
+		// print_r($data);
+		// exit();
+
 		$this->load->view('Admin/V_Header',$data);
 		$this->load->view('Admin/V_Sidebar',$data);
 		$this->load->view('Admin/Destinasi/V_Index',$data);
@@ -54,8 +59,49 @@ class C_Destinasi extends CI_Controller {
 		
 	}
 
+	//Create  Destinasi View
+	public function Edit($id){
+		// $this->checkSession();
+		// $user_id = $this->session->userid;
+		
+		/* Decrypt ID */			
+		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+		$plaintext_string = $this->encrypt->decode($plaintext_string);
+
+		$data['Menu'] = 'Create';
+		$data['id']  = $plaintext_string;
+
+		$id = array(
+			'id_destinasi' => $plaintext_string
+		);
+
+		$data['data'] = $this->M_destinasi->getDestinasi($id);
+
+
+		$this->load->view('Admin/V_Header',$data);
+		$this->load->view('Admin/V_Sidebar',$data);
+		$this->load->view('Admin/Destinasi/V_Edit',$data);
+		$this->load->view('Admin/V_Footer',$data);
+		
+	}
+
+	//Create  Destinasi View
+	public function Detail(){
+		// $this->checkSession();
+		// $user_id = $this->session->userid;
+		
+		$data['Menu'] = 'Create';
+		
+		$this->load->view('Admin/V_Header',$data);
+		$this->load->view('Admin/V_Sidebar',$data);
+		$this->load->view('Admin/Destinasi/V_Create',$data);
+		$this->load->view('Admin/V_Footer',$data);
+		
+	}
+
 	//Upload Image View
-	public function Image($id){
+	public function Image($id,$edit = false){
+		
 		$data['Menu'] = 'Image';
 
 		/* Decrypt ID */			
@@ -63,13 +109,27 @@ class C_Destinasi extends CI_Controller {
 		$plaintext_string = $this->encrypt->decode($plaintext_string);
 
 		$data['id_destinasi'] = $plaintext_string;
-	
+		
+		$where = array(
+			'id' => $plaintext_string,
+			'status' => 'destinasi'	
+		);
+
+		if($edit){
+			$data['image'] = $this->M_destinasi->getImage($where);
+		}
+
+		// 	echo "<pre>";
+		// print_r($data);
+		// exit();
+
 		$this->load->view('Admin/V_Header',$data);
 		$this->load->view('Admin/V_Sidebar',$data);
 		$this->load->view('Admin/Destinasi/V_Image',$data);
 		$this->load->view('Admin/V_Footer',$data);
 		
 	}
+
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= INSERT SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 	
 	// Insert Destinasi
