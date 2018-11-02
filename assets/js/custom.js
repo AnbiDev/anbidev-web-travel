@@ -49,6 +49,7 @@ foto_upload.on("removedfile",function(a){
 });
 
 
+<<<<<<< HEAD
 function removeFile(token,link,th){
 	
     $.ajax({
@@ -67,6 +68,24 @@ function removeFile(token,link,th){
       error:function(error){
       	$(".preloader").fadeOut();
       	toastr.error(error,'Error');
+=======
+function removeFile($id,$link){
+    $.ajax({
+      url:baseUrl+"/shift",
+      type:"POST",
+      dataType:'json',
+      data:{tanggal:tanggal},
+      success:function(result){
+        var trHTML = '';
+        $("#shift").find('option').remove().end();
+        $.each(result,function(i,data){
+          trHTML += '<option value="'+data.SHIFT_NUM+'">'+data.DESCRIPTION+'</option>';
+          console.log(trHTML);
+        });
+        $("#shift").append(trHTML);
+      },
+      error:function(error){
+>>>>>>> Uji Coba : Loading bar
         console.log(error)
       }
     });

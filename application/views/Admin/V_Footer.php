@@ -63,7 +63,11 @@
 
 
 <!-- Pace Loading Bar -->
+<<<<<<< HEAD
 <!-- <script src="<?php echo base_url('assets/js/lib/preloader/pace.min.js'); ?>"></script> -->
+=======
+<script src="<?php echo base_url('assets/js/lib/preloader/pace.min.js'); ?>"></script>
+>>>>>>> Uji Coba : Loading bar
 
 <!--costum -->
 <script src="<?php echo base_url('assets/js/custom.min.js'); ?>"></script>

@@ -6,7 +6,11 @@
   -moz-user-select: none;
   user-select: none;
 
+<<<<<<< HEAD
   z-index: 9999;
+=======
+  z-index: 2000;
+>>>>>>> Uji Coba : Loading bar
   position: fixed;
   height: 90px;
   width: 90px;
@@ -23,7 +27,11 @@
 
 .pace .pace-activity {
   position: fixed;
+<<<<<<< HEAD
   z-index: 9999;
+=======
+  z-index: 2000;
+>>>>>>> Uji Coba : Loading bar
   display: block;
   position: absolute;
   left: -30px;
