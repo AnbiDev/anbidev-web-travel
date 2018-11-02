@@ -38,7 +38,7 @@
 
 <script src="<?php echo base_url('assets/js/lib/calendar-2/moment.latest.min.js'); ?>"></script>
 <!-- scripit init-->
-<script src="<?php echo base_url('assets/js/lib/calendar-2/semantic.ui.min.js'); ?>"></script>
+<!-- <script src="<?php echo base_url('assets/js/lib/calendar-2/semantic.ui.min.js'); ?>"></script> -->
 <!-- scripit init-->
 <script src="<?php echo base_url('assets/js/lib/calendar-2/prism.min.js'); ?>"></script>
 <!-- scripit init-->
@@ -63,7 +63,7 @@
 
 
 <!-- Pace Loading Bar -->
-<script src="<?php echo base_url('assets/js/lib/preloader/pace.min.js'); ?>"></script>
+<!-- <script src="<?php echo base_url('assets/js/lib/preloader/pace.min.js'); ?>"></script> -->
 
 <!--costum -->
 <script src="<?php echo base_url('assets/js/custom.min.js'); ?>"></script>

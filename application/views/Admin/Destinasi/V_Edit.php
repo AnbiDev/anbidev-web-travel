@@ -66,7 +66,7 @@
                         </div>
                         <div class="form-actions">
                             <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                            <button type="button" class="btn btn-inverse">Cancel</button>
+                            <button type="button" class="btn btn-inverse" onclick="window.history.go(-1)">Cancel</button>
                         </div>
                     </form>
                 </div>

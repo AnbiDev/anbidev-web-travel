@@ -31,8 +31,12 @@
                                     foreach ($image as $value) {
                                         # code...
                                         ?>
-                                        <div class="col-md-3 col-sm-4 col-xs-6 text-center"><img class="img-responsive" src="<?php echo base_url('assets/images/'.$value['file_name']); ?>"  />
-                                            <button class="btn btn-danger btn-sm" style="margin-top:10px">Remove</button> 
+
+    <div class="col-md-3 col-sm-4 col-xs-6 text-center"><img class="img-responsive" src="<?php echo base_url('assets/images/'.$value['file_name']); ?>"  />
+    
+
+    <button onclick="removeFile('<?php echo $value['token']; ?>','<?php echo base_url('Admin/Destinasi/RemoveImage'); ?>',this)" class="btn btn-danger btn-sm" style="margin-top:10px">Remove</button> 
+    
                                         </div>
                                         <?php
                                     }
@@ -52,7 +56,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12" style="padding: 10px;">
-                                    <a href="<?php echo base_url('Admin/Destinasi/goAhead'); ?>" class="btn btn-success btn-lg">Finish</a>
+                                    <a href="<?php echo base_url('Admin/Destinasi/goAhead/'.$message); ?>" class="btn btn-success btn-lg">Finish</a>
+                                    <button type="button" class="btn btn-inverse" onclick="window.history.go(-1)">Cancel</button>
                                 </div>
                             </div>
                             

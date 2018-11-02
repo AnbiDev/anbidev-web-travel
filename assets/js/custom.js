@@ -49,22 +49,24 @@ foto_upload.on("removedfile",function(a){
 });
 
 
-function removeFile($id,$link){
+function removeFile(token,link,th){
+	
     $.ajax({
-      url:baseUrl+"/shift",
+      url:link,
       type:"POST",
       dataType:'json',
-      data:{tanggal:tanggal},
+      data:{token:token},
+      beforeSend:function(){
+      	$(".preloader").fadeIn();
+      },
       success:function(result){
-        var trHTML = '';
-        $("#shift").find('option').remove().end();
-        $.each(result,function(i,data){
-          trHTML += '<option value="'+data.SHIFT_NUM+'">'+data.DESCRIPTION+'</option>';
-          console.log(trHTML);
-        });
-        $("#shift").append(trHTML);
+      	$(".preloader").fadeOut();
+       	$(th).parent().remove();
+        toastr.success('Delete Image','Success');
       },
       error:function(error){
+      	$(".preloader").fadeOut();
+      	toastr.error(error,'Error');
         console.log(error)
       }
     });

@@ -25,11 +25,11 @@
     <link href="<?php echo base_url('assets/css/lib/toastr/toastr.min.css'); ?>" rel="stylesheet">
 
     <!-- Pace -->
-    <link href="<?php echo base_url('assets/css/lib/preloader/pace.css'); ?>" rel="stylesheet">
+    <!-- <link href="<?php echo base_url('assets/css/lib/preloader/pace.css'); ?>" rel="stylesheet"> -->
 
     <!-- Custom CSS -->
-    <link href="<?php echo base_url('assets/css/lib/calendar2/semantic.ui.min.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/css/lib/calendar2/pignose.calendar.min.css'); ?>" rel="stylesheet">
+    <!-- <link href="<?php echo base_url('assets/css/lib/calendar2/semantic.ui.min.css'); ?>" rel="stylesheet"> -->
+    <!-- <link href="<?php echo base_url('assets/css/lib/calendar2/pignose.calendar.min.css'); ?>" rel="stylesheet"> -->
     <link href="<?php echo base_url('assets/css/lib/owl.carousel.min.css'); ?>" rel="stylesheet" />
     <link href="<?php echo base_url('assets/css/lib/owl.theme.default.min.css'); ?>" rel="stylesheet" />
     <link href="<?php echo base_url('assets/css/helper.css'); ?>" rel="stylesheet">
