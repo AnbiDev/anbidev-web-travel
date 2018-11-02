@@ -115,7 +115,11 @@ class C_Destinasi extends CI_Controller {
 			'status' => 'destinasi'	
 		);
 		$data['message'] = 'ditambahkan';
+<<<<<<< HEAD
 		$data['image'] = '';
+=======
+
+>>>>>>> Fixing : Delete Image
 		if($edit){
 			$data['image'] = $this->M_destinasi->getImage($where);
 			$data['message'] = 'diupdate';

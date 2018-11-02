@@ -64,10 +64,14 @@
 
 <!-- Pace Loading Bar -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!-- <script src="<?php echo base_url('assets/js/lib/preloader/pace.min.js'); ?>"></script> -->
 =======
 <script src="<?php echo base_url('assets/js/lib/preloader/pace.min.js'); ?>"></script>
 >>>>>>> Uji Coba : Loading bar
+=======
+<!-- <script src="<?php echo base_url('assets/js/lib/preloader/pace.min.js'); ?>"></script> -->
+>>>>>>> Fixing : Delete Image
 
 <!--costum -->
 <script src="<?php echo base_url('assets/js/custom.min.js'); ?>"></script>

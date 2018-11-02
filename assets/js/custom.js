@@ -50,6 +50,7 @@ foto_upload.on("removedfile",function(a){
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function removeFile(token,link,th){
 	
     $.ajax({
@@ -70,22 +71,30 @@ function removeFile(token,link,th){
       	toastr.error(error,'Error');
 =======
 function removeFile($id,$link){
+=======
+function removeFile(token,link,th){
+	
+>>>>>>> Fixing : Delete Image
     $.ajax({
-      url:baseUrl+"/shift",
+      url:link,
       type:"POST",
       dataType:'json',
-      data:{tanggal:tanggal},
+      data:{token:token},
+      beforeSend:function(){
+      	$(".preloader").fadeIn();
+      },
       success:function(result){
-        var trHTML = '';
-        $("#shift").find('option').remove().end();
-        $.each(result,function(i,data){
-          trHTML += '<option value="'+data.SHIFT_NUM+'">'+data.DESCRIPTION+'</option>';
-          console.log(trHTML);
-        });
-        $("#shift").append(trHTML);
+      	$(".preloader").fadeOut();
+       	$(th).parent().remove();
+        toastr.success('Delete Image','Success');
       },
       error:function(error){
+<<<<<<< HEAD
 >>>>>>> Uji Coba : Loading bar
+=======
+      	$(".preloader").fadeOut();
+      	toastr.error(error,'Error');
+>>>>>>> Fixing : Delete Image
         console.log(error)
       }
     });

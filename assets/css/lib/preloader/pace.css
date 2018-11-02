@@ -7,10 +7,14 @@
   user-select: none;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   z-index: 9999;
 =======
   z-index: 2000;
 >>>>>>> Uji Coba : Loading bar
+=======
+  z-index: 9999;
+>>>>>>> Fixing : Delete Image
   position: fixed;
   height: 90px;
   width: 90px;
@@ -28,10 +32,14 @@
 .pace .pace-activity {
   position: fixed;
 <<<<<<< HEAD
+<<<<<<< HEAD
   z-index: 9999;
 =======
   z-index: 2000;
 >>>>>>> Uji Coba : Loading bar
+=======
+  z-index: 9999;
+>>>>>>> Fixing : Delete Image
   display: block;
   position: absolute;
   left: -30px;

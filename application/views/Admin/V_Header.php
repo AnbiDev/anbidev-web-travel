@@ -26,10 +26,14 @@
 
     <!-- Pace -->
 <<<<<<< HEAD
+<<<<<<< HEAD
     <!-- <link href="<?php echo base_url('assets/css/lib/preloader/pace.css'); ?>" rel="stylesheet"> -->
 =======
     <link href="<?php echo base_url('assets/css/lib/preloader/pace.css'); ?>" rel="stylesheet">
 >>>>>>> Uji Coba : Loading bar
+=======
+    <!-- <link href="<?php echo base_url('assets/css/lib/preloader/pace.css'); ?>" rel="stylesheet"> -->
+>>>>>>> Fixing : Delete Image
 
     <!-- Custom CSS -->
     <!-- <link href="<?php echo base_url('assets/css/lib/calendar2/semantic.ui.min.css'); ?>" rel="stylesheet"> -->
