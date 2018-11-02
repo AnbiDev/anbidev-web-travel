@@ -6,6 +6,6 @@ class C_Login extends CI_Controller {
 	//Login Page
 	public function index(){
 		
-		$this->load->view('V_Login');
+		$this->load->view('Admin/V_Login');
 	}
 }
