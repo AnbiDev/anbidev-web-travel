@@ -121,7 +121,7 @@ class C_Destinasi extends CI_Controller {
 			$data['message'] = 'diupdate';
 		}
 
-		// 	echo "<pre>";
+		// echo "<pre>";
 		// print_r($data);
 		// exit();
 
