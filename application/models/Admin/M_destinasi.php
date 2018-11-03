@@ -54,11 +54,19 @@ class M_destinasi extends CI_Model {
 		}
 	}
 
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-= UPDATE SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+	public function update($data,$id){
+		$this->db->where('id_destinasi',$id);
+		return $this->db->update('tbl_destinasi',$data);
+
+	}
+
 
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-= DELETE SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 	public function removeImage($data){
 		$this->db->delete('tbl_gambar',$data);
 	}
 
+	
 
 }

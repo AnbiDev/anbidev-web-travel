@@ -47,3 +47,27 @@ foto_upload.on("removedfile",function(a){
 		}
 	});
 });
+
+
+function removeFile(token,link,th){
+	
+    $.ajax({
+      url:link,
+      type:"POST",
+      dataType:'json',
+      data:{token:token},
+      beforeSend:function(){
+      	$(".preloader").fadeIn();
+      },
+      success:function(result){
+      	$(".preloader").fadeOut();
+       	$(th).parent().remove();
+        toastr.success('Delete Image','Success');
+      },
+      error:function(error){
+      	$(".preloader").fadeOut();
+      	toastr.error(error,'Error');
+        console.log(error)
+      }
+    });
+}

@@ -114,9 +114,11 @@ class C_Destinasi extends CI_Controller {
 			'id' => $plaintext_string,
 			'status' => 'destinasi'	
 		);
+		$data['message'] = 'ditambahkan';
 
 		if($edit){
 			$data['image'] = $this->M_destinasi->getImage($where);
+			$data['message'] = 'diupdate';
 		}
 
 		// 	echo "<pre>";
@@ -184,6 +186,28 @@ class C_Destinasi extends CI_Controller {
 		}
 
 	}
+
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= DELETE SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+	
+	public function Update(){
+
+		$id_destinasi = $this->input->post('id');
+		$nama_destinasi = $this->input->post('nama_destinasi');
+		$deskripsi = $this->input->post('deskripsi');
+
+		$data = array( 
+			'nama_destinasi' => $nama_destinasi,
+			'deskripsi' => $deskripsi
+		);
+		
+		if($id = $this->M_destinasi->update($data,$id_destinasi)){
+			$this->session->set_flashdata('success','Destinasi berhasil diupdate');	
+			redirect('Admin/Destinasi');
+		}else{
+			$this->session->set_flashdata('error','Terjadi error saat update destinasi');
+			redirect('Admin/Destinasi');
+		}
+	}
 	
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= DELETE SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 	
@@ -191,6 +215,10 @@ class C_Destinasi extends CI_Controller {
 	function RemoveImage(){
 
 		//Ambil token foto
+		
+	
+
+
 		$token = $this->input->post('token');
 
 		$data  = array(
@@ -200,21 +228,25 @@ class C_Destinasi extends CI_Controller {
 		if($result = $this->M_destinasi->getImage($data)){
 		
 			$filename = $result[0]['file_name'];
-		
-			if(file_exists($file = base_url('assets/images/'.$filename))){
+			$path = str_replace("index.php", "",$_SERVER['SCRIPT_NAME']);
+			$file = $_SERVER['CONTEXT_DOCUMENT_ROOT'].$path.'assets/images/'.$filename;
+			
+			if(file_exists($file)){
 				unlink($file);
+				$this->M_destinasi->removeImage($data);
 			}
-			$this->M_destinasi->removeImage($data);
+			// }
+			// echo $file;
 		}
-
 		echo "{}";
+
 	}	
 
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= FUNCTION SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 	
-	public function goAhead(){
+	public function goAhead($message){
 		if(true){
-			$this->session->set_flashdata('success' , "Destinasi berhasil ditambahkan");
+			$this->session->set_flashdata('success' , "Destinasi berhasil ".$message);
 			redirect('Admin/Destinasi');
 		}else{
 			$this->session->set_flashdata('error' ,$this->upload->display_errors());
