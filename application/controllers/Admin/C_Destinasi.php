@@ -115,7 +115,7 @@ class C_Destinasi extends CI_Controller {
 			'status' => 'destinasi'	
 		);
 		$data['message'] = 'ditambahkan';
-
+		$data['image'] = '';
 		if($edit){
 			$data['image'] = $this->M_destinasi->getImage($where);
 			$data['message'] = 'diupdate';
