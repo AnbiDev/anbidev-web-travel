@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>Ela - Bootstrap Admin Dashboard Template</title>
+    <title><?php echo $Menu; ?></title>
     
     <!-- Bootstrap Core CSS -->
     <link  href="<?php echo base_url('assets/css/lib/bootstrap/bootstrap.min.css'); ?>" rel="stylesheet">
@@ -23,6 +23,9 @@
 
     <!-- Toastr -->
     <link href="<?php echo base_url('assets/css/lib/toastr/toastr.min.css'); ?>" rel="stylesheet">
+    
+    <!-- Sweetalert -->
+    <link href="<?php echo base_url('assets/css/lib/sweetalert/sweetalert.css'); ?>" rel="stylesheet">
 
     <!-- Pace -->
     <!-- <link href="<?php echo base_url('assets/css/lib/preloader/pace.css'); ?>" rel="stylesheet"> -->
