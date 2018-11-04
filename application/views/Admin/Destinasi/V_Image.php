@@ -6,8 +6,8 @@
             <div class="col-md-7 align-self-center">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Destinasi</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Create / Edit</a></li>
+                    <li class="breadcrumb-item active"><a href="<?php echo base_url('Admin/Destinasi'); ?>">Destinasi</a></li>
+                    <li class="breadcrumb-item active"><a href="#" >Create / Edit</a></li>
                     <li class="breadcrumb-item active">Image</li>
                 </ol>
             </div>
@@ -32,7 +32,8 @@
                                         # code...
                                         ?>
 
-    <div class="col-md-3 col-sm-4 col-xs-6 text-center"><img class="img-responsive" src="<?php echo base_url('assets/images/'.$value['file_name']); ?>"  />
+    <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+        <img class="img-responsive" src="<?php echo base_url('assets/images/'.$value['file_name']); ?>"  />
     
 
     <button onclick="removeFile('<?php echo $value['token']; ?>','<?php echo base_url('Admin/Destinasi/RemoveImage'); ?>',this)" class="btn btn-danger btn-sm" style="margin-top:10px">Remove</button> 

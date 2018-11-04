@@ -71,3 +71,27 @@ function removeFile(token,link,th){
       }
     });
 }
+
+
+function deleteThis($link){
+	swal({
+            title: "Are you sure to delete ?",
+            text: "Data tidak akan kembali , dan didelete secara permanen!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes",
+            cancelButtonText: "No",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                swal("Deleted !!", "Hey, your imaginary file has been deleted !!", "success");
+                window.location.replace($link);
+            }
+            else {
+                swal("Cancelled !!", "Hey, your imaginary file is safe !!", "error");
+            }
+        });
+}

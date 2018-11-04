@@ -31,7 +31,7 @@ class C_Destinasi extends CI_Controller {
 		// $this->checkSession();
 		// $user_id = $this->session->userid;
 		
-		$data['Menu'] = 'Dashboard';
+		$data['Menu'] = 'Destinasi';
 		$data['data'] = $this->M_destinasi->selectAll();
 
 		// echo "<pre>";
@@ -50,7 +50,7 @@ class C_Destinasi extends CI_Controller {
 		// $this->checkSession();
 		// $user_id = $this->session->userid;
 		
-		$data['Menu'] = 'Create';
+		$data['Menu'] = 'Create Destinasi';
 		
 		$this->load->view('Admin/V_Header',$data);
 		$this->load->view('Admin/V_Sidebar',$data);
@@ -59,7 +59,7 @@ class C_Destinasi extends CI_Controller {
 		
 	}
 
-	//Create  Destinasi View
+	//Edit  Destinasi View
 	public function Edit($id){
 		// $this->checkSession();
 		// $user_id = $this->session->userid;
@@ -68,7 +68,7 @@ class C_Destinasi extends CI_Controller {
 		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
 		$plaintext_string = $this->encrypt->decode($plaintext_string);
 
-		$data['Menu'] = 'Create';
+		$data['Menu'] = 'Edit Destinasi';
 		$data['id']  = $plaintext_string;
 
 		$id = array(
@@ -85,16 +85,30 @@ class C_Destinasi extends CI_Controller {
 		
 	}
 
-	//Create  Destinasi View
-	public function Detail(){
+
+	//  Destinasi View
+	public function Detail($id){
 		// $this->checkSession();
 		// $user_id = $this->session->userid;
 		
-		$data['Menu'] = 'Create';
-		
+		/* Decrypt ID */			
+		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+		$plaintext_string = $this->encrypt->decode($plaintext_string);
+
+		$image = array(
+					'id' => $plaintext_string,
+					'status' => 'destinasi'
+				);
+		$where = array('id_destinasi' => $plaintext_string);
+
+		$data['Menu'] = 'Detail';
+		$data['image'] = $this->M_destinasi->getImage($image);
+		$data['id'] = $plaintext_string;
+		$data['data'] = $this->M_destinasi->getDestinasi($where);
+
 		$this->load->view('Admin/V_Header',$data);
 		$this->load->view('Admin/V_Sidebar',$data);
-		$this->load->view('Admin/Destinasi/V_Create',$data);
+		$this->load->view('Admin/Destinasi/V_Detail',$data);
 		$this->load->view('Admin/V_Footer',$data);
 		
 	}
@@ -187,7 +201,7 @@ class C_Destinasi extends CI_Controller {
 
 	}
 
-	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= DELETE SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= UPDATE SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 	
 	public function Update(){
 
@@ -215,10 +229,6 @@ class C_Destinasi extends CI_Controller {
 	function RemoveImage(){
 
 		//Ambil token foto
-		
-	
-
-
 		$token = $this->input->post('token');
 
 		$data  = array(
@@ -226,14 +236,14 @@ class C_Destinasi extends CI_Controller {
 		);
 
 		if($result = $this->M_destinasi->getImage($data)){
-		
+
 			$filename = $result[0]['file_name'];
 			$path = str_replace("index.php", "",$_SERVER['SCRIPT_NAME']);
 			$file = $_SERVER['CONTEXT_DOCUMENT_ROOT'].$path.'assets/images/'.$filename;
 			
-			if(file_exists($file)){
+			$this->M_destinasi->removeImage($data);
+			if(file_exists($file)){	
 				unlink($file);
-				$this->M_destinasi->removeImage($data);
 			}
 			// }
 			// echo $file;
@@ -241,6 +251,46 @@ class C_Destinasi extends CI_Controller {
 		echo "{}";
 
 	}	
+
+	function Delete($id){
+		/* Decrypt ID */			
+		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+		$plaintext_string = $this->encrypt->decode($plaintext_string);
+
+		$image = array(
+			'id' => $plaintext_string,
+			'status' => 'destinasi'
+		);
+
+		// Remove all picture
+		if($result = $this->M_destinasi->getImage($image)){
+			foreach($result as $value) {
+				$filename = $value['file_name'];
+				$path = str_replace("index.php", "",$_SERVER['SCRIPT_NAME']);
+				$file = $_SERVER['CONTEXT_DOCUMENT_ROOT'].$path.'assets/images/'.$filename;
+
+				$this->M_destinasi->removeImage($image);
+				if(file_exists($file)){
+					unlink($file);
+				}
+			}
+			
+		}
+
+			
+		$data = array(
+			'id_destinasi' => $plaintext_string
+		);
+
+		if($this->M_destinasi->delete($data)){
+			$this->session->set_flashdata('success' , "Destinasi berhasil didelete");
+			redirect('Admin/Destinasi');
+		}else{
+			$this->session->set_flashdata('error' ,"Ada kesalahan saat menghapus data");
+			redirect('Admin/Destinasi');
+		}
+
+	}
 
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= FUNCTION SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 	

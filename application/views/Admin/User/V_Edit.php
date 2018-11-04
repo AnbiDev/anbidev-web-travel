@@ -3,11 +3,11 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">Destinasi</h3> </div>
+            <h3 class="text-primary">User</h3> </div>
             <div class="col-md-7 align-self-center">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="<?php echo base_url('Admin/Destinasi'); ?>">Destinasi</a></li>
+                    <li class="breadcrumb-item active"><a href="<?php echo base_url('Admin/User'); ?>">User</a></li>
                     <li class="breadcrumb-item active">Edit</li>
                 </ol>
             </div>
@@ -20,20 +20,19 @@
                 <div class="col-lg-12">
                     <div class="card card-outline-primary">
                         <div class="card-header">
-                            <h4 class="m-b-0 text-white">Edit Destinasi</h4>
+                            <h4 class="m-b-0 text-white">Edit User</h4>
                         </div>
                         <div class="card-body">
-                            <form action="<?php echo base_url('Admin/Destinasi/Update'); ?>" method="POST">
-                                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <form action="<?php echo base_url('Admin/User/Update'); ?>" method="POST">
                                 <div class="form-body">
-                                    <h3 class="card-title m-t-15">Tambahkan Destinasi Wisata</h3>
+                                    <h3 class="card-title m-t-15">Edit</h3>
                                     <hr>
 
                                     <div class="row p-t-20">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label">Nama Destinasi</label>
-                                                <input type="text" name="nama_destinasi" class="form-control" placeholder="Destinasi" required="" value="<?php echo $data[0]['nama_destinasi']; ?>">
+                                                <label class="control-label">Username</label>
+                                                <input type="text" name="username" class="form-control" placeholder="Username" required="" value="<?php echo $data[0]['username']; ?>" >
                                                 <small class="form-control-feedback text-danger">*wajib diisi</small> 
                                             </div>
                                         </div>
@@ -41,25 +40,22 @@
                                     <!--/row-->  
 
                                     <!-- row -->
-                                    <div class="row">
-                                        <div class="col-12">
-                                         <label class="control-label">Deskripsi</label>
-                                         <div class="form-group">
-                                            <textarea class="textarea_editor form-control" name="deskripsi" rows="15" placeholder="Enter text ..." style="height:450px"><?php echo $data[0]['deskripsi']; ?></textarea>
+                                     <div class="row p-t-20">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Level</label>
+                                                <select class="form-control" name="level">
+                                                    <option value="<?php echo $data[0]['level']; ?>">
+                                                        <?php echo ucfirst ( $data[0]['level'] ); ?>
+                                                    </option>
+                                                    <option value="admin">Admin</option>
+                                                    <option value="pegawai">Pegawai</option>
+                                                    <option value="manager">Manager</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 " style="padding: 10px;">
-                                    <?php 
-                                    /* Encrypt ID */
-                                    $encrypted_string = $this->encrypt->encode($id);
-                                    $id = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string);
-                                    ?>
-                                    <a href="<?php echo base_url('Admin/Destinasi/Image/'.$id.'/edit'); ?>" class="btn btn-primary float-right"><span class="fa fa-camera"></span>&nbsp;Edit Gambar</a>
-                                </div>
                             </div>
                             <!-- /row -->
 
@@ -73,4 +69,4 @@
             </div>
         </div>
     </div>
-
+   

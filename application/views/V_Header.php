@@ -45,6 +45,8 @@
 	<!-- Flaticons  -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/fonts/flaticon/font/flaticon.css'); ?>">
 
+	
+	
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/style-landing.css'); ?>">
 
