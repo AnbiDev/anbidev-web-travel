@@ -11,6 +11,10 @@ class C_PaketWisata extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('html');	
        	$this->load->library('session');
+		$this->load->library('encrypt');
+
+		$this->load->model('Admin/M_paket_wisata');
+       	$this->load->model('Admin/M_destinasi');
 		//$this->load->library('Database');
 
 		// if($this->session->userdata('logged_in')!=TRUE) {
@@ -22,20 +26,173 @@ class C_PaketWisata extends CI_Controller {
 		  
     }
 	
-	//Dashboard Index
+	
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= LOAD PAGE -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
+
+	//PaketWisata Index
 	public function index(){
 		// $this->checkSession();
 		// $user_id = $this->session->userid;
 		
-		$data['Menu'] = 'Dashboard';
-		
+		$data['Menu'] = 'PaketWisata';
+		$data['data'] = $this->M_paket_wisata->selectAll();
+
+		// echo "<pre>";
+		// print_r($data);
+		// exit();
+
 		$this->load->view('Admin/V_Header',$data);
 		$this->load->view('Admin/V_Sidebar',$data);
-		$this->load->view('Admin/V_Dashboard',$data);
+		$this->load->view('Admin/PaketWisata/V_Index',$data);
+		$this->load->view('Admin/V_Footer',$data);
+		
+	}
+
+	//Create  PaketWisata View
+	public function Create(){
+		// $this->checkSession();
+		// $user_id = $this->session->userid;
+		
+		$data['Menu'] = 'Create PaketWisata';
+		$data['destinasi'] = $this->M_destinasi->selectAll();
+
+		$this->load->view('Admin/V_Header',$data);
+		$this->load->view('Admin/V_Sidebar',$data);
+		$this->load->view('Admin/PaketWisata/V_Create',$data);
+		$this->load->view('Admin/V_Footer',$data);
+		
+	}
+
+	//Edit  PaketWisata View
+	public function Edit($id){
+		// $this->checkSession();
+		// $user_id = $this->session->userid;
+		
+		/* Decrypt ID */			
+		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+		$plaintext_string = $this->encrypt->decode($plaintext_string);
+
+		$data['Menu'] = 'Edit PaketWisata';
+		$data['id']  = $plaintext_string;
+
+		$id = array(
+			'id_paket_wisata' => $plaintext_string
+		);
+
+		$data['data'] = $this->M_paket_wisata->getPaketWisata($id);
+
+
+		$this->load->view('Admin/V_Header',$data);
+		$this->load->view('Admin/V_Sidebar',$data);
+		$this->load->view('Admin/PaketWisata/V_Edit',$data);
+		$this->load->view('Admin/V_Footer',$data);
+		
+	}
+
+
+	//  PaketWisata View
+	public function Detail($id){
+		// $this->checkSession();
+		// $user_id = $this->session->userid;
+		
+		/* Decrypt ID */			
+		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+		$plaintext_string = $this->encrypt->decode($plaintext_string);
+
+		$image = array(
+					'id' => $plaintext_string,
+					'status' => 'paket_wisata'
+				);
+		$where = array('id_paket_wisata' => $plaintext_string);
+
+		$data['Menu'] = 'Detail';
+		$data['image'] = $this->M_paket_wisata->getImage($image);
+		$data['id'] = $plaintext_string;
+		$data['data'] = $this->M_paket_wisata->getPaketWisata($where);
+
+		$this->load->view('Admin/V_Header',$data);
+		$this->load->view('Admin/V_Sidebar',$data);
+		$this->load->view('Admin/PaketWisata/V_Detail',$data);
+		$this->load->view('Admin/V_Footer',$data);
+		
+	}
+
+	//Upload Image View
+	public function Image($id,$edit = false){
+		
+		$data['Menu'] = 'Image';
+
+		/* Decrypt ID */			
+		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+		$plaintext_string = $this->encrypt->decode($plaintext_string);
+
+		$data['id_paket_wisata'] = $plaintext_string;
+		
+		$where = array(
+			'id' => $plaintext_string,
+			'status' => 'paket_wisata'	
+		);
+		$data['message'] = 'ditambahkan';
+		$data['image'] = '';
+		if($edit){
+			$data['image'] = $this->M_paket_wisata->getImage($where);
+			$data['message'] = 'diupdate';
+		}
+
+		// echo "<pre>";
+		// print_r($data);
+		// exit();
+
+		$this->load->view('Admin/V_Header',$data);
+		$this->load->view('Admin/V_Sidebar',$data);
+		$this->load->view('Admin/PaketWisata/V_Image',$data);
 		$this->load->view('Admin/V_Footer',$data);
 		
 	}
 	
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= INSERT SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
+	
+	// Insert Destinasi
+	public function Insert(){
+		
+		$nama_paket_wisata = $this->input->post('nama_paket_wisata');
+		$deskripsi = $this->input->post('deskripsi');
+		$harga = $this->input->post('harga');
+		$id_destinasi[] = $this->input->post('id_destinasi');
+
+
+
+		$data = array( 
+			'nama_paket_wisata' => $nama_destinasi,
+			'deskripsi' => $deskripsi,
+			'harga' => $harga
+		);
+		
+		if($id = $this->M_paket_wisata->insert($data)){
+			
+			foreach ($id_destinasi as $value) {
+				$link = array(
+					'id_destinasi' => $value,
+					'id_paket_wisata' => $id
+				);
+
+				$this->M_paket_wisata->insertLink($link);
+			}
+
+			/* Encrypt ID */
+			$encrypted_string = $this->encrypt->encode($id);
+			$id = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string);
+			
+			redirect('Admin/Destinasi/Image/'.$id);
+		}else{
+			$this->session->set_flashdata('error','Terjadi error saat insert destinasi');
+			redirect('Admin/Destinasi');
+		}
+
+	}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= FUNCTION SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
+
 	public function checkSession(){
 		if($this->session->is_logged){
 			

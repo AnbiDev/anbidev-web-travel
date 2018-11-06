@@ -27,6 +27,9 @@
     <!-- Sweetalert -->
     <link href="<?php echo base_url('assets/css/lib/sweetalert/sweetalert.css'); ?>" rel="stylesheet">
 
+     <!-- Select2 -->
+    <link href="<?php echo base_url('assets/css/lib/select2/select2.min.css'); ?>" rel="stylesheet">
+
     <!-- Pace -->
     <!-- <link href="<?php echo base_url('assets/css/lib/preloader/pace.css'); ?>" rel="stylesheet"> -->
 

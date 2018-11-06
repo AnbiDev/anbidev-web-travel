@@ -1,11 +1,17 @@
 var getUrl = window.location;
 var base_url = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 
+$(document).ready(function() {
+    $('.select2').select2();
+});
+
 Dropzone.autoDiscover = false;
 // var id = '';
 // if($('#id').length){
 	
 // }
+
+
 
 var foto_upload = new Dropzone(".dropzone",{
 	url: base_url+"/Admin/Destinasi/UploadImage",

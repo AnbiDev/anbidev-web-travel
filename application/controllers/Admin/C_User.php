@@ -13,6 +13,7 @@ class C_User extends CI_Controller {
       	$this->load->library('encrypt');
 
 		$this->load->model('Admin/M_user');
+		
 		// if($this->session->userdata('logged_in')!=TRUE) {
 		// 	$this->load->helper('url');
 		// 	$this->session->set_userdata('last_page', current_url());

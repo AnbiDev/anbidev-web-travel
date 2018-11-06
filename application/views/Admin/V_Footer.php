@@ -64,6 +64,9 @@
 <!-- Sweetalert -->
 <script src="<?php echo base_url('assets/js/lib/sweetalert/sweetalert.min.js'); ?>"></script> 
 
+<!-- Sweetalert -->
+<script src="<?php echo base_url('assets/js/lib/select2/select2.full.min.js'); ?>"></script> 
+
 <!-- Pace Loading Bar -->
 <!-- <script src="<?php echo base_url('assets/js/lib/preloader/pace.min.js'); ?>"></script> -->
 
