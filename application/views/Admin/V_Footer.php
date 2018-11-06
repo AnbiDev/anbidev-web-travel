@@ -23,17 +23,17 @@
 <script src="<?php echo base_url('assets/js/lib/sticky-kit-master/dist/sticky-kit.min.js'); ?>"></script>
 
 <!-- wysihtml5. -->
-<script src="<?php echo base_url('assets/js/lib/html5-editor/wysihtml5-0.3.0.js'); ?>"></script>
+ <script src="<?php echo base_url('assets/js/lib/html5-editor/wysihtml5-0.3.0.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/lib/html5-editor/bootstrap-wysihtml5.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/lib/html5-editor/wysihtml5-init.js'); ?>"></script>
 
 <!--Custom JavaScript -->
 
 
-<!-- Amchart -->
+<!-- Amchart --><!-- 
 <script src="<?php echo base_url('assets/js/lib/morris-chart/raphael-min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/lib/morris-chart/morris.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/lib/morris-chart/dashboard1-init.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/lib/morris-chart/dashboard1-init.js'); ?>"></script> -->
 
 
 <script src="<?php echo base_url('assets/js/lib/calendar-2/moment.latest.min.js'); ?>"></script>
@@ -42,9 +42,9 @@
 <!-- scripit init-->
 <script src="<?php echo base_url('assets/js/lib/calendar-2/prism.min.js'); ?>"></script>
 <!-- scripit init-->
-<script src="<?php echo base_url('assets/js/lib/calendar-2/pignose.calendar.min.js'); ?>"></script>
+<!-- <script src="<?php echo base_url('assets/js/lib/calendar-2/pignose.calendar.min.js'); ?>"></script> -->
 <!-- scripit init-->
-<script src="<?php echo base_url('assets/js/lib/calendar-2/pignose.init.js'); ?>"></script>
+<!-- <script src="<?php echo base_url('assets/js/lib/calendar-2/pignose.init.js'); ?>"></script> -->
 
 <script src="<?php echo base_url('assets/js/lib/owl-carousel/owl.carousel.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/lib/owl-carousel/owl.carousel-init.js'); ?>"></script>

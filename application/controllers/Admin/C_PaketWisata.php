@@ -4,17 +4,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class C_PaketWisata extends CI_Controller {
 
 	public function __construct()
-    {
-        parent::__construct();
-		  
-        $this->load->helper('form');
-        $this->load->helper('url');
-        $this->load->helper('html');	
-       	$this->load->library('session');
+	{
+		parent::__construct();
+
+		$this->load->helper('form');
+		$this->load->helper('url');
+		$this->load->helper('html');	
+		$this->load->library('session');
 		$this->load->library('encrypt');
 
 		$this->load->model('Admin/M_paket_wisata');
-       	$this->load->model('Admin/M_destinasi');
+		$this->load->model('Admin/M_destinasi');
 		//$this->load->library('Database');
 
 		// if($this->session->userdata('logged_in')!=TRUE) {
@@ -23,8 +23,8 @@ class C_PaketWisata extends CI_Controller {
 		// 	redirect('index');
 		// 	$this->session->set_userdata('Responsbility', 'some_value');
 		// }
-		  
-    }
+
+	}
 	
 	
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= LOAD PAGE -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
@@ -39,16 +39,18 @@ class C_PaketWisata extends CI_Controller {
 		$temp = array();
 		$paket_wisata = $this->M_paket_wisata->selectAll();
 		
-		foreach ($paket_wisata as $value) {
+		if(!empty($paket_wisata) && is_array($paket_wisata)){
+			foreach ($paket_wisata as $value) {
 
-			$destinasi = $this->M_paket_wisata->getLinkDestinasi($value['id_paket_wisata']);
-			$value['destinasi'] = $destinasi;
+				$destinasi = $this->M_paket_wisata->getLinkDestinasi($value['id_paket_wisata']);
+				$value['destinasi'] = $destinasi;
 
-			array_push($temp, $value);
+				array_push($temp, $value);
+			}
 		}
-			// echo "<pre>";
-			// print_r($temp);
-			// exit();	
+		// echo "<pre>";
+		// print_r($temp);
+		// exit();	
 
 		$data['data'] = $temp;
 
@@ -111,9 +113,9 @@ class C_PaketWisata extends CI_Controller {
 		$plaintext_string = $this->encrypt->decode($plaintext_string);
 
 		$image = array(
-					'id' => $plaintext_string,
-					'status' => 'paket_wisata'
-				);
+			'id' => $plaintext_string,
+			'status' => 'paket_wisata'
+		);
 		$where = array('id_paket_wisata' => $plaintext_string);
 
 		$data['Menu'] = 'Detail';
@@ -160,8 +162,41 @@ class C_PaketWisata extends CI_Controller {
 		$this->load->view('Admin/V_Footer',$data);
 		
 	}
+
+	//Upload Image View
+	public function More($id,$edit = false){
+		
+		$data['Menu'] = 'Tambahan';
+
+		/* Decrypt ID */			
+		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+		$plaintext_string = $this->encrypt->decode($plaintext_string);
+
+		$data['id_paket_wisata'] = $plaintext_string;
+		
+		// $where = array(
+		// 	'id' => $plaintext_string,
+		// 	'status' => 'paket_wisata'	
+		// );
+		// $data['message'] = 'ditambahkan';
+		// $data['image'] = '';
+		// if($edit){
+		// 	$data['image'] = $this->M_paket_wisata->getImage($where);
+		// 	$data['message'] = 'diupdate';
+		// }
+
+		// echo "<pre>";
+		// print_r($data);
+		// exit();
+
+		$this->load->view('Admin/V_Header',$data);
+		$this->load->view('Admin/V_Sidebar',$data);
+		$this->load->view('Admin/PaketWisata/V_More',$data);
+		$this->load->view('Admin/V_Footer',$data);
+		
+	}
 	
-/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= INSERT SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= INSERT SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 	
 	// Insert Paket Wisata
 	public function Insert(){
@@ -193,7 +228,7 @@ class C_PaketWisata extends CI_Controller {
 			$encrypted_string = $this->encrypt->encode($id);
 			$id = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string);
 			
-			redirect('Admin/PaketWisata/Image/'.$id);
+			redirect('Admin/PaketWisata/More/'.$id);
 		}else{
 			$this->session->set_flashdata('error','Terjadi error saat insert destinasi');
 			redirect('Admin/Destinasi');
@@ -201,7 +236,7 @@ class C_PaketWisata extends CI_Controller {
 
 	}
 
-/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= FUNCTION SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= FUNCTION SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 
 	public function checkSession(){
 		if($this->session->is_logged){

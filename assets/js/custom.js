@@ -2,7 +2,22 @@ var getUrl = window.location;
 var base_url = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 
 $(document).ready(function() {
-    $('.select2').select2();
+  $('.select2').select2();
+  
+  $('.tutup').on('click',function(event){
+    console.log('tutup');
+    $('.modal').modal('hide');
+  });
+
+  $('#fasilitasModal').on('show.bs.modal', function (event) {
+   var button = $(event.relatedTarget) 
+   var recipient = button.data('whatever') 
+   var modal = $(this)
+    // modal.find('.modal-title').text('New message to ' + recipient)
+    modal.find('.modal-body input[type="hidden"]').val(recipient)
+});
+
+
 });
 
 Dropzone.autoDiscover = false;
@@ -57,47 +72,51 @@ foto_upload.on("removedfile",function(a){
 
 function removeFile(token,link,th){
 	
-    $.ajax({
-      url:link,
-      type:"POST",
-      dataType:'json',
-      data:{token:token},
-      beforeSend:function(){
-      	$(".preloader").fadeIn();
-      },
-      success:function(result){
-      	$(".preloader").fadeOut();
-       	$(th).parent().remove();
-        toastr.success('Delete Image','Success');
-      },
-      error:function(error){
-      	$(".preloader").fadeOut();
-      	toastr.error(error,'Error');
-        console.log(error)
-      }
-    });
+  $.ajax({
+    url:link,
+    type:"POST",
+    dataType:'json',
+    data:{token:token},
+    beforeSend:function(){
+     $(".preloader").fadeIn();
+   },
+   success:function(result){
+     $(".preloader").fadeOut();
+     $(th).parent().remove();
+     toastr.success('Delete Image','Success');
+   },
+   error:function(error){
+     $(".preloader").fadeOut();
+     toastr.error(error,'Error');
+     console.log(error)
+   }
+ });
 }
 
 
 function deleteThis($link){
 	swal({
-            title: "Are you sure to delete ?",
-            text: "Data tidak akan kembali , dan didelete secara permanen!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes",
-            cancelButtonText: "No",
-            closeOnConfirm: false,
-            closeOnCancel: false
-        },
-        function(isConfirm){
-            if (isConfirm) {
-                swal("Deleted !!", "Hey, your imaginary file has been deleted !!", "success");
-                window.location.replace($link);
-            }
-            else {
-                swal("Cancelled !!", "Hey, your imaginary file is safe !!", "error");
-            }
-        });
+    title: "Are you sure to delete ?",
+    text: "Data tidak akan kembali , dan didelete secara permanen!",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Yes",
+    cancelButtonText: "No",
+    closeOnConfirm: false,
+    closeOnCancel: false
+  },
+  function(isConfirm){
+    if (isConfirm) {
+      swal("Deleted !!", "Hey, your imaginary file has been deleted !!", "success");
+      window.location.replace($link);
+    }
+    else {
+      swal("Cancelled !!", "Hey, your imaginary file is safe !!", "error");
+    }
+  });
+}
+
+function fasilitasToggle(th){
+
 }
