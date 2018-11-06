@@ -35,11 +35,22 @@ class C_PaketWisata extends CI_Controller {
 		// $user_id = $this->session->userid;
 		
 		$data['Menu'] = 'PaketWisata';
-		$data['data'] = $this->M_paket_wisata->selectAll();
+		
+		$temp = array();
+		$paket_wisata = $this->M_paket_wisata->selectAll();
+		
+		foreach ($paket_wisata as $value) {
 
-		// echo "<pre>";
-		// print_r($data);
-		// exit();
+			$destinasi = $this->M_paket_wisata->getLinkDestinasi($value['id_paket_wisata']);
+			$value['destinasi'] = $destinasi;
+
+			array_push($temp, $value);
+		}
+			// echo "<pre>";
+			// print_r($temp);
+			// exit();	
+
+		$data['data'] = $temp;
 
 		$this->load->view('Admin/V_Header',$data);
 		$this->load->view('Admin/V_Sidebar',$data);
@@ -152,27 +163,26 @@ class C_PaketWisata extends CI_Controller {
 	
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= INSERT SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 	
-	// Insert Destinasi
+	// Insert Paket Wisata
 	public function Insert(){
 		
 		$nama_paket_wisata = $this->input->post('nama_paket_wisata');
 		$deskripsi = $this->input->post('deskripsi');
 		$harga = $this->input->post('harga');
-		$id_destinasi[] = $this->input->post('id_destinasi');
-
-
+		$id_destinasi = $this->input->post('id_destinasi');
 
 		$data = array( 
-			'nama_paket_wisata' => $nama_destinasi,
+			'nama_paket_wisata' => $nama_paket_wisata,
 			'deskripsi' => $deskripsi,
 			'harga' => $harga
 		);
 		
 		if($id = $this->M_paket_wisata->insert($data)){
 			
-			foreach ($id_destinasi as $value) {
+			for($i = 0;$i < sizeof($id_destinasi); $i++) {
+				
 				$link = array(
-					'id_destinasi' => $value,
+					'id_destinasi' => $id_destinasi[$i],
 					'id_paket_wisata' => $id
 				);
 
@@ -183,7 +193,7 @@ class C_PaketWisata extends CI_Controller {
 			$encrypted_string = $this->encrypt->encode($id);
 			$id = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string);
 			
-			redirect('Admin/Destinasi/Image/'.$id);
+			redirect('Admin/PaketWisata/Image/'.$id);
 		}else{
 			$this->session->set_flashdata('error','Terjadi error saat insert destinasi');
 			redirect('Admin/Destinasi');

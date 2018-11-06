@@ -17,7 +17,7 @@ class M_paket_wisata extends CI_Model {
 	}
 
 	public function insertLink($data){
-		return $this->db->insert('tbl_link_destinasi_paket_wisata',$data)
+		return $this->db->insert('tbl_link_destinasi_paket_wisata',$data);
 	}
 
 	public function insertImage($data){
@@ -38,6 +38,20 @@ class M_paket_wisata extends CI_Model {
 		}
 	}
 
+	public function getLinkDestinasi($data){
+		$this->db->select('*');
+		$this->db->from('tbl_destinasi td');
+		$this->db->join('tbl_link_destinasi_paket_wisata tl',' td.id_destinasi = tl.id_destinasi', 'inner');
+		$this->db->where('tl.id_paket_wisata',$data);
+		$data = $this->db->get();
+
+		if($data->num_rows() > 0){
+			return $data->result_array();
+		}else{
+			return false;
+		}
+			
+	}
 
 	public function getPaketWisata($data){
 		$data = $this->db->get_where('tbl_paket_wisata',$data);

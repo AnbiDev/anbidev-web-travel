@@ -28,10 +28,10 @@
                                 <table id="myTable" class="table table-bordered table-striped"> 
                                     <thead>
                                         <tr>
-                                            <th style="width:10%;text-align: center;">No</th>
-                                            <th style="width:70%;">Nama Paket Wisata</th>
-                                            <th style="width:70%;">Destinasi</th>
-                                            <th style="width:70%;">Harga</th>
+                                            <th style="width:5%;text-align: center;">No</th>
+                                            <th style="width:30%;">Nama Paket Wisata</th>
+                                            <th style="width:25%;">Destinasi</th>
+                                            <th style="width:20%;">Harga</th>
                                             <th style="width:20%;text-align: center;">Action</th>
                                         </tr>
                                     </thead>
@@ -47,7 +47,25 @@
                                             <tr>
                                                 <td style="text-align: center;"><?php echo $i++; ?></td>
                                                 <td><?php echo $value['nama_paket_wisata']; ?></td>
-                                                <td><?php echo ""; ?></td>
+                                                <td>                                     
+                                   
+
+                                   <?php 
+                                        if(!empty($value['destinasi']) && is_array($value['destinasi'])){
+                                           foreach ($value['destinasi'] as $destinasi) {   
+                                            /* Encrypt ID */
+                                        $encrypted_string_2 = $this->encrypt->encode($destinasi['id_destinasi']);
+                                        $id_destinasi = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string_2);
+                                            ?>
+
+                        <a target="_blank" href="<?php echo base_url('Admin/Destinasi/Detail/'.$id_destinasi); ?>">
+                        <span class="badge badge-primary"><?php echo $destinasi['nama_destinasi']; ?></span></a>
+                            
+                                    <?php 
+                                            }
+                                        }
+                                    ?>
+                                               </td>
                                                 <td><?php echo "Rp.".number_format($value['harga'])."/pax"; ?></td>
                                                 <td style="text-align: center;">
                                                     <a href="<?php echo base_url('Admin/PaketWisata/Detail/'.$id); ?>" class="btn btn-success " alt="Detail"><span class="fa fa-eye"></span></a>
