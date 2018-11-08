@@ -10,22 +10,24 @@ $(document).ready(function() {
   });
 
             $('#fasilitasModal').on('show.bs.modal', function (event) {
-              var button = $(event.relatedTarget) 
-              var recipient = button.data('whatever') 
-              var modal = $(this)
-          
-              modal.find('.modal-body input[type="hidden"]').val(recipient)
+              var button = $(event.relatedTarget); 
+              var recipient = button.data('whatever');
+              var modal = $(this);
+              console.log(recipient);
+              modal.find('#id_paket_wisata').val(recipient);
             });
 
+            $('#itinetaryModal').on('show.bs.modal', function (event) {
+              var button = $(event.relatedTarget); 
+              var recipient = button.data('whatever');
+              var modal = $(this);
+              console.log(recipient);
+              modal.find('#id_paket_wisata').val(recipient);
+            });
 
 });
 
 Dropzone.autoDiscover = false;
-// var id = '';
-// if($('#id').length){
-	
-// }
-
 
 
 var foto_upload = new Dropzone(".dropzone",{
@@ -118,5 +120,70 @@ function deleteThis($link){
 }
 
 function fasilitasToggle(th){
+  $.ajax({
+    url:base_url+"/Admin/PaketWisata/setFasilitas",
+    type:"POST",
+    dataType:'json',
+    data:$('#fasilitasi-form').serialize(),
+    beforeSend:function(){
+     $(".preloader").fadeIn();
+   },
+   success:function(result){
+     $(".preloader").fadeOut();
+     console.log(result);
+     
+     $("#lokasi-kedatangan-text").text(result.lokasi_kedatangan);
+     $("#lokasi-keberangkatan-text").text(result.lokasi_keberangkatan);
+     $("#deskripsi-fasilitas").html(result.deskripsi);
 
+     $("#fasilitasModal").closest('form').find("input[type=text], textarea").val("");
+     
+     $("#fasilitasModal").modal('toggle');
+     toastr.success('Edit data done!','Success');
+
+   },
+   error:function(error){
+     $(".preloader").fadeOut();
+     toastr.error(error,'Error');
+
+     $("#fasilitasModal").closest('form').find("input[type=text], textarea").val("");
+     
+     $("#fasilitasModal").modal('toggle');
+     console.log(error)
+   }
+ });
+}
+
+function itinetaryToggle(th){
+  $.ajax({
+    url:base_url+"/Admin/PaketWisata/setItinetary",
+    type:"POST",
+    dataType:'json',
+    data:$('#itinetary-form').serialize(),
+    beforeSend:function(){
+     $(".preloader").fadeIn();
+   },
+   success:function(result){
+     $(".preloader").fadeOut();
+     toastr.success('Edit data done!','Success');
+     
+     console.log(result);
+
+     $("#deskripsi-itinetary").html(result.deskripsi);
+
+     $("#itinetaryModal").closest('form').find("input[type=text], textarea").val("");
+     
+     $("#itinetaryModal").modal('toggle');
+
+   },
+   error:function(error){
+     $(".preloader").fadeOut();
+     toastr.error(error,'Error');
+
+     $("#itinetaryModal").closest('form').find("input[type=text], textarea").val("");
+     
+     $("#itinetaryModal").modal('toggle');
+     console.log(error)
+   }
+ });
 }

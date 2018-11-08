@@ -174,16 +174,19 @@ class C_PaketWisata extends CI_Controller {
 
 		$data['id_paket_wisata'] = $plaintext_string;
 		
-		// $where = array(
-		// 	'id' => $plaintext_string,
-		// 	'status' => 'paket_wisata'	
-		// );
-		// $data['message'] = 'ditambahkan';
-		// $data['image'] = '';
-		// if($edit){
-		// 	$data['image'] = $this->M_paket_wisata->getImage($where);
-		// 	$data['message'] = 'diupdate';
-		// }
+		$where = array(
+			'id_paket_wisata' => $plaintext_string,
+		);
+
+		$data['status'] = 'insert';
+		$data['fasilitas'] = '';
+		$data['itinetary'] = '';
+
+		if($edit){
+			$data['fasilitas'] = $this->M_paket_wisata->getFasilitas($where);
+			$data['itinetary'] = $this->M_paket_wisata->getItinetary($where);
+			$data['status'] = 'update';
+		}
 
 		// echo "<pre>";
 		// print_r($data);
@@ -235,6 +238,59 @@ class C_PaketWisata extends CI_Controller {
 		}
 
 	}
+
+	// Set Fasilitas
+	public function setFasilitas(){
+		
+		$id_paket_wisata = $this->input->post('id_paket_wisata');
+		$status = $this->input->post('status');
+
+		$lokasi_keberangkatan = $this->input->post('lokasi_keberangkatan');
+		$lokasi_kedatangan = $this->input->post('lokasi_kedatangan');
+		$deskripsi = $this->input->post('deskripsi');
+
+		$data = array( 
+			'id_paket_wisata' => $id_paket_wisata,
+			'lokasi_kedatangan' => $lokasi_kedatangan,
+			'lokasi_keberangkatan' => $lokasi_keberangkatan,
+			'deskripsi' => $deskripsi
+			
+		);
+		
+		if($status == "insert"){
+			$this->M_paket_wisata->setFasilitas($data);
+		}elseif($status == "update"){
+			$this->M_paket_wisata->updateFasilitas($data,$id_paket_wisata);
+		}
+
+		echo json_encode($data);
+
+	}
+
+	// Set Itinerary
+	public function setItinetary(){
+		
+		$id_paket_wisata = $this->input->post('id_paket_wisata');
+		$status = $this->input->post('status');
+
+		$deskripsi = $this->input->post('deskripsi');
+
+		$data = array( 
+			'id_paket_wisata' => $id_paket_wisata,
+			'deskripsi' => $deskripsi
+		);
+		
+		if($status == "insert"){
+			$this->M_paket_wisata->setItinetary($data);
+		}elseif($status == "update"){
+			$this->M_paket_wisata->updateItinerary($data,$id_paket_wisata);
+		}
+
+		echo json_encode($data);
+
+	}
+
+
 
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= FUNCTION SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 

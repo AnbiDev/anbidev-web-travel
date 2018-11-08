@@ -27,6 +27,11 @@
                             <hr>
                             <p class="card-text">
 
+  <h6>Lokasi Kedatangan  : &nbsp;<b><span id="lokasi-kedatangan-text"><?php echo isset($fasilitas[0]['lokasi_kedatangan']) ? $fasilitas[0]['lokasi_kedatangan'] : "-"; ?></span></b></h6>
+  <h6>Lokasi Keberangkatan  : &nbsp;<b><span id="lokasi-keberangkatan-text"><?php echo isset($fasilitas[0]['lokasi_keberangkatan']) ? $fasilitas[0]['lokasi_keberangkatan'] : "-"; ?></span></b></h6>
+
+                              <span id="deskripsi-fasilitas">
+              <?php echo isset($fasilitas[0]['deskripsi']) ? $fasilitas[0]['deskripsi'] : ""; ?>                </span>
                             </p>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fasilitasModal" data-whatever="<?php echo $id_paket_wisata; ?>">Edit</button>
 
@@ -41,13 +46,15 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Itinerary</h4>
-                            <h6 class="card-subtitle">Tambahkan atau edit itinerary jadwal tour pada paket wisata</h6>
+                            <h6 class="card-subtitle">Tambahkan atau edit itinetary jadwal tour pada paket wisata</h6>
                             <hr>
-                            <p class="card-text">
-
+                            <p class="card-text" >
+                              <span id="deskripsi-itinetary">
+                                <?php echo isset($itinetary[0]['deskripsi']) ? $itinetary[0]['deskripsi'] : ""; ?>
+                              </span>
                             </p>
                             
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#itineraryModal" data-whatever="<?php echo $id_paket_wisata; ?>">Edit</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#itinetaryModal" data-whatever="<?php echo $id_paket_wisata; ?>">Edit</button>
 
                         </div>
                     </div>
@@ -93,20 +100,24 @@
                  </button>
              </div>
         <form action="#" id="fasilitasi-form">
+             <input type="hidden" id="id_paket_wisata"  name="id_paket_wisata" value="">
+             <input type="hidden" id="status" name="status" value="<?php echo $status; ?>">
              <div class="modal-body">
-                <input type="hidden" value="" id="id_paket_wisata">
+
+                <div class="form-group">
+                   <label for="lokasi_keberangkatan" class="col-form-label">Lokasi Keberangkatan :</label>
+<input type="text" class="form-control" id="lokasi_keberangkatan" value="<?php echo isset($fasilitas[0]['lokasi_keberangkatan']) ? $fasilitas[0]['lokasi_keberangkatan'] : ""; ?>" name="lokasi_keberangkatan">
+                </div>
                 <div class="form-group">
                    <label for="lokasi_kedatangan" class="col-form-label">Lokasi Kedatangan :</label>
-                   <input type="text" class="form-control" id="lokasi_kedatangan" name="lokasi_kedatangan" >
+<input type="text" class="form-control" id="lokasi_kedatangan" value="<?php echo isset($fasilitas[0]['lokasi_kedatangan']) ? $fasilitas[0]['lokasi_kedatangan'] : ""; ?>" name="lokasi_kedatangan" >
                 </div>
-                 <div class="form-group">
-                   <label for="lokasi_keberangkatan" class="col-form-label">Lokasi Keberangkatan :</label>
-                   <input type="text" class="form-control" id="lokasi_keberangkatan" name="lokasi_keberangkatan">
-                </div>
+                 
                <div class="form-group">
                    <label for="message-text" class="col-form-label">Deskripsi:</label>
                    <div class="form-group">
                        <textarea class="textarea_editor form-control" name="deskripsi" rows="15" placeholder="Enter text ..." style="height:150px">
+                 <?php echo isset($fasilitas[0]['deskripsi']) ? $fasilitas[0]['deskripsi'] : ""; ?>
                        </textarea>
                    
                     </div>
@@ -115,14 +126,14 @@
            </div>
        <div class="modal-footer">
            <button type="button" class="btn btn-secondary tutup" data-dismiss="modal">Close</button>
-           <button type="submit" class="btn btn-primary">Save</button>
+           <button type="button" onclick="fasilitasToggle(this)" class="btn btn-primary">Save</button>
        </div>
        </form>
     </div>
 </div>
 </div>
 
-<div class="modal fade" id="itineraryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="itinetaryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                <div class="modal-content">
                  <div class="modal-header">
@@ -131,20 +142,22 @@
                      <span aria-hidden="true">&times;</span>
                  </button>
              </div>
-        <form action="#" id="itinerary-form">
+        <form action="#" id="itinetary-form">
              <div class="modal-body">
-                <input type="hidden" value="" id="id_paket_wisata">
+             <input type="hidden" id="id_paket_wisata"  name="id_paket_wisata" value="">
+             <input type="hidden" id="status" name="status" value="<?php echo $status; ?>">
                <div class="form-group">
                    <label for="message" class="col-form-label">Deskripsi:</label>
                    <div class="form-group">
-                       <textarea class="textarea_editor_2 form-control" name="deskripsi" rows="15" placeholder="Enter text ..." style="height:250px">
+                       <textarea class="textarea_editor_2 form-control" id="deskripsi-itinetary" name="deskripsi" rows="15" placeholder="Enter text ..." style="height:250px">
+                      <?php echo isset($itinetary[0]['deskripsi']) ? $itinetary[0]['deskripsi'] : ""; ?>
                        </textarea>
                     </div>
                </div>
            </div>
        <div class="modal-footer">
            <button type="button" class="btn btn-secondary tutup" data-dismiss="modal">Close</button>
-           <button type="submit" class="btn btn-primary">Save</button>
+           <button type="button" onclick="itinetaryToggle(this)" class="btn btn-primary">Save</button>
        </div>
        </form>
     </div>

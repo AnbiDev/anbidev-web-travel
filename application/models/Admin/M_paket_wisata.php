@@ -24,6 +24,13 @@ class M_paket_wisata extends CI_Model {
 		return $this->db->insert('tbl_gambar',$data);
 	}
 
+	public function setFasilitas($data){
+		return $this->db->insert('tbl_fasilitas',$data);
+	}
+
+	public function setItinetary($data){
+		return $this->db->insert('tbl_itinetary',$data);	
+	}
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-= SELECT SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 	
 	public function selectAll(){
@@ -62,6 +69,24 @@ class M_paket_wisata extends CI_Model {
 		}
 	}
 
+	public function getFasilitas($data){
+		$data = $this->db->get_where('tbl_fasilitas',$data);
+		if($data->num_rows() > 0){
+			return $data->result_array();
+		}else{
+			return false;
+		}
+	}
+
+	public function getItinetary($data){
+		$data = $this->db->get_where('tbl_itinetary',$data);
+		if($data->num_rows() > 0){
+			return $data->result_array();
+		}else{
+			return false;
+		}
+	}
+
 
 	public function getImage($data){
 		$data = $this->db->get_where('tbl_gambar',$data);
@@ -74,8 +99,20 @@ class M_paket_wisata extends CI_Model {
 
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-= UPDATE SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 	public function update($data,$id){
-		$this->db->where('id_destinasi',$id);
+		$this->db->where('id_paket_wisata',$id);
 		return $this->db->update('tbl_paket_wisata',$data);
+
+	}
+
+	public function updateFasilitas($data,$id){
+		$this->db->where('id_paket_wisata',$id);
+		return $this->db->update('tbl_fasilitas',$data);
+
+	}
+
+	public function updateItinerary($data,$id){
+		$this->db->where('id_paket_wisata',$id);
+		return $this->db->update('tbl_itinetary',$data);
 
 	}
 
