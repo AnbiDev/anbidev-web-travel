@@ -181,10 +181,12 @@ class C_PaketWisata extends CI_Controller {
 		$data['status'] = 'insert';
 		$data['fasilitas'] = '';
 		$data['itinetary'] = '';
+		$data['harga_detail'] = '';
 
 		if($edit){
 			$data['fasilitas'] = $this->M_paket_wisata->getFasilitas($where);
 			$data['itinetary'] = $this->M_paket_wisata->getItinetary($where);
+			$data['harga_detail'] = $this->M_paket_wisata->getHargaDetail($where);
 			$data['status'] = 'update';
 		}
 
@@ -288,6 +290,33 @@ class C_PaketWisata extends CI_Controller {
 
 		echo json_encode($data);
 
+	}
+
+	// Set Harga Detail
+	public function setHargaDetail(){
+		
+		$id_paket_wisata = $this->input->post('id_paket_wisata');
+
+		$nama_paket_harga = $this->input->post('nama_paket_harga');
+		$harga =  $this->input->post('harga');
+		$jumlah_orang = $this->input->post('jumlah_orang');
+		$deskripsi = $this->input->post('deskripsi');
+
+		$data = array( 
+			'id_paket_wisata' => $id_paket_wisata,
+			'nama_paket_harga' => $nama_paket_harga,
+			'jumlah_orang' => $jumlah_orang,
+			'harga' => $harga,
+			'deskripsi' => $deskripsi
+			
+		);
+		
+		if($data['id'] = $this->M_paket_wisata->setHargaDetail($data)){
+			echo json_encode($data);	
+		}else{
+			echo json_encode(false);
+		}
+		
 	}
 
 

@@ -67,12 +67,13 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Detail Harga Paket </h4>
-                            <button class="btn btn-primary float-right btn-rounded">Tambah</button>
+<button class="btn btn-primary float-right btn-rounded" data-toggle="modal" data-target="#hargaDetailModal" data-whatever="<?php echo $id_paket_wisata; ?>">Tambah</button>
                             <h6 class="card-subtitle">Daftar harga yang akan ditawarkan berdasarkan jumlah orang</h6>
                             <div class="table-responsive m-t-40">
                                 <table id="table-harga" class="table display table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
+                                            <th>No</th>
                                             <th>Nama Paket Harga</th>
                                             <th>Jumlah Orang</th>
                                             <th>Harga</th>
@@ -80,8 +81,25 @@
                                             <th></th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-
+                                    <tbody id="tblHargaDetail">
+                                      <?php 
+                                        if(!empty($harga_detail) && is_array($harga_detail)){
+                                          
+                                          foreach ($harga_detail as $value) {
+                                      ?>
+                                        <tr>
+                                            <td><?php echo $value['nama_paket_harga']; ?></td>
+                                            <td><?php echo $value['jumlah_orang']; ?></td>
+                                            <td>Rp. <?php echo number_format($value['harga']); ?> /pax</td>
+                                            <td><?php echo $value['deskripsi']; ?></td>    
+                                            <td class="text-center">
+                                              <button onclick='removeHargaDetail(this)' data-whatever="<?php echo $value['id_harga_detail']; ?>" class='btn btn-danger btn-rounded'><span aria-hidden='true'>&times;</span></button>
+                                            </td>
+                                        </tr>
+                                      <?php
+                                      }
+                                    }
+                                      ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -163,6 +181,51 @@
     </div>
 </div>
 </div>
+
+<div class="modal fade" id="hargaDetailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+               <div class="modal-content">
+                 <div class="modal-header">
+                   <h5 class="modal-title" id="exampleModalLabel">Paket Harga</h5>
+                   <button type="button" class="close tutup" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+        <form action="#" id="harga-detail-form">
+             <input type="hidden" id="id_paket_wisata"  name="id_paket_wisata" value="">
+             <div class="modal-body">
+
+                <div class="form-group">
+                   <label for="nama_paket_harga" class="col-form-label">Nama Paket Harga :</label>
+<input type="text" class="form-control" id="nama_paket_harga"  name="nama_paket_harga">
+                </div>
+
+                <div class="form-group col-md-3">
+                   <label for="jumlah_orang" class="col-form-label">Jumlah Orang :</label>
+<input type="number" class="form-control" id="jumlah_orang"  name="jumlah_orang" >
+                </div>
+
+                <div class="form-group col-md-6">
+                   <label for="harga" class="col-form-label">Harga :</label>
+<input type="text" class="form-control" placeholder="Rp." id="harga"  name="harga" >
+                </div>
+
+                <div class="form-group">
+                   <label for="deskripsi" class="col-form-label">Deskripsi :</label>
+<input type="text" class="form-control" id="deskripsi"  name="deskripsi" >
+                </div>
+                 
+               
+           </div>
+       <div class="modal-footer">
+           <button type="button" class="btn btn-secondary tutup" data-dismiss="modal">Close</button>
+           <button type="button" onclick="addHargaDetail(this)" class="btn btn-primary">Save</button>
+       </div>
+       </form>
+    </div>
+</div>
+</div>
+
 
 </div>
 

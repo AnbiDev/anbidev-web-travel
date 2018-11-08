@@ -31,6 +31,11 @@ class M_paket_wisata extends CI_Model {
 	public function setItinetary($data){
 		return $this->db->insert('tbl_itinetary',$data);	
 	}
+
+	public function setHargaDetail($data){
+		 $this->db->insert('tbl_harga_detail',$data);
+		 return $this->db->insert_id();
+	}
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-= SELECT SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 	
 	public function selectAll(){
@@ -80,6 +85,15 @@ class M_paket_wisata extends CI_Model {
 
 	public function getItinetary($data){
 		$data = $this->db->get_where('tbl_itinetary',$data);
+		if($data->num_rows() > 0){
+			return $data->result_array();
+		}else{
+			return false;
+		}
+	}
+
+	public function getHargaDetail($data){
+		$data = $this->db->get_where('tbl_harga_detail',$data);
 		if($data->num_rows() > 0){
 			return $data->result_array();
 		}else{

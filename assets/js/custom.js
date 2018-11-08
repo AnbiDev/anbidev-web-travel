@@ -1,13 +1,11 @@
 var getUrl = window.location;
 var base_url = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+var number = 0;
+
 
 $(document).ready(function() {
   $('.select2').select2();
-  
-  $('.tutup').on('click',function(event){
-    console.log('tutup');
-    $('.modal').modal('hide');
-  });
+
 
             $('#fasilitasModal').on('show.bs.modal', function (event) {
               var button = $(event.relatedTarget); 
@@ -18,6 +16,14 @@ $(document).ready(function() {
             });
 
             $('#itinetaryModal').on('show.bs.modal', function (event) {
+              var button = $(event.relatedTarget); 
+              var recipient = button.data('whatever');
+              var modal = $(this);
+              console.log(recipient);
+              modal.find('#id_paket_wisata').val(recipient);
+            });
+
+             $('#hargaDetailModal').on('show.bs.modal', function (event) {
               var button = $(event.relatedTarget); 
               var recipient = button.data('whatever');
               var modal = $(this);
@@ -186,4 +192,61 @@ function itinetaryToggle(th){
      console.log(error)
    }
  });
+}
+
+function addHargaDetail(th){
+  $.ajax({
+    url:base_url+"/Admin/PaketWisata/setHargaDetail",
+    type:"POST",
+    dataType:'json',
+    data:$('#harga-detail-form').serialize(),
+    beforeSend:function(){
+     $(".preloader").fadeIn();
+   },
+   success:function(result){
+     $(".preloader").fadeOut();
+     toastr.success('Paket Harga Berhasil Ditambah!','Success');
+     
+     console.log(result);
+
+     var html = ''
+     number = number + 1;
+
+     if(result){
+        html = "<tr><td>"+result.nama_paket_harga+"</td><td>"+result.jumlah_orang+"</td><td>Rp. "+addCommas(result.harga)+" /pax</td><td class='text-center'>"+result.deskripsi+"</td><td><button onclick='removeHargaDetail(this)' data-whatever="+result.id+" class='btn btn-danger btn-rounded'><span aria-hidden='true'>&times;</span></button></td></tr>";
+     }
+     $("#hargaDetailModal").closest('form').find("input[type=text], textarea").val("");
+     $("#tblHargaDetail").append(html);
+
+   },
+   error:function(error){
+     $(".preloader").fadeOut();
+     toastr.error(error,'Error');
+
+     $("#hargaDetailModal").closest('form').find("input[type=text], textarea").val("");
+     
+     $("#hargaDetailModal").modal('toggle');
+     console.log(error)
+   }
+ });
+}
+
+function removeHargaDetail(th){
+  var id = $(th).attr('data-whatever');
+  console.log(id);
+}
+
+
+/* --------------------------------------- FORMATING NUMBER FUNCTION --------------------------------------------- */
+function addCommas(nStr)
+{
+    nStr += '';
+    x = nStr.split('.');
+    x1 = x[0];
+    x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
 }
