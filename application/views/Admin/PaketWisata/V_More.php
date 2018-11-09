@@ -9,6 +9,7 @@
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                     <li class="breadcrumb-item active"><a href="<?php echo base_url('Admin/PaketWisata'); ?>">Paket Wisata</a></li>
                     <li class="breadcrumb-item active"><a href="<?php echo base_url('Admin/PaketWisata/Edit/'.$id_paket_wisata); ?>">Create</a></li>
+                    <li class="breadcrumb-item active">Tambah</li>
                 </ol>
             </div>
         </div>
@@ -63,17 +64,17 @@
 
             <!-- Detail Harga Paket -->
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 text-center">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Detail Harga Paket </h4>
+                            <h4 class="card-title text-left">Detail Harga Paket </h4>
 <button class="btn btn-primary float-right btn-rounded" data-toggle="modal" data-target="#hargaDetailModal" data-whatever="<?php echo $id_paket_wisata; ?>">Tambah</button>
-                            <h6 class="card-subtitle">Daftar harga yang akan ditawarkan berdasarkan jumlah orang</h6>
+                            <h6 class="card-subtitle text-left">Daftar harga yang akan ditawarkan berdasarkan jumlah orang</h6>
                             <div class="table-responsive m-t-40">
                                 <table id="table-harga" class="table display table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
+                                           
                                             <th>Nama Paket Harga</th>
                                             <th>Jumlah Orang</th>
                                             <th>Harga</th>
@@ -93,7 +94,7 @@
                                             <td>Rp. <?php echo number_format($value['harga']); ?> /pax</td>
                                             <td><?php echo $value['deskripsi']; ?></td>    
                                             <td class="text-center">
-                                              <button onclick='removeHargaDetail(this)' data-whatever="<?php echo $value['id_harga_detail']; ?>" class='btn btn-danger btn-rounded'><span aria-hidden='true'>&times;</span></button>
+<button onclick='removeHargaDetail(this)' data-harga="<?php echo $value['id_harga_detail']; ?>" data-wisata="<?php echo $value['id_paket_wisata']; ?>" class='btn btn-danger btn-rounded'><span aria-hidden='true'>&times;</span></button>
                                             </td>
                                         </tr>
                                       <?php
@@ -105,6 +106,9 @@
                             </div>
                         </div>
                     </div>
+                    <a href="<?php echo base_url('Admin/PaketWisata/goAhead/'.$status); ?>" class="btn btn-warning btn-lg center float-center">
+                        Finish
+                    </a>
                 </div>
             </div>
 
@@ -206,8 +210,8 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                   <label for="harga" class="col-form-label">Harga :</label>
-<input type="text" class="form-control" placeholder="Rp." id="harga"  name="harga" >
+                   <label for="harga" class="col-form-label ">Harga :</label>
+<input type="text" class="form-control harga" placeholder="Rp." id="harga"  name="harga" >
                 </div>
 
                 <div class="form-group">

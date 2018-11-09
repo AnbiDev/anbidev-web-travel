@@ -66,7 +66,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label">Harga</label>
-                                                <input type="text" name="harga" class="form-control" placeholder="Harga (Rp.)" required="">
+                                                <input type="text" name="harga" class="form-control harga" placeholder="Harga (Rp.)" required="">
                                                 <!-- <small class="form-control-feedback text-danger">*wajib diisi</small>  -->
                                             </div>
                                         </div>

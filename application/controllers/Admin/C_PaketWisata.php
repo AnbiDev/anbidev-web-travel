@@ -92,6 +92,7 @@ class C_PaketWisata extends CI_Controller {
 			'id_paket_wisata' => $plaintext_string
 		);
 
+		$data['destinasi'] = $this->M_destinasi->selectAll();
 		$data['data'] = $this->M_paket_wisata->getPaketWisata($id);
 
 
@@ -319,9 +320,41 @@ class C_PaketWisata extends CI_Controller {
 		
 	}
 
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= DELETE SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */
+
+	public function removeHargaDetail(){
+		
+		$id_paket_wisata = $this->input->post('id_paket_wisata');
+		$id_harga_detail = $this->input->post('id_harga_detail');
+
+		$data = array(
+			'id_paket_wisata' => $id_paket_wisata,
+			'id_harga_detail' => $id_harga_detail
+		);
+
+		if($this->M_paket_wisata->removeHargaDetail($data)){
+			echo json_encode($data);
+		}else{
+			echo json_encode(false);
+		}
+
+	}
+
+
 
 
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= FUNCTION SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
+
+	public function goAhead($message){
+		if(true){
+			$this->session->set_flashdata('success' , "Paket Wisata berhasil ".$message);
+			redirect('Admin/PaketWisata');
+		}else{
+			$this->session->set_flashdata('error' ,$this->upload->display_errors());
+			redirect('Admin/PaketWisata');
+		}
+	}
+
 
 	public function checkSession(){
 		if($this->session->is_logged){

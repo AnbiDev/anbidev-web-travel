@@ -136,6 +136,10 @@ class M_paket_wisata extends CI_Model {
 		$this->db->delete('tbl_gambar',$data);
 	}
 
+	public function removeHargaDetail($data){
+		$this->db->delete('tbl_harga_detail',$data);
+	}
+
 	public function delete($data){
 		return $this->db->delete('tbl_paket_wisata',$data);
 	}

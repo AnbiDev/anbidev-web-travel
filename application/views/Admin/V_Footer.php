@@ -64,8 +64,11 @@
 <!-- Sweetalert -->
 <script src="<?php echo base_url('assets/js/lib/sweetalert/sweetalert.min.js'); ?>"></script> 
 
-<!-- Sweetalert -->
+<!-- Select2 -->
 <script src="<?php echo base_url('assets/js/lib/select2/select2.full.min.js'); ?>"></script> 
+
+<!-- Jquer Mask -->
+<script src="<?php echo base_url('assets/js/lib/jquery-mask/jquery.mask.min.js'); ?>"></script> 
 
 <!-- Pace Loading Bar -->
 <!-- <script src="<?php echo base_url('assets/js/lib/preloader/pace.min.js'); ?>"></script> -->
@@ -73,7 +76,6 @@
 <!--costum -->
 <script src="<?php echo base_url('assets/js/custom.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/custom.js'); ?>"></script>
-<script type="text/javascript" > console.log('dsasdasds'); </script>
 
 <script type="text/javascript">
     <?php if($this->session->flashdata('success')){ ?>
