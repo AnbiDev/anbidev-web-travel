@@ -54,7 +54,7 @@ class M_paket_wisata extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('tbl_destinasi td');
 		$this->db->join('tbl_link_destinasi_paket_wisata tl',' td.id_destinasi = tl.id_destinasi', 'inner');
-		$this->db->where('tl.id_paket_wisata',$data);
+		$this->db->where($data);
 		$data = $this->db->get();
 
 		if($data->num_rows() > 0){
@@ -67,6 +67,23 @@ class M_paket_wisata extends CI_Model {
 
 	public function getPaketWisata($data){
 		$data = $this->db->get_where('tbl_paket_wisata',$data);
+		if($data->num_rows() > 0){
+			return $data->result_array();
+		}else{
+			return false;
+		}
+	}
+
+	public function getPaketWisataDetail($data){
+		$this->db->select("*, tw.deskripsi");
+		$this->db->from('tbl_paket_wisata tw');
+		$this->db->join('tbl_link_destinasi_paket_wisata tl',' tw.id_paket_wisata = tl.id_paket_wisata', 'left');
+		$this->db->join('tbl_destinasi td',' td.id_destinasi = tl.id_destinasi', 'left');
+		$this->db->join('tbl_gambar tg',' tg.id = td.id_destinasi', 'outter');
+		$this->db->where($data);
+
+		$data  = $this->db->get();
+
 		if($data->num_rows() > 0){
 			return $data->result_array();
 		}else{
@@ -118,13 +135,19 @@ class M_paket_wisata extends CI_Model {
 
 	}
 
+	public function updateLink($data,$id_paket_wisata,$id_destinasi){
+		$this->db->where('id_paket_wisata',$id_paket_wisata);
+		$this->db->where('id_destinasi',$id_destinasi);
+		return $this->db->update('tbl_link_destinasi_paket_wisata',$data);
+	}
+
 	public function updateFasilitas($data,$id){
 		$this->db->where('id_paket_wisata',$id);
 		return $this->db->update('tbl_fasilitas',$data);
 
 	}
 
-	public function updateItinerary($data,$id){
+	public function updateItinetary($data,$id){
 		$this->db->where('id_paket_wisata',$id);
 		return $this->db->update('tbl_itinetary',$data);
 

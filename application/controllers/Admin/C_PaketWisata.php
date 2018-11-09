@@ -39,10 +39,16 @@ class C_PaketWisata extends CI_Controller {
 		$temp = array();
 		$paket_wisata = $this->M_paket_wisata->selectAll();
 		
+
+
 		if(!empty($paket_wisata) && is_array($paket_wisata)){
 			foreach ($paket_wisata as $value) {
 
-				$destinasi = $this->M_paket_wisata->getLinkDestinasi($value['id_paket_wisata']);
+				$where = array(
+					'id_paket_wisata' => $value['id_paket_wisata']
+				);
+
+				$destinasi = $this->M_paket_wisata->getLinkDestinasi($where);
 				$value['destinasi'] = $destinasi;
 
 				array_push($temp, $value);
@@ -92,9 +98,18 @@ class C_PaketWisata extends CI_Controller {
 			'id_paket_wisata' => $plaintext_string
 		);
 
+
 		$data['destinasi'] = $this->M_destinasi->selectAll();
 		$data['data'] = $this->M_paket_wisata->getPaketWisata($id);
+		$data['current_destinasi'] = '';
 
+		// cari destinasi
+		if($current_destinasi = $this->M_paket_wisata->getLinkDestinasi($id)){
+			foreach ($current_destinasi as $value) {
+				$data['current_destinasi'][] =  $value['id_destinasi'];
+			}
+		}
+		
 
 		$this->load->view('Admin/V_Header',$data);
 		$this->load->view('Admin/V_Sidebar',$data);
@@ -113,16 +128,30 @@ class C_PaketWisata extends CI_Controller {
 		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
 		$plaintext_string = $this->encrypt->decode($plaintext_string);
 
-		$image = array(
-			'id' => $plaintext_string,
-			'status' => 'paket_wisata'
+		
+		$where = array(
+				'tw.id_paket_wisata' => $plaintext_string,
+				'status' => 'destinasi'
 		);
-		$where = array('id_paket_wisata' => $plaintext_string);
 
 		$data['Menu'] = 'Detail';
-		$data['image'] = $this->M_paket_wisata->getImage($image);
 		$data['id'] = $plaintext_string;
-		$data['data'] = $this->M_paket_wisata->getPaketWisata($where);
+
+		$data['data'] = $this->M_paket_wisata->getPaketWisataDetail($where);
+
+		$where2 = array(
+			'id_paket_wisata' => $plaintext_string,
+		);
+		
+		
+		$data['fasilitas'] = $this->M_paket_wisata->getFasilitas($where2);
+		$data['itinetary'] = $this->M_paket_wisata->getItinetary($where2);
+		$data['harga_detail'] = $this->M_paket_wisata->getHargaDetail($where2);
+		
+		// echo "<pre>";
+		// print_r($data);
+		// exit();
+
 
 		$this->load->view('Admin/V_Header',$data);
 		$this->load->view('Admin/V_Sidebar',$data);
@@ -237,7 +266,7 @@ class C_PaketWisata extends CI_Controller {
 			redirect('Admin/PaketWisata/More/'.$id);
 		}else{
 			$this->session->set_flashdata('error','Terjadi error saat insert destinasi');
-			redirect('Admin/Destinasi');
+			redirect('Admin/PaketWisata');
 		}
 
 	}
@@ -260,10 +289,22 @@ class C_PaketWisata extends CI_Controller {
 			
 		);
 		
+
+
 		if($status == "insert"){
 			$this->M_paket_wisata->setFasilitas($data);
+		
 		}elseif($status == "update"){
-			$this->M_paket_wisata->updateFasilitas($data,$id_paket_wisata);
+			
+			$where = array(
+				'id_paket_wisata' => $id_paket_wisata
+			);
+
+			if($this->M_paket_wisata->getFasilitas($where)){
+				$this->M_paket_wisata->updateFasilitas($data,$id_paket_wisata);	
+			}else{
+				$this->M_paket_wisata->setFasilitas($data);
+			}
 		}
 
 		echo json_encode($data);
@@ -286,7 +327,15 @@ class C_PaketWisata extends CI_Controller {
 		if($status == "insert"){
 			$this->M_paket_wisata->setItinetary($data);
 		}elseif($status == "update"){
-			$this->M_paket_wisata->updateItinerary($data,$id_paket_wisata);
+			$where = array(
+				'id_paket_wisata' => $id_paket_wisata
+			);
+
+			if($this->M_paket_wisata->getItinetary($where)){
+				$this->M_paket_wisata->updateItinetary($data,$id_paket_wisata);	
+			}else{
+				$this->M_paket_wisata->setItinetary($data);
+			}
 		}
 
 		echo json_encode($data);
@@ -319,7 +368,43 @@ class C_PaketWisata extends CI_Controller {
 		}
 		
 	}
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= DELETE SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */
+	public function Update(){
 
+		$id_paket_wisata = $this->input->post('id_paket_wisata');
+		$nama_paket_wisata = $this->input->post('nama_paket_wisata');
+		$deskripsi = $this->input->post('deskripsi');
+		$harga = $this->input->post('harga');
+		$id_destinasi = $this->input->post('id_destinasi');
+
+		$data = array( 
+			'nama_paket_wisata' => $nama_paket_wisata,
+			'deskripsi' => $deskripsi,
+			'harga' => $harga
+		);
+		
+		if($this->M_paket_wisata->update($data,$id_paket_wisata)){
+			
+			for($i = 0;$i < sizeof($id_destinasi); $i++) {
+				
+				$link = array(
+					'id_destinasi' => $id_destinasi[$i],
+					'id_paket_wisata' => $id_paket_wisata
+				);
+
+				$this->M_paket_wisata->updateLink($link,$id_paket_wisata,$id_destinasi[$i]);
+			}
+
+			/* Encrypt ID */
+			$encrypted_string = $this->encrypt->encode($id_paket_wisata);
+			$id_paket_wisata = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string);
+			
+			redirect('Admin/PaketWisata/More/'.$id_paket_wisata.'/edit');
+		}else{
+			$this->session->set_flashdata('error','Terjadi error saat insert destinasi');
+			redirect('Admin/PaketWisata');
+		}
+	}
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= DELETE SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */
 
 	public function removeHargaDetail(){

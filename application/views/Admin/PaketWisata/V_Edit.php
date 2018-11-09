@@ -48,11 +48,20 @@
                                                     <?php  
                                                         if(!empty($destinasi) && is_array($destinasi)){
                                                             foreach ($destinasi as $value) {
+
+                                                                $sel = '';
+                                                                if(in_array($value['id_destinasi'],$current_destinasi)){
+                                                                    $sel = 'selected="selected"';
+                                                                    echo "adexe";
+                                                                }
+
                                                     ?>
 
-                <option value="<?php echo $value['id_destinasi']; ?>"><?php echo $value['nama_destinasi']; ?></option>
+<option value="<?php echo $value['id_destinasi']; ?>" <?php echo $sel; ?> ><?php echo $value['nama_destinasi']; ?></option>
 
                                                     <?php
+
+
                                                             }
                                                         }
                                                     ?>
@@ -67,7 +76,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label">Harga</label>
-                                                <input type="text" name="harga" class="form-control harga" placeholder="Harga (Rp.)" required="">
+                                                <input type="text" name="harga" class="form-control harga" placeholder="Harga (Rp.)" required="" value="<?php echo $data[0]['harga']; ?>">
                                                 <!-- <small class="form-control-feedback text-danger">*wajib diisi</small>  -->
                                             </div>
                                         </div>
@@ -80,7 +89,7 @@
                                          <label class="control-label">Deskripsi</label>
                                          <div class="form-group">
                                             <textarea class="textarea_editor form-control" name="deskripsi" rows="15" placeholder="Enter text ..." style="height:450px">
-
+                                                <?php echo $data[0]['deskripsi']; ?>
                                             </textarea>
                                         </div>
                                     </div>
@@ -94,7 +103,7 @@
                                     $encrypted_string = $this->encrypt->encode($id);
                                     $id = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string);
                                     ?>
-                                    <a href="<?php echo base_url('Admin/PaketWisata/Image/'.$id.'/edit'); ?>" class="btn btn-primary float-right"><span class="fa fa-camera"></span>&nbsp;Edit Gambar</a>
+                                    <a href="<?php echo base_url('Admin/PaketWisata/More/'.$id.'/edit'); ?>" class="btn btn-primary float-right"><span class="fa fa-rocket"></span>&nbsp;More Edit</a>
                                 </div>
                             </div>
                             <!-- /row -->
