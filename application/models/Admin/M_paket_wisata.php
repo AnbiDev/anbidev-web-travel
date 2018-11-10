@@ -166,6 +166,21 @@ class M_paket_wisata extends CI_Model {
 	public function delete($data){
 		return $this->db->delete('tbl_paket_wisata',$data);
 	}
+
+	public function deleteFasilitas($data){
+		return $this->db->delete('tbl_fasilitas',$data);
+	}	
+
+	public function deleteItinetary($data){
+		return $this->db->delete('tbl_itinetary',$data);
+	}
+
+	public function deleteHargaDetail($data){
+		return $this->db->delete('tbl_harga_detail',$data);
+	}
 	
+	public function deleteLink($data){
+		return $this->db->delete('tbl_link_destinasi_paket_wisata',$data);
+	}
 
 }

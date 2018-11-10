@@ -69,7 +69,7 @@
                                                 <td><?php echo "Rp.".number_format($value['harga'])."/pax"; ?></td>
                                                 <td style="text-align: center;">
                                                     <a href="<?php echo base_url('Admin/PaketWisata/Detail/'.$id); ?>" class="btn btn-success " alt="Detail"><span class="fa fa-eye"></span></a>
-                                                    <a href="<?php echo base_url('Admin/PaketWisata/Edit/'.$id); ?>" class="btn btn-warning " alt="Edit"><span class="fa fa-pencil"></span></a>
+                                                    <a href="<?php echo base_url('Admin/PaketWisata/Edit/'.$id.'/edit'); ?>" class="btn btn-warning " alt="Edit"><span class="fa fa-pencil"></span></a>
                                                     <button class="btn btn-danger" onclick="deleteThis('<?php echo base_url('Admin/PaketWisata/Delete/'.$id); ?>')" alt="Delete"><span class="fa fa-trash"></span></button>
                                                 </td>
                                             </tr>

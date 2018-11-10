@@ -407,6 +407,34 @@ class C_PaketWisata extends CI_Controller {
 	}
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= DELETE SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */
 
+	
+	public function Delete($id){
+		/* Decrypt ID */			
+		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+		$plaintext_string = $this->encrypt->decode($plaintext_string);
+		
+			
+		$data = array(
+			'id_paket_wisata' => $plaintext_string
+		);
+
+		if($this->M_paket_wisata->delete($data)){
+			if($this->M_paket_wisata->deleteFasilitas($data)){
+				if($this->M_paket_wisata->deleteItinetary($data)){
+					if($this->M_paket_wisata->deleteHargaDetail($data)){
+						if($this->M_paket_wisata->deleteLink($data)){
+							$this->session->set_flashdata('success' , "Paket Wisata berhasil didelete");
+							redirect('Admin/PaketWisata');	
+						}
+					}
+				}
+			}
+		}
+
+		$this->session->set_flashdata('error' ,"Ada kesalahan saat menghapus data");
+		redirect('Admin/PaketWisata');
+	}
+
 	public function removeHargaDetail(){
 		
 		$id_paket_wisata = $this->input->post('id_paket_wisata');

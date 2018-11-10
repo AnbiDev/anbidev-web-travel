@@ -148,7 +148,12 @@
             </div>
         </div>
     </div>
-
+    
+    <?php 
+        /* Encrypt ID */
+            $encrypted_string = $this->encrypt->encode($id);
+            $id = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string);
+    ?>
     <a href="<?php echo base_url('Admin/PaketWisata/Edit/'.$id); ?>" class="btn btn-primary"><span></span> Edit</a>
     <!-- End PAge Content -->
 </div>
