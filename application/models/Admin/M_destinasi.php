@@ -33,6 +33,7 @@ class M_destinasi extends CI_Model {
 			return false;
 		}
 	}
+	
 
 
 	public function getDestinasi($data){

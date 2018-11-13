@@ -6,15 +6,15 @@
             <h3 class="text-primary">Dashboard</h3> </div>
             <div class="col-md-7 align-self-center">
                 <ol class="breadcrumb">
-                   <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                   <li class="breadcrumb-item active"><a href="<?php echo base_url('Admin/Destinasi'); ?>">Destinasi</a></li>
-                   <li class="breadcrumb-item active">Detail</li>               
-               </ol>
-           </div>
-       </div>
-       <!-- End Bread crumb -->
-       <!-- Container fluid  -->
-       <div class="container-fluid">
+                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                 <li class="breadcrumb-item active"><a href="<?php echo base_url('Admin/Destinasi'); ?>">Destinasi</a></li>
+                 <li class="breadcrumb-item active">Detail</li>               
+             </ol>
+         </div>
+     </div>
+     <!-- End Bread crumb -->
+     <!-- Container fluid  -->
+     <div class="container-fluid">
         <!-- Start Page Content -->
         <div class="row">
             <div class="col-lg-3">
@@ -50,16 +50,23 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">
-                        <?php echo isset($data[0]['nama_destinasi']) ? $data[0]['nama_destinasi'] : 'Null'; ?></h4>
-                        <hr>
-                        <p class="card-text">
-                            <?php echo isset($data[0]['nama_destinasi']) ? $data[0]['deskripsi'] : 'Mohon Maaf, Deskripsi tidak bisa ditampilkan'; ?>
-                        </p>
-                        <a href="<?php echo base_url('Admin/Destinasi/Edit/'.$id); ?>" class="btn btn-primary"><span></span> Edit</a>
+                            <?php echo isset($data[0]['nama_destinasi']) ? $data[0]['nama_destinasi'] : 'Null'; ?></h4>
+                            <hr>
+                            <p class="card-text">
+                                <?php echo isset($data[0]['nama_destinasi']) ? $data[0]['deskripsi'] : 'Mohon Maaf, Deskripsi tidak bisa ditampilkan'; ?>
+                            </p>
+
+                            <?php 
+                            /* Encrypt ID */
+                            $encrypted_string = $this->encrypt->encode($id);
+                            $id = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string);
+
+                            ?>
+                            <a href="<?php echo base_url('Admin/Destinasi/Edit/'.$id); ?>" class="btn btn-primary"><span></span> Edit</a>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- End PAge Content -->
         </div>
-        <!-- End PAge Content -->
-    </div>
 <!-- End Container fluid  -->

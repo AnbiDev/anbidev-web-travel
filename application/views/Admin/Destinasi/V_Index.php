@@ -34,29 +34,35 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $i = 1; foreach ($data as $value) {   
-                                            /* Encrypt ID */
-                                            $encrypted_string = $this->encrypt->encode($value['id_destinasi']);
-                                            $id = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string);
-                                            ?>
-                                            <tr>
-                                                <td style="text-align: center;"><?php echo $i++; ?></td>
-                                                <td><?php echo $value['nama_destinasi']; ?></td>
-                                                <td style="text-align: center;">
-                                                    <a href="<?php echo base_url('Admin/Destinasi/Detail/'.$id); ?>" class="btn btn-success " alt="Detail"><span class="fa fa-eye"></span></a>
-                                                    <a href="<?php echo base_url('Admin/Destinasi/Edit/'.$id); ?>" class="btn btn-warning " alt="Edit"><span class="fa fa-pencil"></span></a>
-                                                    <button class="btn btn-danger" onclick="deleteThis('<?php echo base_url('Admin/Destinasi/Delete/'.$id); ?>')" alt="Delete"><span class="fa fa-trash"></span></button>
-                                                </td>
-                                            </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        <?php $i = 1; 
+
+                                        if(!empty($data) && is_array($data)){
+                                            foreach ($data as $value) {   
+                                                /* Encrypt ID */
+                                                $encrypted_string = $this->encrypt->encode($value['id_destinasi']);
+                                                $id = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string);
+                                                ?>
+                                                <tr>
+                                                    <td style="text-align: center;"><?php echo $i++; ?></td>
+                                                    <td><?php echo $value['nama_destinasi']; ?></td>
+                                                    <td style="text-align: center;">
+                                                        <a href="<?php echo base_url('Admin/Destinasi/Detail/'.$id); ?>" class="btn btn-success " alt="Detail"><span class="fa fa-eye"></span></a>
+                                                        <a href="<?php echo base_url('Admin/Destinasi/Edit/'.$id); ?>" class="btn btn-warning " alt="Edit"><span class="fa fa-pencil"></span></a>
+                                                        <button class="btn btn-danger" onclick="deleteThis('<?php echo base_url('Admin/Destinasi/Delete/'.$id); ?>')" alt="Delete"><span class="fa fa-trash"></span></button>
+                                                    </td>
+                                                </tr>
+                                                <?php 
+                                            }
+                                        } 
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        
                     </div>
+                    
                 </div>
-                <!-- End PAge Content -->
             </div>
+            <!-- End PAge Content -->
+        </div>
             <!-- End Container fluid  -->

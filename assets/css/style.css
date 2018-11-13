@@ -687,7 +687,7 @@ li {
 }
 p {
   font-family: 'Poppins', sans-serif;
-  color: #99abb4;
+  color: #455a64;;
 }
 .h2,
 .h3,
@@ -2160,7 +2160,7 @@ textarea {
   color: rgba(255, 255, 255, 0.65);
 }
 .card-inverse .card-text {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 1);
 }
 .card-success {
   background: #26dad2 none repeat scroll 0 0;
@@ -2347,7 +2347,7 @@ textarea {
   background: #1976d2 none repeat scroll 0 0;
   color: #ffffff;
 }
-.modal-dialog {
+/*.modal-dialog {
   margin: 30px auto;
   position: relative;
   top: 50%;
@@ -2361,7 +2361,7 @@ textarea {
 }
 .modal-content {
   border-radius: 3px;
-}
+}*/
 .timeline {
   list-style: none;
   padding: 0 0 8px;
@@ -5969,7 +5969,7 @@ tbody tr td:last-child {
 }
 #event-modal .modal-dialog,
 #add-category .modal-dialog {
-  max-width: 600px;
+  max-width: 1200px;
 }
 .flotTip {
   background: #252525;

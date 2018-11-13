@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.8.0.1
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 01 Nov 2018 pada 12.45
--- Versi Server: 10.1.9-MariaDB
--- PHP Version: 5.5.30
+-- Host: localhost
+-- Generation Time: Nov 09, 2018 at 08:42 AM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 5.6.36
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_contact_us`
+-- Table structure for table `tbl_contact_us`
 --
 
 CREATE TABLE `tbl_contact_us` (
@@ -36,7 +38,7 @@ CREATE TABLE `tbl_contact_us` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_destinasi`
+-- Table structure for table `tbl_destinasi`
 --
 
 CREATE TABLE `tbl_destinasi` (
@@ -46,30 +48,51 @@ CREATE TABLE `tbl_destinasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_destinasi`
+-- Dumping data for table `tbl_destinasi`
 --
 
 INSERT INTO `tbl_destinasi` (`id_destinasi`, `nama_destinasi`, `deskripsi`) VALUES
-(1, 'Jojakarta', 'Bagimu adalah tempat bernaungku<br>'),
-(2, 'Adexe Warehouse', 'Welcome to my crib.<br>');
+(2, 'Jogjakarta', 'Adalah tempat dimana saya magang dan kost'),
+(3, 'Semarang', 'Tempat dimana aku belajar banyak hal'),
+(4, 'Dropzone', 'Hey! Im trialing a dropzone<b> Fuck</b>'),
+(5, 'Solo', 'Ning stasiun balapan, Kota Solo sing dadi kenangan, Koe Karo AKUUUUU!!!'),
+(6, 'Jakarta', 'Jakarta adalah tempat ibu kota indonesia');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_fasilitas`
+-- Table structure for table `tbl_fasilitas`
 --
 
 CREATE TABLE `tbl_fasilitas` (
   `id_fasilitas` int(11) NOT NULL,
+  `id_paket_wisata` int(11) DEFAULT NULL,
   `lokasi_kedatangan` varchar(255) DEFAULT NULL,
   `lokasi_keberangkatan` varchar(255) DEFAULT NULL,
   `deskripsi` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_fasilitas`
+--
+
+INSERT INTO `tbl_fasilitas` (`id_fasilitas`, `id_paket_wisata`, `lokasi_kedatangan`, `lokasi_keberangkatan`, `deskripsi`) VALUES
+(1, 0, 'Jakarta', 'Ambarawa', 'Membuat kita seperti ini bagaikan salju yang indah'),
+(2, 0, 'Bangka Belitung', 'Jakarta', 'Kami menyediakan fasilitas terbaik untuk anda.'),
+(3, 0, 'Bali', 'Bangka Belitung', 'Kami menyediakan layanan terbaik untuk anda'),
+(4, 0, 'Amper Andsess', 'Amper Locattion', 'So Slippin a Chlorine'),
+(5, 0, 'Download', 'Adexe', 'Drop Quick me'),
+(6, 0, 'Soucher An Sorchery', 'Adexe a Brook', 'Dont do it a better think'),
+(7, 0, 'Adexe', 'Adexe', 'Adexe'),
+(8, 0, 'Jawa Tengah', 'Semarang', 'Kami bekas para penjajah yang ingin mengurungkan niat.'),
+(9, 4, 'Jakarta', 'Semarang', 'Kami menyediakan fasilitas yang paling mewah diantara semua fasilitas itu.'),
+(10, 5, 'Hatimu', 'Hatiku', '<i></i><b>Aku sangat ingin bertemu denganmu</b>'),
+(11, 6, 'Kemari', 'Kesanaa', 'Kami disini ada untuk kalian, jadi kalian harus menghormati kami');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_gallery`
+-- Table structure for table `tbl_gallery`
 --
 
 CREATE TABLE `tbl_gallery` (
@@ -80,7 +103,7 @@ CREATE TABLE `tbl_gallery` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_gambar`
+-- Table structure for table `tbl_gambar`
 --
 
 CREATE TABLE `tbl_gambar` (
@@ -89,20 +112,23 @@ CREATE TABLE `tbl_gambar` (
   `location` text,
   `status` varchar(255) DEFAULT NULL,
   `id` int(11) DEFAULT NULL,
-  `token` varchar(255) DEFAULT NULL
+  `token` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_gambar`
+-- Dumping data for table `tbl_gambar`
 --
 
 INSERT INTO `tbl_gambar` (`id_gambar`, `file_name`, `location`, `status`, `id`, `token`) VALUES
-(1, 'WIN_20180416_14_29_35_Pro.jpg', 'C:/xampp/htdocs/anbidev-web-travel/assets/images/WIN_20180416_14_29_35_Pro.jpg', 'destinasi', 0, NULL);
+(3, '7725f270b5f2b01902d890c8ebc3ff7e.jpg', '/opt/lampp/htdocs/anbidev-web-travel/assets/images/7725f270b5f2b01902d890c8ebc3ff7e.jpg', 'destinasi', 0, '0.8747134959073606'),
+(4, '6b2af148d3f06ffcf3af52d87568c56d.jpg', '/opt/lampp/htdocs/anbidev-web-travel/assets/images/6b2af148d3f06ffcf3af52d87568c56d.jpg', 'destinasi', 4, '0.49050054954306455'),
+(5, '6b2af148d3f06ffcf3af52d87568c56d1.jpg', '/opt/lampp/htdocs/anbidev-web-travel/assets/images/6b2af148d3f06ffcf3af52d87568c56d1.jpg', 'destinasi', 4, '0.9640745057056983'),
+(6, 'Low-Poly-Wallpaper-003.jpg', '/opt/lampp/htdocs/anbidev-web-travel-2/assets/images/Low-Poly-Wallpaper-003.jpg', 'destinasi', 5, '0.43207140664140775');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_harga_detail`
+-- Table structure for table `tbl_harga_detail`
 --
 
 CREATE TABLE `tbl_harga_detail` (
@@ -114,21 +140,37 @@ CREATE TABLE `tbl_harga_detail` (
   `deskripsi` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_harga_detail`
+--
+
+INSERT INTO `tbl_harga_detail` (`id_harga_detail`, `id_paket_wisata`, `nama_paket_harga`, `jumlah_orang`, `harga`, `deskripsi`) VALUES
+(1, 6, 'Dua untuk semua', 2, 3000000, 'Paket untuk pasangan');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_itinetary`
+-- Table structure for table `tbl_itinetary`
 --
 
 CREATE TABLE `tbl_itinetary` (
   `id_itinetary` int(11) NOT NULL,
-  `deskripsi` text NOT NULL
+  `id_paket_wisata` int(11) DEFAULT NULL,
+  `deskripsi` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_itinetary`
+--
+
+INSERT INTO `tbl_itinetary` (`id_itinetary`, `id_paket_wisata`, `deskripsi`) VALUES
+(2, 5, 'Aku ingin bertemu dengan mu untuk membicarakan masa depan <b><i>kita</i></b>'),
+(3, 6, 'Jika kalian tidak setuju, nyawa kalian yang menjadi taruhan');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_link_destinasi_paket_wisata`
+-- Table structure for table `tbl_link_destinasi_paket_wisata`
 --
 
 CREATE TABLE `tbl_link_destinasi_paket_wisata` (
@@ -137,10 +179,25 @@ CREATE TABLE `tbl_link_destinasi_paket_wisata` (
   `id_destinasi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_link_destinasi_paket_wisata`
+--
+
+INSERT INTO `tbl_link_destinasi_paket_wisata` (`id_link_destinasi_paket_wisata`, `id_paket_wisata`, `id_destinasi`) VALUES
+(1, 3, 2),
+(2, 3, 3),
+(3, 3, 4),
+(4, 4, 2),
+(5, 4, 3),
+(6, 5, 4),
+(7, 5, 5),
+(8, 6, 5),
+(9, 6, 6);
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_paket_wisata`
+-- Table structure for table `tbl_paket_wisata`
 --
 
 CREATE TABLE `tbl_paket_wisata` (
@@ -150,10 +207,20 @@ CREATE TABLE `tbl_paket_wisata` (
   `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_paket_wisata`
+--
+
+INSERT INTO `tbl_paket_wisata` (`id_paket_wisata`, `nama_paket_wisata`, `deskripsi`, `harga`) VALUES
+(3, 'Paket Semua Menang , Semua Senang', 'Kami disini untuk menang', 20000000),
+(4, 'Paket Keluarga Semua ', 'last night i lose , All my pasion', 300000),
+(5, 'Drop to Zero Paket', 'How to make a dream come true with <b>you</b>', 12000000),
+(6, 'Paket Pelajar Semua', 'Paket ini bertemakan hal yang sangat ingin kami ditempatkan', 30000);
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_pemesanan`
+-- Table structure for table `tbl_pemesanan`
 --
 
 CREATE TABLE `tbl_pemesanan` (
@@ -170,7 +237,7 @@ CREATE TABLE `tbl_pemesanan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_user`
+-- Table structure for table `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -259,56 +326,68 @@ ALTER TABLE `tbl_user`
 --
 ALTER TABLE `tbl_contact_us`
   MODIFY `id_contact_us` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tbl_destinasi`
 --
 ALTER TABLE `tbl_destinasi`
-  MODIFY `id_destinasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_destinasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `tbl_fasilitas`
 --
 ALTER TABLE `tbl_fasilitas`
-  MODIFY `id_fasilitas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_fasilitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `tbl_gallery`
 --
 ALTER TABLE `tbl_gallery`
   MODIFY `id_gallery` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tbl_gambar`
 --
 ALTER TABLE `tbl_gambar`
-  MODIFY `id_gambar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_gambar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `tbl_harga_detail`
 --
 ALTER TABLE `tbl_harga_detail`
-  MODIFY `id_harga_detail` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_harga_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `tbl_itinetary`
 --
 ALTER TABLE `tbl_itinetary`
-  MODIFY `id_itinetary` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_itinetary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `tbl_link_destinasi_paket_wisata`
 --
 ALTER TABLE `tbl_link_destinasi_paket_wisata`
-  MODIFY `id_link_destinasi_paket_wisata` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_link_destinasi_paket_wisata` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `tbl_paket_wisata`
 --
 ALTER TABLE `tbl_paket_wisata`
-  MODIFY `id_paket_wisata` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_paket_wisata` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `tbl_pemesanan`
 --
 ALTER TABLE `tbl_pemesanan`
   MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
