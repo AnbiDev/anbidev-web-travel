@@ -28,12 +28,12 @@
                                 <table id="myTable" class="table table-bordered table-striped"> 
                                     <thead>
                                         <tr>
-                                            <th style="width:10%;text-align: center;">No</th>
-                                            <th style="width:70%;">Nama</th>
+                                            <th style="width:5%;text-align: center;">No</th>
+                                            <th style="width:20%;">Nama</th>
                                             <th style="width:20%;">Paket Wisata</th>
-                                            <th style="width:70%;">Alamat</th>
-                                            <th style="width:70%;">No Telepon</th>
-                                            <th>Action</th>
+                                            <th style="width:15%;">Email</th>
+                                            <th style="width:20%;">Tanggal</th>
+                                            <th style="width:20%;">Action</th>
 
                                         </tr>
                                     </thead>
@@ -48,7 +48,20 @@
                                                 ?>
                                                 <tr>
                                                     <td style="text-align: center;"><?php echo $i++; ?></td>
-                                                    <td><?php echo $value['nama_pemesanan']; ?></td>
+                                                    <td><?php echo $value['nama']; ?></td>
+                                                    <td>
+                                            <?php 
+
+                    $encrypted_string_2 = $this->encrypt->encode($value['id_paket_wisata']);
+                    $id_paket_wisata = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string_2);
+                                        ?>
+                    <a target="_blank" href="<?php echo base_url('Admin/PaketWisata/Detail/'.$id_paket_wisata); ?>">
+                    <span class="badge badge-danger"><?php echo $value['nama_paket_wisata']; ?></span></a>
+
+                                                       
+                                                       </td>
+                                                    <td><?php echo $value['email']; ?></td>
+                    <td><?php echo $value['tanggal'] ?></td>
                                                     <td style="text-align: center;">
                                                         <a href="<?php echo base_url('Admin/Pemesanan/Detail/'.$id); ?>" class="btn btn-success " alt="Detail"><span class="fa fa-eye"></span></a>
                                                         <a href="<?php echo base_url('Admin/Pemesanan/Edit/'.$id); ?>" class="btn btn-warning " alt="Edit"><span class="fa fa-pencil"></span></a>

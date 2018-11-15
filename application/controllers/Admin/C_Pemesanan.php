@@ -14,6 +14,7 @@ class C_Pemesanan extends CI_Controller {
 		$this->load->library('encrypt');
 
 		$this->load->model('Admin/M_pemesanan');
+		$this->load->model('Admin/M_paket_wisata');
 
 		// if($this->session->userdata('logged_in')!=TRUE) {
 		// 	$this->load->helper('url');
@@ -51,6 +52,7 @@ class C_Pemesanan extends CI_Controller {
 		// $user_id = $this->session->userid;
 		
 		$data['Menu'] = 'Create Pemesanan';
+		$data['paket_wisata'] = $this->M_paket_wisata->selectAll();
 		
 		$this->load->view('Admin/V_Header',$data);
 		$this->load->view('Admin/V_Sidebar',$data);
@@ -102,7 +104,6 @@ class C_Pemesanan extends CI_Controller {
 		$where = array('id_pemesanan' => $plaintext_string);
 
 		$data['Menu'] = 'Detail';
-		$data['image'] = $this->M_pemesanan->getImage($image);
 		$data['id'] = $plaintext_string;
 		$data['data'] = $this->M_pemesanan->getPemesanan($where);
 
@@ -151,21 +152,27 @@ class C_Pemesanan extends CI_Controller {
 	// Insert Pemesanan
 	public function Insert(){
 		
-		$nama_pemesanan = $this->input->post('nama_pemesanan');
-		$deskripsi = $this->input->post('deskripsi');
+		$nama = $this->input->post('nama');
+		$pesan = $this->input->post('pesan');
+		$id_paket_wisata = $this->input->post('id_paket_wisata');
+		$no_telepon = $this->input->post('no_telepon');
+		$email = $this->input->post('email');
+		$alamat = $this->input->post('alamat');
+
 
 		$data = array( 
-			'nama_pemesanan' => $nama_pemesanan,
-			'deskripsi' => $deskripsi
+			'nama' => $nama,
+			'pesan' => $pesan,
+			'id_paket_wisata' => $id_paket_wisata,
+			'no_telepon' => $no_telepon,
+			'email' => $email,	
+			'alamat' => $alamat,
+			'tanggal' => date('Y-m-d h:i:s')
 		);
 		
 		if($id = $this->M_pemesanan->insert($data)){
-			
-			/* Encrypt ID */
-			$encrypted_string = $this->encrypt->encode($id);
-			$id = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string);
-			
-			redirect('Admin/Pemesanan/Image/'.$id);
+			$this->session->set_flashdata('success','Pemesanan berhasil ditambahkan');			
+			redirect('Admin/Pemesanan/');
 		}else{
 			$this->session->set_flashdata('error','Terjadi error saat insert pemesanan');
 			redirect('Admin/Pemesanan');
