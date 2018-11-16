@@ -5,6 +5,8 @@ var number = 0;
 
 $(document).ready(function() {
 
+  baguetteBox.run('.baguetteBoxOne');
+  
   $('.harga').mask("#.##0", {reverse: true});
 
   $('.select2').select2();

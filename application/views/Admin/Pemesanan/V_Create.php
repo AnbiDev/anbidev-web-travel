@@ -93,7 +93,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label">Catatan</label>
-                                                <textarea  cols=30 rows=10 name="pesan" class="form-control" placeholder="Pemesanan">
+                                                <textarea  style="height: 200px;" cols=30 rows=10 name="pesan" class="form-control" placeholder="Pemesanan">
 
                                                 </textarea> 
                                             </div>
@@ -112,3 +112,4 @@
             </div>
         </div>
     </div>
+</div>

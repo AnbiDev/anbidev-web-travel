@@ -24,48 +24,88 @@
                         </div>
                         <div class="card-body">
                             <form action="<?php echo base_url('Admin/Pemesanan/Update'); ?>" method="POST">
-                                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <input type="hidden" value="<?php echo $id; ?>" name="id">
                                 <div class="form-body">
-                                    <h3 class="card-title m-t-15">Tambahkan Pemesanan Wisata</h3>
+                                    <h3 class="card-title m-t-15">Edit Pemesanan Wisata</h3>
                                     <hr>
 
                                     <div class="row p-t-20">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label">Nama Pemesanan</label>
-                                                <input type="text" name="nama_pemesanan" class="form-control" placeholder="Pemesanan" required="" value="<?php echo $data[0]['nama_pemesanan']; ?>">
-                                                <small class="form-control-feedback text-danger">*wajib diisi</small> 
+                                                <label class="control-label">Nama</label>
+                                                <input type="text" name="nama" class="form-control" placeholder="Nama" required="" value="<?php echo $data[0]['nama']; ?>">
                                             </div>
                                         </div>
                                     </div>
                                     <!--/row-->  
 
-                                    <!-- row -->
-                                    <div class="row">
-                                        <div class="col-12">
-                                         <label class="control-label">Deskripsi</label>
-                                         <div class="form-group">
-                                            <textarea class="textarea_editor form-control" name="deskripsi" rows="15" placeholder="Enter text ..." style="height:450px"><?php echo $data[0]['deskripsi']; ?></textarea>
+                                    <div class="row p-t-20">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Email</label>
+                                                <input type="email" name="email" class="form-control" placeholder="Email" required="" value="<?php echo $data[0]['email']; ?>">
+                                            </div>
+                                        </div>
+
+                                         <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">No Telepon</label>
+                                                <input type="text" name="no_telepon" class="form-control" placeholder="No Telepon" required="" value="<?php echo $data[0]['no_telepon']; ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/row-->  
+
+                                    <div class="row p-t-20">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Alamat</label>
+                                                <input type="text" name="alamat" class="form-control" placeholder="Alamat" required="" value="<?php echo $data[0]['alamat']; ?>">
                                         </div>
                                     </div>
                                 </div>
+                                    <!--/row-->  
 
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 " style="padding: 10px;">
-                                    <?php 
-                                    /* Encrypt ID */
-                                    $encrypted_string = $this->encrypt->encode($id);
-                                    $id = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string);
-                                    ?>
-                                    <a href="<?php echo base_url('Admin/Pemesanan/Image/'.$id.'/edit'); ?>" class="btn btn-primary float-right"><span class="fa fa-camera"></span>&nbsp;Edit Gambar</a>
-                                </div>
-                            </div>
-                            <!-- /row -->
 
+                                   <div class="row p-t-20">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Paket Wisata</label>
+                                                <select name="id_paket_wisata"  class="form-control select2" placeholder="Paket Wisata" required="">
+                                                    <?php  
+                                                        if(!empty($paket_wisata) && is_array($paket_wisata)){
+                                                            foreach ($paket_wisata as $value) {
+                                                    ?>
+
+<option value="<?php echo $value['id_paket_wisata']; ?>" <?php echo $value['id_paket_wisata'] == $data[0]['id_paket_wisata'] ? 'selected':''; ?> > <?php echo $value['nama_paket_wisata']; ?> </option>
+
+                                                    <?php
+                                                            }
+                                                        }
+                                                    ?>
+                                                </select>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/row--> 
+
+                                    <div class="row p-t-20">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Catatan</label>
+                                                <textarea  style="height: 200px;" cols=30 rows=10 name="pesan" class="form-control" placeholder="Pemesanan">
+                                                <?php echo $data[0]['pesan'] ;?> 
+                                                </textarea> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/row-->
+
+                        
                         </div>
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Update</button>
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
                             <button type="button" class="btn btn-inverse" onclick="window.history.go(-1)">Cancel</button>
                         </div>
                     </form>
@@ -73,4 +113,4 @@
             </div>
         </div>
     </div>
-
+</div>

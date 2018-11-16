@@ -76,7 +76,7 @@ class C_Pemesanan extends CI_Controller {
 		$id = array(
 			'id_pemesanan' => $plaintext_string
 		);
-
+		$data['paket_wisata'] = $this->M_paket_wisata->selectAll();
 		$data['data'] = $this->M_pemesanan->getPemesanan($id);
 
 
@@ -172,7 +172,7 @@ class C_Pemesanan extends CI_Controller {
 		
 		if($id = $this->M_pemesanan->insert($data)){
 			$this->session->set_flashdata('success','Pemesanan berhasil ditambahkan');			
-			redirect('Admin/Pemesanan/');
+			redirect('Admin/Pemesanan');
 		}else{
 			$this->session->set_flashdata('error','Terjadi error saat insert pemesanan');
 			redirect('Admin/Pemesanan');
@@ -213,12 +213,22 @@ class C_Pemesanan extends CI_Controller {
 	public function Update(){
 
 		$id_pemesanan = $this->input->post('id');
-		$nama_pemesanan = $this->input->post('nama_pemesanan');
-		$deskripsi = $this->input->post('deskripsi');
+		$nama = $this->input->post('nama');
+		$pesan = $this->input->post('pesan');
+		$id_paket_wisata = $this->input->post('id_paket_wisata');
+		$no_telepon = $this->input->post('no_telepon');
+		$email = $this->input->post('email');
+		$alamat = $this->input->post('alamat');
+
 
 		$data = array( 
-			'nama_pemesanan' => $nama_pemesanan,
-			'deskripsi' => $deskripsi
+			'nama' => $nama,
+			'pesan' => $pesan,
+			'id_paket_wisata' => $id_paket_wisata,
+			'no_telepon' => $no_telepon,
+			'email' => $email,	
+			'alamat' => $alamat,
+			// 'tanggal' => date('Y-m-d h:i:s')
 		);
 		
 		if($id = $this->M_pemesanan->update($data,$id_pemesanan)){
