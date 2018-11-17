@@ -19,6 +19,7 @@
 
                     <div class="card">
                         <div class="card-body">
+                            <h4 class="card-title">Image Gallery List</h4>
                             <div class="baguetteBoxOne">
                                <div class="row">
                                <?php $i = 1; 
@@ -37,8 +38,8 @@
                                     </a>
                                     <div class="row ">
                                         <div class="col-md-12 text-center">
-                                            <button class="btn btn-danger btn-sm"><span class="fa fa-trash"></span></button>
-                                            <button class="btn btn-primary btn-sm"><span class="fa fa-eye"></span></button>
+<button class="btn btn-danger btn-sm" onclick="removeFile('<?php echo $value['token'] ?>','<?php echo base_url('Admin/Gallery/RemoveImage'); ?>',this)"><span class="fa fa-trash"></span></button>
+
                                         </div>
                                     </div>
                                  </div>

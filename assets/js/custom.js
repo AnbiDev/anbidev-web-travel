@@ -84,26 +84,47 @@ foto_upload.on("removedfile",function(a){
 
 
 function removeFile(token,link,th){
-	
-  $.ajax({
-    url:link,
-    type:"POST",
-    dataType:'json',
-    data:{token:token},
-    beforeSend:function(){
-     $(".preloader").fadeIn();
-   },
-   success:function(result){
-     $(".preloader").fadeOut();
-     $(th).parent().remove();
-     toastr.success('Delete Image','Success');
-   },
-   error:function(error){
-     $(".preloader").fadeOut();
-     toastr.error(error,'Error');
-     console.log(error)
-   }
- });
+  swal({
+    title: "Are you sure to delete ?",
+    text: "Data tidak akan kembali , dan didelete secara permanen!",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Yes",
+    cancelButtonText: "No",
+    closeOnConfirm: false,
+    closeOnCancel: false
+  },
+  function(isConfirm){
+    if (isConfirm) {
+     
+      $.ajax({
+        url:link,
+        type:"POST",
+        dataType:'json',
+        data:{token:token},
+        beforeSend:function(){
+         $(".preloader").fadeIn();
+       },
+       success:function(result){
+         $(".preloader").fadeOut();
+         $(th).parent().remove();
+         swal("Deleted !!", "Hey, your image file has been deleted !!", "success");
+         toastr.success('Delete Image','Success');
+       },
+       error:function(error){
+         $(".preloader").fadeOut();
+         toastr.error(error,'Error');
+         console.log(error)
+       }
+     });
+    }
+    else {
+      swal("Cancelled !!", "Hey, your imaginary file is safe !!", "error");
+    }
+  });
+
+  
 }
 
 

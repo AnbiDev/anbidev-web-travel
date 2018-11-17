@@ -6941,7 +6941,7 @@ tbody tr td:last-child {
     height: 100%;
 }
 
-.gallery {
+.gallery a{
     width: 240px;
     height: 180px;
     display: inline-block;
