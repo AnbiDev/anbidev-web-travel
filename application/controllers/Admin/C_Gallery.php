@@ -114,7 +114,7 @@ class C_Gallery extends CI_Controller {
 	}
 
 	//Upload Image View
-	public function Image($id,$edit = false){
+	public function Image($id = false,$edit = false){
 		
 		$data['Menu'] = 'Image';
 
@@ -128,8 +128,10 @@ class C_Gallery extends CI_Controller {
 			'id' => $plaintext_string,
 			'status' => 'gallery'	
 		);
+
 		$data['message'] = 'ditambahkan';
 		$data['image'] = '';
+		
 		if($edit){
 			$data['image'] = $this->M_gallery->getImage($where);
 			$data['message'] = 'diupdate';

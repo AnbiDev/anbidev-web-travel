@@ -6,7 +6,7 @@
             <div class="col-md-7 align-self-center">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="<?php echo base_url('Admin/Destinasi'); ?>">Destinasi</a></li>
+                    <li class="breadcrumb-item active"><a href="<?php echo base_url('Admin/Gallery'); ?>">Gallery</a></li>
                     <li class="breadcrumb-item active"><a href="#" >Create / Edit</a></li>
                     <li class="breadcrumb-item active">Image</li>
                 </ol>
@@ -26,7 +26,7 @@
                             <h4 class="card-title">Gambar</h4>
                             <div class="row">
 
-                                <?php 
+                               <!--  <?php 
                                 if(is_array($image) && !empty($image)){
                                     foreach ($image as $value) {
                                         # code...
@@ -42,12 +42,12 @@
                                         <?php
                                     }
                                 }
-                                ?>
+                                ?> -->
                             </div>
-                            <h6 class="card-subtitle">Upload gambar untuk ke dalam untuk destinasi ini.</h6>
+                            <h6 class="card-subtitle">Upload gambar untuk ke dalam untuk menambah image di gallery.</h6>
                             
                             <div class="dropzone">
-                                <input type="hidden" value="<?php echo $id_destinasi; ?>" name="id_dropzone" id="id_dropzone">
+                            <input type="hidden" value="<?php echo $id_gallery; ?>" name="id_dropzone" id="id_dropzone">
                                 <div class="dz-message">
                                     <h3> Klik atau Drop gambar disini</h3>
                                 </div>
@@ -57,7 +57,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12" style="padding: 10px;">
-                                    <a href="<?php echo base_url('Admin/Destinasi/goAhead/'.$message); ?>" class="btn btn-success btn-lg">Finish</a>
+                                    <a href="<?php echo base_url('Admin/Gallery/goAhead/'.$message); ?>" class="btn btn-success btn-lg">Finish</a>
                                     <button type="button" class="btn btn-inverse" onclick="window.history.go(-1)">Cancel</button>
                                 </div>
                             </div>
