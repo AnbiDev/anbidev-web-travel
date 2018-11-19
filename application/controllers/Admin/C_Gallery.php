@@ -177,8 +177,10 @@ class C_Gallery extends CI_Controller {
 
 	// Upload Image Gallery
 	public function UploadImage(){
-		$id = $this->input->post('id');
+		
+				
 		$token = $this->input->post('token');
+
 
 		$config['upload_path'] = './assets/images/';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
@@ -189,14 +191,23 @@ class C_Gallery extends CI_Controller {
 		if ($this->upload->do_upload('file')){
 
 			$upload_data = $this->upload->data();
-			$data = array(
-				'id' => $id,
-				'status' => 'gallery',
-				'file_name' => $upload_data['file_name'],
-				'location' => $upload_data['full_path'],
-				'token' => $token
-			);			
-			$this->M_gallery->insertImage($data);
+
+
+			$gallery = array(
+				'judul' => $upload_data['file_name']
+			);
+
+			if($id = $this->M_gallery->insert($gallery)){
+				$data = array(
+					'id' => $id,
+					'status' => 'gallery',
+					'file_name' => $upload_data['file_name'],
+					'location' => $upload_data['full_path'],
+					'token' => $token
+				);			
+				$this->M_gallery->insertImage($data);	
+			}			
+			
 		}else{
 			echo $this->upload->display_errors();
 		}
@@ -223,6 +234,31 @@ class C_Gallery extends CI_Controller {
 			$this->session->set_flashdata('error','Terjadi error saat update gallery');
 			redirect('Admin/Gallery');
 		}
+	}
+
+	public function UpdateTitle(){
+
+		$token = $this->input->post('token');
+		$title = $this->input->post('title');
+		
+		$where = array(
+			'token' => $token,
+			'status' => 'gallery'
+		);
+
+		$image = $this->M_gallery->getImage($where);
+
+
+		$data = array( 
+			'judul' => $title
+		);
+
+		if($this->M_gallery->update($data,$image[0]['id'])){
+			echo json_encode($data);
+		}else{
+			echo json_encode(false);
+		}	
+
 	}
 	
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= DELETE SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */

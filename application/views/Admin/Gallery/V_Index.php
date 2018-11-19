@@ -15,10 +15,16 @@
         <div class="container-fluid">
             <!-- Start Page Content -->
             <div class="row">
+                <div class="col-md-12">
+                    <a href="<?php echo base_url('Admin/Gallery/Image'); ?>" class="btn btn-success  float-right"><span class="fa fa-plus"></span>&nbsp; Tambah</a>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-12 text-center">
 
                     <div class="card">
                         <div class="card-body">
+                            
                             <h4 class="card-title">Image Gallery List</h4>
                             <div class="baguetteBoxOne">
                                <div class="row">

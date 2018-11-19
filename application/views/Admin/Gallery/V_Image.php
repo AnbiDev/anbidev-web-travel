@@ -47,7 +47,6 @@
                             <h6 class="card-subtitle">Upload gambar untuk ke dalam untuk menambah image di gallery.</h6>
                             
                             <div class="dropzone">
-                            <input type="hidden" value="<?php echo $id_gallery; ?>" name="id_dropzone" id="id_dropzone">
                                 <div class="dz-message">
                                     <h3> Klik atau Drop gambar disini</h3>
                                 </div>
