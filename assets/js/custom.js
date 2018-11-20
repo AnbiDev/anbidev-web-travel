@@ -74,7 +74,6 @@ foto_upload.on("sending",function(file, xhr, formData){
   }
 	
   formData.append("token",file.token);
-	
 
 });
 
@@ -124,6 +123,10 @@ function addTitleGallery(th){
    }
  });
 
+}
+
+function editTitle(th){
+  console.log('Edit');
 }
 
 function removeFile(token,link,th){

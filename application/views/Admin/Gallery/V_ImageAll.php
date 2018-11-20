@@ -18,9 +18,7 @@
                 <div class="col-md-12">
                 
                 <a href="<?php echo base_url('Admin/Gallery/Image'); ?>" class="btn btn-success  float-right"><span class="fa fa-plus"></span>&nbsp; Tambah</a>
-
-                <a href="<?php echo base_url('Admin/Gallery/All'); ?>" class="btn btn-primary  float-right" style="margin-right:20px;"><span class="fa fa-camera" ></span>&nbsp; Semua Gambar</a>
-                </div>
+                
             </div>
             <div class="row">
                 <div class="col-12 text-center">

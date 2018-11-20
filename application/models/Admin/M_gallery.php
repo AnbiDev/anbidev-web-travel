@@ -22,20 +22,20 @@ class M_gallery extends CI_Model {
 
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-= SELECT SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 	
-	// public function selectAll(){
-	// 	$this->db->select('*');
-	// 	$this->db->from("tbl_gallery");
-	// 	$this->db->join("tbl_gambar","tbl_gambar.id = tbl_gallery.id_gallery","left");
-	// 	$data = $this->db->get();
-	// 	if($data->num_rows() > 0){
-	// 		return $data->result_array();
-	// 	}else{
-	// 		return false;
-	// 	}
-	// }
+	public function selectAll(){
+		$this->db->select('*');
+		$this->db->from("tbl_gallery");
+		$this->db->join("tbl_gambar","tbl_gambar.id = tbl_gallery.id_gallery","left");
+		$data = $this->db->get();
+		if($data->num_rows() > 0){
+			return $data->result_array();
+		}else{
+			return false;
+		}
+	}
 
 	/* trial dev temp */
-	public function selectAll(){
+	public function selectAllPicture(){
 		$this->db->select('*');
 		$this->db->from("tbl_gambar");
 		$data = $this->db->get();

@@ -45,73 +45,26 @@ class C_Gallery extends CI_Controller {
 		
 	}
 
-	//Create  Gallery View
-	public function Create(){
+	//Gallery Index
+	public function index(){
 		// $this->checkSession();
 		// $user_id = $this->session->userid;
 		
-		$data['Menu'] = 'Create Gallery';
-		
-		$this->load->view('Admin/V_Header',$data);
-		$this->load->view('Admin/V_Sidebar',$data);
-		$this->load->view('Admin/Gallery/V_Create',$data);
-		$this->load->view('Admin/V_Footer',$data);
-		
-	}
+		$data['Menu'] = 'Gallery';
+		$data['data'] = $this->M_gallery->selectAll();
 
-	//Edit  Gallery View
-	public function Edit($id){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
-		
-		/* Decrypt ID */			
-		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
-		$plaintext_string = $this->encrypt->decode($plaintext_string);
-
-		$data['Menu'] = 'Edit Gallery';
-		$data['id']  = $plaintext_string;
-
-		$id = array(
-			'id_gallery' => $plaintext_string
-		);
-
-		$data['data'] = $this->M_gallery->getGallery($id);
-
+		// echo "<pre>";
+		// print_r($data);
+		// exit();
 
 		$this->load->view('Admin/V_Header',$data);
 		$this->load->view('Admin/V_Sidebar',$data);
-		$this->load->view('Admin/Gallery/V_Edit',$data);
+		$this->load->view('Admin/Gallery/V_Index',$data);
 		$this->load->view('Admin/V_Footer',$data);
 		
 	}
 
 
-	//  Gallery View
-	public function Detail($id){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
-		
-		/* Decrypt ID */			
-		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
-		$plaintext_string = $this->encrypt->decode($plaintext_string);
-
-		$image = array(
-					'id' => $plaintext_string,
-					'status' => 'gallery'
-				);
-		$where = array('id_gallery' => $plaintext_string);
-
-		$data['Menu'] = 'Detail';
-		$data['image'] = $this->M_gallery->getImage($image);
-		$data['id'] = $plaintext_string;
-		$data['data'] = $this->M_gallery->getGallery($where);
-
-		$this->load->view('Admin/V_Header',$data);
-		$this->load->view('Admin/V_Sidebar',$data);
-		$this->load->view('Admin/Gallery/V_Detail',$data);
-		$this->load->view('Admin/V_Footer',$data);
-		
-	}
 
 	//Upload Image View
 	public function Image($id = false,$edit = false){
@@ -153,8 +106,7 @@ class C_Gallery extends CI_Controller {
 	// Insert Gallery
 	public function Insert(){
 		
-		$nama_gallery = $this->input->post('nama_gallery');
-		$deskripsi = $this->input->post('deskripsi');
+		$nama_gallery = $this->input->post('judul');
 
 		$data = array( 
 			'nama_gallery' => $nama_gallery,
