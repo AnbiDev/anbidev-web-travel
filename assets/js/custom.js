@@ -97,9 +97,13 @@ foto_upload.on("removedfile",function(a){
 });
 
 
-function addTitleGallery(th){
 
-  var token = $(th).closest('div').find('#adexe').text();
+function addTitleGallery(th,token = false){
+
+  if(!token){
+     token = $(th).closest('div').find('#adexe').text();  
+  }
+
   var title = $(th).val();
   console.log(token);
 
@@ -113,7 +117,14 @@ function addTitleGallery(th){
    },
    success:function(result){
      $(".preloader").fadeOut();
-     $(th).prop('readonly',true);
+     
+     if(!token){
+      $(th).prop('readonly',true); 
+     }else{
+      $(th).prevAll('button').show();
+      $(th).hide();
+     }
+
      swal("Success !!", "Judul telah diganti!!", "success");
    },
    error:function(error){
@@ -125,8 +136,27 @@ function addTitleGallery(th){
 
 }
 
-function editTitle(th){
-  console.log('Edit');
+function editTitle(th,id){
+  $.ajax({
+    url:base_url+"/Admin/Gallery/getTitle",
+    type:"POST",
+    dataType:'json',
+    data:{id:id},
+    beforeSend:function(){
+   },
+   success:function(result){
+     $(th).closest('div').find('#edit-title').show();
+     $(th).closest('div').find('#edit-title').val(result[0].judul);
+     $(th).next('button').hide();
+     $(th).hide();
+
+   },
+   error:function(error){
+     $(".preloader").fadeOut();
+     toastr.error(error,'Error');
+     console.log(error)
+   }
+ });
 }
 
 function removeFile(token,link,th){

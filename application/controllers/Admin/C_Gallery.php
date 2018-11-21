@@ -46,12 +46,12 @@ class C_Gallery extends CI_Controller {
 	}
 
 	//Gallery Index
-	public function index(){
+	public function All(){
 		// $this->checkSession();
 		// $user_id = $this->session->userid;
 		
 		$data['Menu'] = 'Gallery';
-		$data['data'] = $this->M_gallery->selectAll();
+		$data['data'] = $this->M_gallery->selectAllPicture();
 
 		// echo "<pre>";
 		// print_r($data);
@@ -59,7 +59,7 @@ class C_Gallery extends CI_Controller {
 
 		$this->load->view('Admin/V_Header',$data);
 		$this->load->view('Admin/V_Sidebar',$data);
-		$this->load->view('Admin/Gallery/V_Index',$data);
+		$this->load->view('Admin/Gallery/V_ImageAll',$data);
 		$this->load->view('Admin/V_Footer',$data);
 		
 	}
@@ -100,6 +100,21 @@ class C_Gallery extends CI_Controller {
 		$this->load->view('Admin/V_Footer',$data);
 		
 	}
+
+	public function getTitle(){
+		
+		$id = $this->input->post('id');
+
+		$where = array(
+				'id_gallery' => $id
+			);
+
+		$data = $this->M_gallery->getGallery($where);
+
+		echo json_encode($data);
+	}
+
+
 
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= INSERT SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 	

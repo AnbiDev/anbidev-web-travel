@@ -35,21 +35,27 @@
 
                                if(!empty($data) && is_array($data)){
                                 foreach ($data as $value) {   
+                                 
                                     /* Encrypt ID */
                                     $encrypted_string = $this->encrypt->encode($value['id_gambar']);
                                     $id = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string);
                                     ?>
                                 <div class="col-md-4 gallery">
-<a href="<?php echo base_url('assets/images/'.$value['file_name']); ?>" data-caption="<?php echo $value['file_name']; ?>">
-<img src="<?php echo base_url('assets/images/'.$value['file_name']); ?>" alt="<?php echo $value['file_name']; ?>"">
+
+
+<a href="<?php echo base_url('assets/images/'.$value['file_name']); ?>" data-caption="<?php echo $value['judul']; ?>">
+<img src="<?php echo base_url('assets/images/'.$value['file_name']); ?>" title="<?php echo $value['judul']; ?>" alt="<?php echo $value['file_name']; ?>"">
 
 
                                     </a>
                                     <div class="row ">
                                         <div class="col-md-12 text-center">
   
-<button class="btn btn-primary btn-sm" onclick="editTitle('<?php echo $value['token'] ?>','<?php echo base_url('Admin/Gallery/RemoveImage'); ?>',this)"><span class="fa fa-pencil"></span></button>
-<button class="btn btn-danger btn-sm" onclick="removeFile('<?php echo $value['token'] ?>','<?php echo base_url('Admin/Gallery/RemoveImage'); ?>',this)"><span class="fa fa-trash"></span></button>
+<button class="btn btn-primary btn-sm" title="Edit Title" onclick="editTitle(this,'<?php echo $value['id_gallery']; ?>')"><span class="fa fa-pencil"></span></button>
+
+<button class="btn btn-danger btn-sm"  title="Remove Image" onclick="removeFile('<?php echo $value['token'] ?>','<?php echo base_url('Admin/Gallery/RemoveImage'); ?>',this)"><span class="fa fa-trash"></span></button>
+
+<input type="text" name="edit-title" style="display: none;" onchange="addTitleGallery(this,'<?php echo $value['token'] ?>')" placeholder="Edit Title" id="edit-title"/>
 
                                         </div>
                                     </div>

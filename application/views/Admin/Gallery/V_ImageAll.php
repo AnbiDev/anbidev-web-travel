@@ -16,9 +16,6 @@
             <!-- Start Page Content -->
             <div class="row">
                 <div class="col-md-12">
-                
-                <a href="<?php echo base_url('Admin/Gallery/Image'); ?>" class="btn btn-success  float-right"><span class="fa fa-plus"></span>&nbsp; Tambah</a>
-                
             </div>
             <div class="row">
                 <div class="col-12 text-center">
@@ -26,7 +23,7 @@
                     <div class="card">
                         <div class="card-body">
                             
-                            <h4 class="card-title">Image Gallery List</h4>
+                            <h4 class="card-title">All Image Uploaded</h4>
                             <div class="baguetteBoxOne">
                                <div class="row">
                                <?php $i = 1; 
@@ -46,7 +43,8 @@
                                     <div class="row ">
                                         <div class="col-md-12 text-center">
   
-<button class="btn btn-primary btn-sm" onclick="editTitle('<?php echo $value['token'] ?>','<?php echo base_url('Admin/Gallery/RemoveImage'); ?>',this)"><span class="fa fa-pencil"></span></button>
+<button class="btn btn-inverse btn-sm" onclick="editTitle('<?php echo $value['token'] ?>','<?php echo base_url('Admin/Gallery/RemoveImage'); ?>',this)"><span class="fa fa-plus"></span>&nbsp;Add to Gallery</button>
+
 <button class="btn btn-danger btn-sm" onclick="removeFile('<?php echo $value['token'] ?>','<?php echo base_url('Admin/Gallery/RemoveImage'); ?>',this)"><span class="fa fa-trash"></span></button>
 
                                         </div>

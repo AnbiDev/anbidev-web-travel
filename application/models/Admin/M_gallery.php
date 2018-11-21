@@ -25,7 +25,8 @@ class M_gallery extends CI_Model {
 	public function selectAll(){
 		$this->db->select('*');
 		$this->db->from("tbl_gallery");
-		$this->db->join("tbl_gambar","tbl_gambar.id = tbl_gallery.id_gallery","left");
+		$this->db->join("tbl_gambar","tbl_gambar.id = tbl_gallery.id_gallery","inner");
+		$this->db->where('tbl_gambar.status','gallery');
 		$data = $this->db->get();
 		if($data->num_rows() > 0){
 			return $data->result_array();
@@ -34,10 +35,11 @@ class M_gallery extends CI_Model {
 		}
 	}
 
-	/* trial dev temp */
+
 	public function selectAllPicture(){
 		$this->db->select('*');
 		$this->db->from("tbl_gambar");
+		$this->db->where("status != ","gallery");
 		$data = $this->db->get();
 		if($data->num_rows() > 0){
 			return $data->result_array();
