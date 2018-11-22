@@ -53,7 +53,7 @@
   
 <button class="btn btn-primary btn-sm" title="Edit Title" onclick="editTitle(this,'<?php echo $value['id_gallery']; ?>')"><span class="fa fa-pencil"></span></button>
 
-<button class="btn btn-danger btn-sm"  title="Remove Image" onclick="removeFile('<?php echo $value['token'] ?>','<?php echo base_url('Admin/Gallery/RemoveImage'); ?>',this)"><span class="fa fa-trash"></span></button>
+<button class="btn btn-danger btn-sm"  title="Remove Image" onclick="removeFile('<?php echo $value['token'] ?>','<?php echo base_url('Admin/Gallery/Delete'); ?>',this)"><span class="fa fa-trash"></span></button>
 
 <input type="text" name="edit-title" style="display: none;" onchange="addTitleGallery(this,'<?php echo $value['token'] ?>')" placeholder="Edit Title" id="edit-title"/>
 

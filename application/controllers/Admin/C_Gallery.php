@@ -80,7 +80,7 @@ class C_Gallery extends CI_Controller {
 		$where = array(
 			'id' => $plaintext_string,
 			'status' => 'gallery'	
-		);
+			);
 
 		$data['message'] = 'ditambahkan';
 		$data['image'] = '';
@@ -106,7 +106,7 @@ class C_Gallery extends CI_Controller {
 		$id = $this->input->post('id');
 
 		$where = array(
-				'id_gallery' => $id
+			'id_gallery' => $id
 			);
 
 		$data = $this->M_gallery->getGallery($where);
@@ -126,7 +126,7 @@ class C_Gallery extends CI_Controller {
 		$data = array( 
 			'nama_gallery' => $nama_gallery,
 			'deskripsi' => $deskripsi
-		);
+			);
 		
 		if($id = $this->M_gallery->insert($data)){
 			
@@ -145,7 +145,7 @@ class C_Gallery extends CI_Controller {
 	// Upload Image Gallery
 	public function UploadImage(){
 		
-				
+
 		$token = $this->input->post('token');
 
 
@@ -162,7 +162,7 @@ class C_Gallery extends CI_Controller {
 
 			$gallery = array(
 				'judul' => $upload_data['file_name']
-			);
+				);
 
 			if($id = $this->M_gallery->insert($gallery)){
 				$data = array(
@@ -171,7 +171,7 @@ class C_Gallery extends CI_Controller {
 					'file_name' => $upload_data['file_name'],
 					'location' => $upload_data['full_path'],
 					'token' => $token
-				);			
+					);			
 				$this->M_gallery->insertImage($data);	
 			}			
 			
@@ -192,7 +192,7 @@ class C_Gallery extends CI_Controller {
 		$data = array( 
 			'nama_gallery' => $nama_gallery,
 			'deskripsi' => $deskripsi
-		);
+			);
 		
 		if($id = $this->M_gallery->update($data,$id_gallery)){
 			$this->session->set_flashdata('success','Gallery berhasil diupdate');	
@@ -203,6 +203,7 @@ class C_Gallery extends CI_Controller {
 		}
 	}
 
+
 	public function UpdateTitle(){
 
 		$token = $this->input->post('token');
@@ -211,14 +212,14 @@ class C_Gallery extends CI_Controller {
 		$where = array(
 			'token' => $token,
 			'status' => 'gallery'
-		);
+			);
 
 		$image = $this->M_gallery->getImage($where);
 
 
 		$data = array( 
 			'judul' => $title
-		);
+			);
 
 		if($this->M_gallery->update($data,$image[0]['id'])){
 			echo json_encode($data);
@@ -238,7 +239,7 @@ class C_Gallery extends CI_Controller {
 
 		$data  = array(
 			'token' => $token
-		);
+			);
 
 		if($result = $this->M_gallery->getImage($data)){
 
@@ -246,6 +247,8 @@ class C_Gallery extends CI_Controller {
 			$path = str_replace("index.php", "",$_SERVER['SCRIPT_NAME']);
 			$file = $_SERVER['CONTEXT_DOCUMENT_ROOT'].$path.'assets/images/'.$filename;
 			
+
+
 			$this->M_gallery->removeImage($data);
 			if(file_exists($file)){	
 				unlink($file);
@@ -257,15 +260,13 @@ class C_Gallery extends CI_Controller {
 
 	}	
 
-	function Delete($id){
-		/* Decrypt ID */			
-		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
-		$plaintext_string = $this->encrypt->decode($plaintext_string);
+	function Delete(){
+		//Ambil token foto
+		$token = $this->input->post('token');
 
-		$image = array(
-			'id' => $plaintext_string,
-			'status' => 'gallery'
-		);
+		$image  = array(
+			'token' => $token
+			);
 
 		// Remove all picture
 		if($result = $this->M_gallery->getImage($image)){
@@ -274,26 +275,26 @@ class C_Gallery extends CI_Controller {
 				$path = str_replace("index.php", "",$_SERVER['SCRIPT_NAME']);
 				$file = $_SERVER['CONTEXT_DOCUMENT_ROOT'].$path.'assets/images/'.$filename;
 
-				$this->M_gallery->removeImage($image);
-				if(file_exists($file)){
-					unlink($file);
-				}
+				$data = array(
+					'id_gallery' => $value['id']
+					);
+
+				if($this->M_gallery->delete($data)){
+					$this->M_gallery->removeImage($image);
+					if(file_exists($file)){
+						unlink($file);
+					}else{
+						echo false;
+					}	
+				}else{
+					echo false;
+				}	
 			}
-			
 		}
 
-			
-		$data = array(
-			'id_gallery' => $plaintext_string
-		);
 
-		if($this->M_gallery->delete($data)){
-			$this->session->set_flashdata('success' , "Gallery berhasil didelete");
-			redirect('Admin/Gallery');
-		}else{
-			$this->session->set_flashdata('error' ,"Ada kesalahan saat menghapus data");
-			redirect('Admin/Gallery');
-		}
+		echo json_encode($image);
+
 
 	}
 
