@@ -6949,3 +6949,13 @@ tbody tr td:last-child {
     margin: 4px 6px;
     box-shadow: 0 0 4px -1px #000;
 }
+
+/*  12 - Long -text
+---------------------------------------------------------------------- */
+/*---------------------------------------------------------------*/
+.long-text{
+      max-width: 100px;
+      white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
