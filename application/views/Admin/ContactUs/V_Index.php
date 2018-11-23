@@ -7,7 +7,7 @@
             <div class="col-md-7 align-self-center">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                    <li class="breadcrumb-item active">ContactUs</li>
+                    <li class="breadcrumb-item active">Contact Us</li>
                 </ol>
             </div>
         </div>
@@ -21,7 +21,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">ContactUs</h4>
+                            <h4 class="card-title">Contact Us</h4>
                             <a href="<?php echo base_url('Admin/ContactUs/Create'); ?>" class="btn btn-primary btn-lg float-right btn-rounded"><span class="fa fa-plus"></span></a>
                             <h6 class="card-subtitle">Menampilkan Semua Data ContactUs</h6>
                             <div class="table-responsive m-t-40">

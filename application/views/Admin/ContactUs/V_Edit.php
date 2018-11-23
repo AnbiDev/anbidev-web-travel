@@ -34,7 +34,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label">Nama</label>
-                                                <input type="text" name="nama" class="form-control" placeholder="Nama" required="">
+                                                <input type="text" name="nama" class="form-control" placeholder="Nama" required="" value="<?php echo $data[0]['nama']; ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -44,7 +44,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label">Email</label>
-                                                <input type="email" name="email" class="form-control" placeholder="Email" required="">
+                                                <input type="email" name="email" class="form-control" placeholder="Email" required="" value="<?php echo $data[0]['email']; ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -56,6 +56,7 @@
                                          <label class="control-label">Pesan</label>
                                          <div class="form-group">
                                             <textarea class="textarea_editor form-control" name="pesan" rows="15" placeholder="Enter Text Here..." style="height:450px">
+                                               <?php echo $data[0]['pesan']; ?>
                                             </textarea>
                                         </div>
                                     </div>

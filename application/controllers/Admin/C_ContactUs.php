@@ -203,20 +203,22 @@ class C_ContactUs extends CI_Controller {
 	
 	public function Update(){
 
-		$id_contact_us = $this->input->post('id');
-		$nama_contact_us = $this->input->post('nama_contact_us');
-		$deskripsi = $this->input->post('deskripsi');
+		$id = $this->input->post('id');
+		$nama = $this->input->post('nama');
+		$email = $this->input->post('email');
+		$pesan = $this->input->post('pesan');
 
 		$data = array( 
-			'nama_contact_us' => $nama_contact_us,
-			'deskripsi' => $deskripsi
+			'nama' => $nama,
+			'email'	=> $email,
+			'pesan' => $pesan
 		);
 		
-		if($id = $this->M_contact_us->update($data,$id_contact_us)){
-			$this->session->set_flashdata('success','ContactUs berhasil diupdate');	
+		if($id = $this->M_contact_us->update($data,$id)){
+			$this->session->set_flashdata('success','Contact Us berhasil diupdate');			
 			redirect('Admin/ContactUs');
 		}else{
-			$this->session->set_flashdata('error','Terjadi error saat update contact_us');
+			$this->session->set_flashdata('error','Terjadi error saat insert contact_us');
 			redirect('Admin/ContactUs');
 		}
 	}
