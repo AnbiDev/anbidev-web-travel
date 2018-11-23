@@ -81,10 +81,10 @@ $route['Admin/ContactUs/(:any)'] = 'Admin/C_ContactUs/$1';
 $route['Admin/ContactUs/(:any)/(:any)'] = 'Admin/C_ContactUs/$1/$2';
 $route['Admin/ContactUs/(:any)/(:any)/(:any)'] = 'Admin/C_ContactUs/$1/$2/$3';
 
-$route['Admin/Galery'] = 'Admin/C_Gallery';
-$route['Admin/Galery/(:any)'] = 'Admin/C_Gallery/$1';
-$route['Admin/Galery/(:any)/(:any)'] = 'Admin/C_Gallery/$1/$2';
-$route['Admin/Galery/(:any)/(:any)/(:any)'] = 'Admin/C_Gallery/$1/$2/$3';
+$route['Admin/Gallery'] = 'Admin/C_Gallery';
+$route['Admin/Gallery/(:any)'] = 'Admin/C_Gallery/$1';
+$route['Admin/Gallery/(:any)/(:any)'] = 'Admin/C_Gallery/$1/$2';
+$route['Admin/Gallery/(:any)/(:any)/(:any)'] = 'Admin/C_Gallery/$1/$2/$3';
 
 $route['Admin/User'] = 'Admin/C_User';
 $route['Admin/User/(:any)'] = 'Admin/C_User/$1';

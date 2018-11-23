@@ -70,6 +70,10 @@
 <!-- Jquer Mask -->
 <script src="<?php echo base_url('assets/js/lib/jquery-mask/jquery.mask.min.js'); ?>"></script> 
 
+<!-- BaguetteBox -->
+<script src="<?php echo base_url('assets/js/lib/baguettebox/baguetteBox.min.js'); ?>"></script> 
+
+
 <!-- Pace Loading Bar -->
 <!-- <script src="<?php echo base_url('assets/js/lib/preloader/pace.min.js'); ?>"></script> -->
 

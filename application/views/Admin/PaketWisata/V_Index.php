@@ -22,7 +22,7 @@
                         <div class="card-body">
 
                             <h4 class="card-title">Paket Wisata</h4>
-                            <a href="<?php echo base_url('Admin/PaketWisata/Create'); ?>" class="btn btn-primary btn-lg float-right btn-rounded"><span class="fa fa-plus"></span></a>
+                            <a href="<?php echo base_url('Admin/PaketWisata/Create'); ?>" class="btn btn-success btn-lg float-right"><span class="fa fa-plus"></span></a>
                             <h6 class="card-subtitle">Menampilkan Semua Data Paket Wisata</h6>
                             <div class="table-responsive m-t-40">
                                 <table id="myTable" class="table table-bordered table-striped"> 
