@@ -33,7 +33,7 @@
     <!-- Preloader - style you can find in spinners.css -->
     <!-- <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
-			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
     </div> -->
     <!-- Main wrapper  -->
     <div id="main-wrapper">
@@ -44,27 +44,18 @@
                     <div class="col-lg-4">
                         <div class="login-content card">
                             <div class="login-form">
-                                <h4>Login</h4>
-                                <form>
+                                <h4>Login</h4> 
+                                <form action="MainMenu/C_Login/ceklogin" method="post" accept-charset="utf-8">
                                     <div class="form-group">
-                                        <label>Email address</label>
-                                        <input type="email" class="form-control" placeholder="Email">
+                                        <input type="text" name="username" class="form-control" placeholder="Masukkan Username">
                                     </div>
                                     <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" class="form-control" placeholder="Password">
+                                        <input type="password" name="password" class="form-control" placeholder="Masukkan Password">
                                     </div>
-                                    <div class="checkbox">
-                                        <label>
-        										<input type="checkbox"> Remember Me
-        									</label>
-                                        <label class="pull-right">
-        										<a href="#">Forgotten Password?</a>
-        									</label>
-
+                                    <div>
+                                        <input type="submit" name="login" value="Login" class="btn btn-primary btn-flat m-b-30 m-t-30">
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Sign in</button>
-                                    <div class="register-link m-t-15 text-center">
+                                    <div>
                                         <p>Don't have account ? <a href="#"> Sign Up Here</a></p>
                                     </div>
                                 </form>
