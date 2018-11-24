@@ -17,9 +17,13 @@ class C_Login extends CI_Controller {
 			$cek = $this->app_model->proseslogin($user,$pass); 
 			$hasil = count($cek);
 			if ($hasil > 0) {
-				redirect('Admin/Dashboard');
+				$log = $this->db->get_where('tbl_user',array('username' => $user, 'password' => $pass))->row();
+				if ($log->level == 'admin') {
+					redirect('Admin/Dashboard');
+				} elseif ($log->level == 'admin') {
+					redirect('Admin/Dashboard');
 			} else {
-				redirect('MainMenu/V_Login');
+				redirect('Login');
 			}
 		}
 	}
