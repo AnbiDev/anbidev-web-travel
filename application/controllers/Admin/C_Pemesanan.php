@@ -29,8 +29,8 @@ class C_Pemesanan extends CI_Controller {
 
 	//Pemesanan Index
 	public function index(){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
+		$this->checkSession();
+		
 		
 		$data['Menu'] = 'Pemesanan';
 		$data['data'] = $this->M_pemesanan->selectAll();
@@ -48,8 +48,8 @@ class C_Pemesanan extends CI_Controller {
 
 	//Create  Pemesanan View
 	public function Create(){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
+		$this->checkSession();
+		
 		
 		$data['Menu'] = 'Create Pemesanan';
 		$data['paket_wisata'] = $this->M_paket_wisata->selectAll();
@@ -63,8 +63,8 @@ class C_Pemesanan extends CI_Controller {
 
 	//Edit  Pemesanan View
 	public function Edit($id){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
+		$this->checkSession();
+		
 		
 		/* Decrypt ID */			
 		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
@@ -90,8 +90,8 @@ class C_Pemesanan extends CI_Controller {
 
 	//  Pemesanan View
 	public function Detail($id){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
+		$this->checkSession();
+		
 		
 		/* Decrypt ID */			
 		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
@@ -322,10 +322,8 @@ class C_Pemesanan extends CI_Controller {
 	}
 
 	public function checkSession(){
-		if($this->session->is_logged){
-
-		}else{
-			redirect('');
+		if(!$this->session->userdata('id_user')){
+			redirect('Login');
 		}
 	}
 }

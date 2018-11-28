@@ -28,8 +28,7 @@ class C_Gallery extends CI_Controller {
 
 	//Gallery Index
 	public function index(){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
+		$this->checkSession();
 		
 		$data['Menu'] = 'Gallery';
 		$data['data'] = $this->M_gallery->selectAll();
@@ -47,8 +46,7 @@ class C_Gallery extends CI_Controller {
 
 	//Gallery Index
 	public function All(){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
+		$this->checkSession();
 		
 		$data['Menu'] = 'Gallery';
 		$data['data'] = $this->M_gallery->selectAllPicture();
@@ -311,10 +309,8 @@ class C_Gallery extends CI_Controller {
 	}
 
 	public function checkSession(){
-		if($this->session->is_logged){
-
-		}else{
-			redirect('');
+		if(!$this->session->userdata('id_user')){
+			redirect('Login');
 		}
 	}
 }

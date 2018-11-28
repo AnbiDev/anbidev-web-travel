@@ -27,8 +27,8 @@ class C_User extends CI_Controller {
 	
 	//Dashboard Index
 	public function index(){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
+		$this->checkSession();
+		
 		
 		$data['Menu'] = 'User';
 		$data['data'] = $this->M_user->selectAll();
@@ -47,8 +47,8 @@ class C_User extends CI_Controller {
 
 	//Create Index
 	public function Create(){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
+		$this->checkSession();
+		
 		
 		$data['Menu'] = 'User';
 		// $data['data'] = $this->M_user->selectAll();
@@ -67,8 +67,8 @@ class C_User extends CI_Controller {
 
 	//Create  User View
 	public function Edit($id){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
+		$this->checkSession();
+		
 		
 		/* Decrypt ID */			
 		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
@@ -99,7 +99,7 @@ class C_User extends CI_Controller {
 		$username = $this->input->post('username');
 		$level = $this->input->post('level');
 
-		$password = $this->input->post('deskripsi');
+		$password = $this->input->post('password');
 		$password = md5(md5(md5($password)));
 
 		
@@ -167,10 +167,8 @@ class C_User extends CI_Controller {
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= FUNCTION SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 	
 	public function checkSession(){
-		if($this->session->is_logged){
-			
-		}else{
-			redirect('');
+		if(!$this->session->userdata('id_user')){
+			redirect('Login');
 		}
 	}
 }

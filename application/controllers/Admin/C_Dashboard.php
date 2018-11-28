@@ -24,9 +24,8 @@ class C_Dashboard extends CI_Controller {
 	
 	//Dashboard Index
 	public function index(){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
 		
+		$this->checkSession();
 		$data['Menu'] = 'Dashboard';
 		
 		$this->load->view('Admin/V_Header',$data);
@@ -37,10 +36,8 @@ class C_Dashboard extends CI_Controller {
 	}
 	
 	public function checkSession(){
-		if($this->session->is_logged){
-			
-		}else{
-			redirect('');
+		if(!$this->session->userdata('id_user')){
+			redirect('Login');
 		}
 	}
 }

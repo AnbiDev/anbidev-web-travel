@@ -28,12 +28,11 @@ class C_ContactUs extends CI_Controller {
 
 	//ContactUs Index
 	public function index(){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
-		
+
+		$this->checkSession();
 		$data['Menu'] = 'ContactUs';
 		$data['data'] = $this->M_contact_us->selectAll();
-
+		
 		// echo "<pre>";
 		// print_r($data);
 		// exit();
@@ -47,9 +46,8 @@ class C_ContactUs extends CI_Controller {
 
 	//Create  ContactUs View
 	public function Create(){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
-		
+
+		$this->checkSession();
 		$data['Menu'] = 'Create ContactUs';
 		
 		$this->load->view('Admin/V_Header',$data);
@@ -61,9 +59,9 @@ class C_ContactUs extends CI_Controller {
 
 	//Edit  ContactUs View
 	public function Edit($id){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
 		
+		$this->checkSession();
+
 		/* Decrypt ID */			
 		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
 		$plaintext_string = $this->encrypt->decode($plaintext_string);
@@ -88,8 +86,8 @@ class C_ContactUs extends CI_Controller {
 
 	//  ContactUs View
 	public function Detail($id){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
+		
+		$this->checkSession();
 		
 		/* Decrypt ID */			
 		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
@@ -305,10 +303,8 @@ class C_ContactUs extends CI_Controller {
 	}
 
 	public function checkSession(){
-		if($this->session->is_logged){
-
-		}else{
-			redirect('');
+		if(!$this->session->userdata('id_user')){
+			redirect('Login');
 		}
 	}
 }

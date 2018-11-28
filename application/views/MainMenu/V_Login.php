@@ -16,6 +16,11 @@
     <!-- Custom CSS -->
     <link href="<?php echo base_url(); ?>assets/css/helper-login.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/style-login.css" rel="stylesheet">
+
+    <!-- Toastr -->
+    <link href="<?php echo base_url('assets/css/lib/toastr/toastr.min.css'); ?>" rel="stylesheet">
+    
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -45,7 +50,7 @@
                         <div class="login-content card">
                             <div class="login-form">
                                 <h4>Login</h4> 
-                                <form action="MainMenu/C_Login/ceklogin" method="post" accept-charset="utf-8">
+                                <form action="<?php echo base_url('Login/ceklogin'); ?>" method="post" accept-charset="utf-8">
                                     <div class="form-group">
                                         <input type="text" name="username" class="form-control" placeholder="Masukkan Username">
                                     </div>
@@ -56,7 +61,7 @@
                                         <input type="submit" name="login" value="Login" class="btn btn-primary btn-flat m-b-30 m-t-30">
                                     </div>
                                     <div>
-                                        <p>Don't have account ? <a href="#"> Sign Up Here</a></p>
+                                        <a href="<?php echo base_url(''); ?>"> Back</a>
                                     </div>
                                 </form>
                             </div>
@@ -81,7 +86,58 @@
     <script src="<?php echo base_url(); ?>assets/js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo base_url(); ?>assets/js/custom-login.min.js"></script>
+    
+    <!-- Toastr -->
+    <script src="<?php echo base_url('assets/js/lib/toastr/toastr.min.js'); ?>"></script>
+    
+    <script type="text/javascript">
+        
+    <?php if($this->session->flashdata('success')){ ?>
 
+        toastr.success("<?php echo $this->session->flashdata('success'); ?>",'Success',{
+            timeOut: 8000,
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut",
+            "tapToDismiss": false
+
+        });
+
+        <?php }elseif($this->session->flashdata('error')){ ?>
+
+            toastr.error("<?php echo $this->session->flashdata('error'); ?>",'Error',{
+                "positionClass": "toast-top-right",
+                timeOut: 8000,
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": true,
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut",
+                "tapToDismiss": false
+
+            });
+            
+            <?php } ?>
+        </script>
 </body>
 
 </html>

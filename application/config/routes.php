@@ -95,7 +95,10 @@ $route['Admin/User/(:any)/(:any)/(:any)'] = 'Admin/C_User/$1/$2/$3';
 
 /* User Stuff */
 $route['About']= 'MainMenu/C_AboutUs';
+
 $route['Login']= 'MainMenu/C_Login';
+$route['Login/(:any)']= 'MainMenu/C_Login/$1';
+$route['Login/(:any)/(:any)']= 'MainMenu/C_Login/$1/$2';
 
 $route['Landing']= 'C_Landing';
 

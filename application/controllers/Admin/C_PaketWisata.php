@@ -31,8 +31,7 @@ class C_PaketWisata extends CI_Controller {
 
 	//PaketWisata Index
 	public function index(){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
+		$this->checkSession();
 		
 		$data['Menu'] = 'PaketWisata';
 		
@@ -69,8 +68,7 @@ class C_PaketWisata extends CI_Controller {
 
 	//Create  PaketWisata View
 	public function Create(){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
+		$this->checkSession();
 		
 		$data['Menu'] = 'Create PaketWisata';
 		$data['destinasi'] = $this->M_destinasi->selectAll();
@@ -84,8 +82,7 @@ class C_PaketWisata extends CI_Controller {
 
 	//Edit  PaketWisata View
 	public function Edit($id){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
+		$this->checkSession();
 		
 		/* Decrypt ID */			
 		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
@@ -121,8 +118,8 @@ class C_PaketWisata extends CI_Controller {
 
 	//  PaketWisata View
 	public function Detail($id){
-		// $this->checkSession();
-		// $user_id = $this->session->userid;
+		$this->checkSession();
+		
 		
 		/* Decrypt ID */			
 		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
@@ -470,10 +467,8 @@ class C_PaketWisata extends CI_Controller {
 
 
 	public function checkSession(){
-		if($this->session->is_logged){
-			
-		}else{
-			redirect('');
+		if(!$this->session->userdata('id_user')){
+			redirect('Login');
 		}
 	}
 }
