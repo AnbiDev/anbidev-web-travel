@@ -91,6 +91,11 @@ $route['Admin/User/(:any)'] = 'Admin/C_User/$1';
 $route['Admin/User/(:any)/(:any)'] = 'Admin/C_User/$1/$2';
 $route['Admin/User/(:any)/(:any)/(:any)'] = 'Admin/C_User/$1/$2/$3';
 
+$route['Admin/Setting'] = 'Admin/C_Setting';
+$route['Admin/Setting/(:any)'] = 'Admin/C_Setting/$1';
+$route['Admin/Setting/(:any)/(:any)'] = 'Admin/C_Setting/$1/$2';
+$route['Admin/Setting/(:any)/(:any)/(:any)'] = 'Admin/C_Setting/$1/$2/$3';
+
 
 
 /* User Stuff */
