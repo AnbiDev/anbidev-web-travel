@@ -101,4 +101,4 @@ $route['Login/(:any)']= 'MainMenu/C_Login/$1';
 $route['Login/(:any)/(:any)']= 'MainMenu/C_Login/$1/$2';
 
 $route['Landing']= 'C_Landing';
-
+$route['Gallery']= 'C_Gallery';

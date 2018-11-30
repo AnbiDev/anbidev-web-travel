@@ -1,0 +1,29 @@
+.gallery {
+	margin: 0 40px 10px 40px;
+}
+
+.header {
+	text-align: center;
+	padding: 32px;
+}
+
+.column {
+	float: left;
+	width: 50%;
+	padding: 10px;
+}
+
+.column img {
+	margin-top: 12px;
+	opacity: 0.9;
+}
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+img:hover {
+	opacity: 1;
+}

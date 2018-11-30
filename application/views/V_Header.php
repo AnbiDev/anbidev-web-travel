@@ -49,7 +49,8 @@
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/style-landing.css'); ?>">
 
-	
+    <!-- Gallery -->
+    <link href="<?php echo base_url('assets/css/gallery.css') ?>" rel="stylesheet">
 
 	<!-- Modernizr JS -->
 	<script src="<?php echo base_url('assets/js/modernizr-2.6.2.min.js'); ?>"></script>
