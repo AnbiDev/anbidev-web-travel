@@ -45,7 +45,51 @@ class C_Setting extends CI_Controller {
 	}
 
 	public function UpdateMain(){
-		
+		$nama = $this->input->post('nama');
+		$email = $this->input->post('email');
+		$no_telp = $this->input->post('no_telp');
+		$facebook = $this->input->post('facebook');
+		$twitter = $this->input->post('twitter');
+		$instagram = $this->input->post('instagram');
+		$youtube = $this->input->post('youtube');
+		$alamat = $this->input->post('alamat');
+		$short_description = $this->input->post('short_description');
+
+	
+
+		$config['upload_path'] 			= './assets/images/';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		$config['max_size']             = 1024;
+
+ 		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('file')){
+
+			$upload_data = $this->upload->data();
+			
+			$data = array(
+				'nama' => $nama,
+				'email' => $email,
+				'no_telp' => $no_telp,
+				'facebook_link' => $facebook,
+				'twitter_link' => $twitter,
+				'instagram_link' => $instagram,
+				'youtube_link' => $youtube,
+				'alamat' => $alamat
+				'icon' => $upload_data['filename'];
+			);			
+
+			if($this->M_setting->setMain($data)){
+				$this->session->set_flashdata('success','Setting Update');
+				redirect('Admin/Setting/Main');	
+			}else{
+				$this->session->set_flashdata('error','Setting Failed');
+				redirect('Admin/Setting/Main');
+			}
+		}else{
+			$this->session->set_flashdata('error',$this->upload->display_errors());
+			redirect('Admin/Setting/Main');
+		}
 	}
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= MAIN PAGE -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 

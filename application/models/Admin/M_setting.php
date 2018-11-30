@@ -1,5 +1,5 @@
 <?php
-class M_destinasi extends CI_Model {
+class M_setting extends CI_Model {
 
 	public function __construct()
 	{
@@ -10,58 +10,11 @@ class M_destinasi extends CI_Model {
 	}
 
 
-	/* -=-=-=-=-=-=-=-=-=-=-=-=-= INSERT SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
-	public function insert($data){
-		$this->db->insert('tbl_destinasi',$data);
-		return $this->db->insert_id();
-	}
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-= SET SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 
-	public function insertImage($data){
-		$this->db->insert('tbl_gambar',$data);
-	}
-
-	/* -=-=-=-=-=-=-=-=-=-=-=-=-= SELECT SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
-	
-	public function selectMain(){
-		$this->db->select('*');
-		$this->db->from("tbl_web_main");
-		$this->db->limit(1);
-		
-		$data = $this->db->get();
-
-		if($data->num_rows() > 0){
-			return $data->result_array();
-		}else{
-			return false;
-		}
-	}
-	
-
-
-	public function getDestinasi($data){
-		$data = $this->db->get_where('tbl_destinasi',$data);
-		if($data->num_rows() > 0){
-			return $data->result_array();
-		}else{
-			return false;
-		}
-	}
-
-
-	public function getImage($data){
-		$data = $this->db->get_where('tbl_gambar',$data);
-		if($data->num_rows() > 0){
-			return $data->result_array();
-		}else{
-			return false;
-		}
-	}
-
-	/* -=-=-=-=-=-=-=-=-=-=-=-=-= UPDATE SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
-	public function update($data,$id){
-		$this->db->where('id_destinasi',$id);
-		return $this->db->update('tbl_destinasi',$data);
-
+	public function setMain($data){
+		$this->db->where('id_web_main',1);
+		return $this->db->update('tbl_web_main',$data);
 	}
 
 
