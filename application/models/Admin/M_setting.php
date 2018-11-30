@@ -1,4 +1,6 @@
 <?php
+ defined('BASEPATH') OR exit('No direct script access allowed');
+
 class M_setting extends CI_Model {
 
 	public function __construct()
@@ -12,9 +14,23 @@ class M_setting extends CI_Model {
 
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-= SET SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 
+
 	public function setMain($data){
 		$this->db->where('id_web_main',1);
 		return $this->db->update('tbl_web_main',$data);
+	}
+
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-= SELECT SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+	public function selectMain(){
+		$this->db->select('*');
+		$this->db->from('tbl_web_main');
+		$data = $this->db->get();
+
+		if($data->num_rows() > 0){
+			return $data->result_array();
+		}else{
+			return false;
+		}
 	}
 
 

@@ -55,18 +55,50 @@ class C_Setting extends CI_Controller {
 		$alamat = $this->input->post('alamat');
 		$short_description = $this->input->post('short_description');
 
-	
+		$update = $this->input->post('update');
 
-		$config['upload_path'] 			= './assets/images/';
-		$config['allowed_types']        = 'gif|jpg|png|jpeg';
-		$config['max_size']             = 1024;
+		// echo "<pre>";
+		// print_r($_FILES);
+		// exit();
+		
 
- 		$this->load->library('upload', $config);
+		if(!empty($_FILES['icon']['name']) && isset($_FILES['icon']['name'])){
 
-		if ($this->upload->do_upload('file')){
+			$config['upload_path'] 			= './assets/images/';
+			$config['allowed_types']        = 'gif|jpg|png|jpeg';
+			$config['max_size']             = 2048;
 
-			$upload_data = $this->upload->data();
-			
+			$this->load->library('upload', $config);
+
+			if ($this->upload->do_upload('icon')){
+
+				$upload_data = $this->upload->data();
+
+				$data = array(
+					'nama' => $nama,
+					'email' => $email,
+					'no_telp' => $no_telp,
+					'facebook_link' => $facebook,
+					'twitter_link' => $twitter,
+					'instagram_link' => $instagram,
+					'youtube_link' => $youtube,
+					'alamat' => $alamat,
+					'short_description' => $short_description,
+					'logo' => $upload_data['file_name']
+				);			
+
+				if($this->M_setting->setMain($data)){
+					$this->session->set_flashdata('success','Setting Update');
+					redirect('Admin/Setting/Main');	
+				}else{
+					$this->session->set_flashdata('error','Setting Failed');
+					redirect('Admin/Setting/Main');
+				}
+			}else{
+				$this->session->set_flashdata('error',$this->upload->display_errors());
+				redirect('Admin/Setting/Main');	
+			}
+		}else{
 			$data = array(
 				'nama' => $nama,
 				'email' => $email,
@@ -75,8 +107,8 @@ class C_Setting extends CI_Controller {
 				'twitter_link' => $twitter,
 				'instagram_link' => $instagram,
 				'youtube_link' => $youtube,
-				'alamat' => $alamat
-				'icon' => $upload_data['filename'];
+				'alamat' => $alamat,
+				'short_description' => $short_description
 			);			
 
 			if($this->M_setting->setMain($data)){
@@ -86,10 +118,9 @@ class C_Setting extends CI_Controller {
 				$this->session->set_flashdata('error','Setting Failed');
 				redirect('Admin/Setting/Main');
 			}
-		}else{
-			$this->session->set_flashdata('error',$this->upload->display_errors());
-			redirect('Admin/Setting/Main');
 		}
+
+		
 	}
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= MAIN PAGE -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 
@@ -142,9 +173,9 @@ class C_Setting extends CI_Controller {
 		$plaintext_string = $this->encrypt->decode($plaintext_string);
 
 		$image = array(
-					'id' => $plaintext_string,
-					'status' => 'setting'
-				);
+			'id' => $plaintext_string,
+			'status' => 'setting'
+		);
 		$where = array('id_setting' => $plaintext_string);
 
 		$data['Menu'] = 'Detail';
@@ -323,7 +354,7 @@ class C_Setting extends CI_Controller {
 			
 		}
 
-			
+
 		$data = array(
 			'id_setting' => $plaintext_string
 		);
