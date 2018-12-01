@@ -30,7 +30,7 @@ class C_Setting extends CI_Controller {
 	public function Main(){
 		$this->checkSession();
 		
-		$data['Menu'] = 'Setting';
+		$data['Menu'] = 'Main Setting';
 		$data['data'] = $this->M_setting->selectMain();
 
 		// echo "<pre>";
@@ -56,11 +56,6 @@ class C_Setting extends CI_Controller {
 		$short_description = $this->input->post('short_description');
 
 		$update = $this->input->post('update');
-
-		// echo "<pre>";
-		// print_r($_FILES);
-		// exit();
-		
 
 		if(!empty($_FILES['icon']['name']) && isset($_FILES['icon']['name'])){
 
@@ -122,95 +117,15 @@ class C_Setting extends CI_Controller {
 
 		
 	}
-	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= MAIN PAGE -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
+	
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= ABOUT PAGE -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 
-
-	//Create  Setting View
-	public function Create(){
+	//Setting Index
+	public function About(){
 		$this->checkSession();
 		
-		$data['Menu'] = 'Create Setting';
-		
-		$this->load->view('Admin/V_Header',$data);
-		$this->load->view('Admin/V_Sidebar',$data);
-		$this->load->view('Admin/Setting/V_Create',$data);
-		$this->load->view('Admin/V_Footer',$data);
-		
-	}
-
-	//Edit  Setting View
-	public function Edit($id){
-		$this->checkSession();
-		
-		/* Decrypt ID */			
-		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
-		$plaintext_string = $this->encrypt->decode($plaintext_string);
-
-		$data['Menu'] = 'Edit Setting';
-		$data['id']  = $plaintext_string;
-
-		$id = array(
-			'id_setting' => $plaintext_string
-		);
-
-		$data['data'] = $this->M_setting->getSetting($id);
-
-
-		$this->load->view('Admin/V_Header',$data);
-		$this->load->view('Admin/V_Sidebar',$data);
-		$this->load->view('Admin/Setting/V_Edit',$data);
-		$this->load->view('Admin/V_Footer',$data);
-		
-	}
-
-
-	//  Setting View
-	public function Detail($id){
-		$this->checkSession();
-		
-		/* Decrypt ID */			
-		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
-		$plaintext_string = $this->encrypt->decode($plaintext_string);
-
-		$image = array(
-			'id' => $plaintext_string,
-			'status' => 'setting'
-		);
-		$where = array('id_setting' => $plaintext_string);
-
-		$data['Menu'] = 'Detail';
-		$data['image'] = $this->M_setting->getImage($image);
-		$data['id'] = $plaintext_string;
-		$data['data'] = $this->M_setting->getSetting($where);
-
-		$this->load->view('Admin/V_Header',$data);
-		$this->load->view('Admin/V_Sidebar',$data);
-		$this->load->view('Admin/Setting/V_Detail',$data);
-		$this->load->view('Admin/V_Footer',$data);
-		
-	}
-
-	//Upload Image View
-	public function Image($id,$edit = false){
-		
-		$data['Menu'] = 'Image';
-
-		/* Decrypt ID */			
-		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
-		$plaintext_string = $this->encrypt->decode($plaintext_string);
-
-		$data['id_setting'] = $plaintext_string;
-		
-		$where = array(
-			'id' => $plaintext_string,
-			'status' => 'setting'	
-		);
-		$data['message'] = 'ditambahkan';
-		$data['image'] = '';
-		if($edit){
-			$data['image'] = $this->M_setting->getImage($where);
-			$data['message'] = 'diupdate';
-		}
+		$data['Menu'] = 'About Setting';
+		$data['data'] = $this->M_setting->selectAbout();
 
 		// echo "<pre>";
 		// print_r($data);
@@ -218,11 +133,87 @@ class C_Setting extends CI_Controller {
 
 		$this->load->view('Admin/V_Header',$data);
 		$this->load->view('Admin/V_Sidebar',$data);
-		$this->load->view('Admin/Setting/V_Image',$data);
+		$this->load->view('Admin/Setting/V_About',$data);
 		$this->load->view('Admin/V_Footer',$data);
 		
 	}
 
+	// public function UpdateAbout(){
+	// 	$nama = $this->input->post('nama');
+	// 	$email = $this->input->post('email');
+	// 	$no_telp = $this->input->post('no_telp');
+	// 	$facebook = $this->input->post('facebook');
+	// 	$twitter = $this->input->post('twitter');
+	// 	$instagram = $this->input->post('instagram');
+	// 	$youtube = $this->input->post('youtube');
+	// 	$alamat = $this->input->post('alamat');
+	// 	$short_description = $this->input->post('short_description');
+
+	// 	$update = $this->input->post('update');
+
+	// 	if(!empty($_FILES['icon']['name']) && isset($_FILES['icon']['name'])){
+
+	// 		$config['upload_path'] 			= './assets/images/';
+	// 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+	// 		$config['max_size']             = 2048;
+
+	// 		$this->load->library('upload', $config);
+
+	// 		if ($this->upload->do_upload('icon')){
+
+	// 			$upload_data = $this->upload->data();
+
+	// 			$data = array(
+	// 				'nama' => $nama,
+	// 				'email' => $email,
+	// 				'no_telp' => $no_telp,
+	// 				'facebook_link' => $facebook,
+	// 				'twitter_link' => $twitter,
+	// 				'instagram_link' => $instagram,
+	// 				'youtube_link' => $youtube,
+	// 				'alamat' => $alamat,
+	// 				'short_description' => $short_description,
+	// 				'logo' => $upload_data['file_name']
+	// 			);			
+
+	// 			if($this->M_setting->setMain($data)){
+	// 				$this->session->set_flashdata('success','Setting Update');
+	// 				redirect('Admin/Setting/Main');	
+	// 			}else{
+	// 				$this->session->set_flashdata('error','Setting Failed');
+	// 				redirect('Admin/Setting/Main');
+	// 			}
+	// 		}else{
+	// 			$this->session->set_flashdata('error',$this->upload->display_errors());
+	// 			redirect('Admin/Setting/Main');	
+	// 		}
+	// 	}else{
+	// 		$data = array(
+	// 			'nama' => $nama,
+	// 			'email' => $email,
+	// 			'no_telp' => $no_telp,
+	// 			'facebook_link' => $facebook,
+	// 			'twitter_link' => $twitter,
+	// 			'instagram_link' => $instagram,
+	// 			'youtube_link' => $youtube,
+	// 			'alamat' => $alamat,
+	// 			'short_description' => $short_description
+	// 		);			
+
+	// 		if($this->M_setting->setMain($data)){
+	// 			$this->session->set_flashdata('success','Setting Update');
+	// 			redirect('Admin/Setting/Main');	
+	// 		}else{
+	// 			$this->session->set_flashdata('error','Setting Failed');
+	// 			redirect('Admin/Setting/Main');
+	// 		}
+	// 	}
+
+	public function UpdateDescTitle(){
+			
+	}
+		
+	// }
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= INSERT SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 	
 	// Insert Setting

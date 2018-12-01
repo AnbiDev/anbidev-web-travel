@@ -35,6 +35,9 @@
     <!-- Pace -->
     <!-- <link href="<?php echo base_url('assets/css/lib/preloader/pace.css'); ?>" rel="stylesheet"> -->
 
+    <!-- Flaticons  -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/fonts/flaticon/font/flaticon.css'); ?>">
+    
     <!-- Custom CSS -->
     <!-- <link href="<?php echo base_url('assets/css/lib/calendar2/semantic.ui.min.css'); ?>" rel="stylesheet"> -->
     <!-- <link href="<?php echo base_url('assets/css/lib/calendar2/pignose.calendar.min.css'); ?>" rel="stylesheet"> -->

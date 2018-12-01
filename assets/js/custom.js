@@ -98,6 +98,7 @@ foto_upload.on("removedfile",function(a){
 
 
 
+// Galery Add
 function addTitleGallery(th,token = false){
 
   if(!token){
@@ -136,6 +137,7 @@ function addTitleGallery(th,token = false){
 
 }
 
+// Edit Title Gallery
 function editTitle(th,id){
   $.ajax({
     url:base_url+"/Admin/Gallery/getTitle",
@@ -159,6 +161,8 @@ function editTitle(th,id){
  });
 }
 
+
+// Remove File Global
 function removeFile(token,link,th){
   swal({
     title: "Are you sure to delete ?",
@@ -203,7 +207,7 @@ function removeFile(token,link,th){
   
 }
 
-
+// Delete Data GLobal
 function deleteThis($link){
 	swal({
     title: "Are you sure to delete ?",
@@ -227,6 +231,9 @@ function deleteThis($link){
   });
 }
 
+
+
+// Toggle Fasilitas
 function fasilitasToggle(th){
   $.ajax({
     url:base_url+"/Admin/PaketWisata/setFasilitas",
@@ -262,6 +269,8 @@ function fasilitasToggle(th){
  });
 }
 
+
+// Toggle Itinetary
 function itinetaryToggle(th){
   $.ajax({
     url:base_url+"/Admin/PaketWisata/setItinetary",
@@ -296,6 +305,8 @@ function itinetaryToggle(th){
  });
 }
 
+
+// Add Harga In Paket Wisata
 function addHargaDetail(th){
   $.ajax({
     url:base_url+"/Admin/PaketWisata/setHargaDetail",
@@ -336,6 +347,8 @@ function addHargaDetail(th){
 });
 }
 
+
+// Remove Harga in Paket Wisata
 function removeHargaDetail(th){
   var id_harga_detail = $(th).attr('data-harga');
   var id_paket_wisata = $(th).attr('data-wisata');
@@ -381,6 +394,61 @@ function removeHargaDetail(th){
   
 
 }
+
+/* -=-=-=-=-=-=-=-=-=-=-=---------------=- EDITABLE TEXT FUNCTION -=-=-------------------=-=-=------------=-=-=-=-=-- */
+
+function editTextJudul(th,id){
+    var $element = $(th);
+
+    var $input = $('<input />').val($element.text());
+    $element.replaceWith($input);
+
+    var save = function(){
+      
+      var $p = $('<h3 onclick="editTextJudul(this)" />').text($input.val());
+      $input.replaceWith($p);
+
+      $.ajax({
+        url:base_url + "/Admin/Setting/UpdateDescTitle",
+        type:'POST',
+        dataType:'json',
+        data:{judul:$input.val(),id_:id_paket_wisata},
+        beforeSend:function(){
+         $(".preloader").fadeIn();  
+       },
+       success:function(result){
+        $(".preloader").fadeOut();
+        toastr.success('Paket Harga Berhasil Dihapus!','Success');
+        swal("Deleted !!", "Paket Harga Berhasil Dihapus!", "success");
+        $(th).closest('tr').remove();
+      },
+      error:function(error){
+        $(".preloader").fadeOut();
+        toastr.error(error,'Error');
+      }
+    });
+
+    };
+
+    $input.one('blur', save).focus();
+
+}
+
+function editText(th,id){
+    var $element = $(th);
+
+    var $input = $('<textarea rows=8 height=200px />').val($element.text());
+    $element.replaceWith($input);
+
+    var save = function(){
+      var $p = $('<p onclick="editText(this)" />').text($input.val());
+      $input.replaceWith($p);
+    };
+
+    $input.one('blur', save).focus();
+
+}
+
 
 /* -=-=-=-=-=-=-=-=-=-=-=---------------=- READ IMAGE FUNCTION -=-=-------------------=-=-=------------=-=-=-=-=-- */
 function readURL(input) {

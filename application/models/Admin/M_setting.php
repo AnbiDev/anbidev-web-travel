@@ -33,6 +33,18 @@ class M_setting extends CI_Model {
 		}
 	}
 
+	public function selectAbout(){
+		$this->db->select('*');
+		$this->db->from('tbl_web_about');
+		$data = $this->db->get();
+
+		if($data->num_rows() > 0){
+			return $data->result_array();
+		}else{
+			return false;
+		}
+	}
+
 
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-= DELETE SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 	public function removeImage($data){

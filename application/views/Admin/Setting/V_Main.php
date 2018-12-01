@@ -20,7 +20,7 @@
                 <div class="col-lg-12">
                     <div class="card card-outline-primary">
                         <div class="card-header">
-                            <h4 class="m-b-0 text-white"><span class="fa fa-gear"></span>&nbsp;Main Setting</h4>
+                            <h4 class="m-b-0 text-white"><span class="fa fa-gears"></span>&nbsp;Main Setting</h4>
                         </div>
                         <div class="card-body">
                             <form enctype="multipart/form-data" action="<?php echo base_url('Admin/Setting/UpdateMain'); ?>" method="POST">
