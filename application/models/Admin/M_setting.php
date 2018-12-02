@@ -20,6 +20,12 @@ class M_setting extends CI_Model {
 		return $this->db->update('tbl_web_main',$data);
 	}
 
+	public function setDesc($data){
+		$this->db->where('id_web_desc',$data['id_web_desc']);
+		return $this->db->update('tbl_web_desc',$data);
+	}
+
+
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-= SELECT SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 	public function selectMain(){
 		$this->db->select('*');
@@ -36,6 +42,18 @@ class M_setting extends CI_Model {
 	public function selectAbout(){
 		$this->db->select('*');
 		$this->db->from('tbl_web_about');
+		$data = $this->db->get();
+
+		if($data->num_rows() > 0){
+			return $data->result_array();
+		}else{
+			return false;
+		}
+	}
+
+	public function selectDesc(){
+		$this->db->select('*');
+		$this->db->from('tbl_web_desc');
 		$data = $this->db->get();
 
 		if($data->num_rows() > 0){

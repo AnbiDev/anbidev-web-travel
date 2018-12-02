@@ -15,13 +15,6 @@ class C_Setting extends CI_Controller {
 
 		$this->load->model('Admin/M_setting');
 
-		// if($this->session->userdata('logged_in')!=TRUE) {
-		// 	$this->load->helper('url');
-		// 	$this->session->set_userdata('last_page', current_url());
-		// 	redirect('index');
-		// 	$this->session->set_userdata('Responsbility', 'some_value');
-		// }
-
 	}
 	
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= MAIN PAGE -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
@@ -126,7 +119,7 @@ class C_Setting extends CI_Controller {
 		
 		$data['Menu'] = 'About Setting';
 		$data['data'] = $this->M_setting->selectAbout();
-
+		$data['desc'] = $this->M_setting->selectDesc();
 		// echo "<pre>";
 		// print_r($data);
 		// exit();
@@ -210,7 +203,52 @@ class C_Setting extends CI_Controller {
 	// 	}
 
 	public function UpdateDescTitle(){
-			
+		$judul = $this->input->post('judul');
+		$id_web_desc = $this->input->post('id_web_desc');
+
+		$data = array(
+			'judul' => $judul,
+			'id_web_desc' => $id_web_desc,
+			'id_web_main' => 1
+		);
+
+		$this->M_setting->setDesc($data);
+
+		echo json_encode($data);
+
+	}
+
+	public function UpdateDescText(){
+		$short_desc = $this->input->post('short_desc');
+		$id_web_desc = $this->input->post('id_web_desc');
+
+		$data = array(
+			'short_desc' => $short_desc,
+			'id_web_desc' => $id_web_desc,
+			'id_web_main' => 1
+		);
+
+		$this->M_setting->setDesc($data);
+		
+		echo json_encode($data);
+
+	}
+
+	public function UpdateDescLogo(){
+		
+		$logo_desc = $this->input->post('logo_desc');
+		$id_web_desc = $this->input->post('id_web_desc');
+
+		$data = array(
+			'logo_desc' => $logo_desc,
+			'id_web_desc' => $id_web_desc,
+			'id_web_main' => 1
+		);
+
+		$this->M_setting->setDesc($data);
+		
+		echo json_encode($data);
+
 	}
 		
 	// }

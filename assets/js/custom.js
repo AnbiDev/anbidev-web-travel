@@ -399,34 +399,82 @@ function removeHargaDetail(th){
 
 function editTextJudul(th,id){
     var $element = $(th);
+    var $text1 = $element.text();
 
     var $input = $('<input />').val($element.text());
     $element.replaceWith($input);
 
     var save = function(){
-      
-      var $p = $('<h3 onclick="editTextJudul(this)" />').text($input.val());
+
+      var $text2 = $input.val();
+      var $p = $('<h3 onclick="editTextJudul(this,'+id+')" />').text($input.val());
       $input.replaceWith($p);
 
-      $.ajax({
-        url:base_url + "/Admin/Setting/UpdateDescTitle",
-        type:'POST',
-        dataType:'json',
-        data:{judul:$input.val(),id_:id_paket_wisata},
-        beforeSend:function(){
-         $(".preloader").fadeIn();  
-       },
-       success:function(result){
-        $(".preloader").fadeOut();
-        toastr.success('Paket Harga Berhasil Dihapus!','Success');
-        swal("Deleted !!", "Paket Harga Berhasil Dihapus!", "success");
-        $(th).closest('tr').remove();
-      },
-      error:function(error){
-        $(".preloader").fadeOut();
-        toastr.error(error,'Error');
+      if($text1 != $text2){
+        $.ajax({
+            url:base_url + "/Admin/Setting/UpdateDescTitle",
+            type:'POST',
+            dataType:'json',
+            data:{judul:$input.val(),id_web_desc:id},
+            beforeSend:function(){
+             $(".preloader").fadeIn();  
+           },
+           success:function(result){
+            $(".preloader").fadeOut();
+            toastr.success('Judul berhasil diupdate!','Success');
+            
+
+          },
+          error:function(error){
+            $(".preloader").fadeOut();
+            toastr.error(error,'Error');
+          }
+        });
       }
-    });
+
+
+    };
+
+ 
+    $input.one('blur', save).focus();
+
+}
+
+function editText(th,id){
+
+    var $element = $(th);
+    var $text1 = $element.text();
+
+    var $input = $('<textarea rows=8 height=200px />').val($element.text());
+    $element.replaceWith($input);
+
+    var save = function(){
+      var $p = $('<p onclick="editText(this,'+id+')" />').text($input.val());  
+      var $text2 = $input.val();
+      $input.replaceWith($p);
+
+       if($text1 != $text2){
+        $.ajax({
+            url:base_url + "/Admin/Setting/UpdateDescText",
+            type:'POST',
+            dataType:'json',
+            data:{short_desc:$input.val(),id_web_desc:id},
+            beforeSend:function(){
+             $(".preloader").fadeIn();  
+           },
+           success:function(result){
+            $(".preloader").fadeOut();
+            toastr.success('Judul berhasil diupdate!','Success');
+           
+
+          },
+          error:function(error){
+            $(".preloader").fadeOut();
+            toastr.error(error,'Error');
+          }
+        });
+      }
+
 
     };
 
@@ -434,15 +482,52 @@ function editTextJudul(th,id){
 
 }
 
-function editText(th,id){
-    var $element = $(th);
+function editIcon(th,id){
 
-    var $input = $('<textarea rows=8 height=200px />').val($element.text());
+    var $myIcon = $(th).closest('div').find('.iconku').find('i');
+
+    var $element = $(th);
+    var $text1 = $(th).closest('div').find('.iconku').find('i').attr('class');
+
+
+    var $input = $('<input/>').val($text1);
     $element.replaceWith($input);
+    
+    console.log($text1);
 
     var save = function(){
-      var $p = $('<p onclick="editText(this)" />').text($input.val());
+      var $p = $('<small onclick="editIcon(this,'+id+')" />').text('change icon');
+      
+      var $text2 = $input.val();
+
       $input.replaceWith($p);
+    
+      
+       if($text1 != $text2){
+        $.ajax({
+            url:base_url + "/Admin/Setting/UpdateDescLogo",
+            type:'POST',
+            dataType:'json',
+            data:{logo_desc:$input.val(),id_web_desc:id},
+            beforeSend:function(){
+             $(".preloader").fadeIn();  
+           },
+           success:function(result){
+            $(".preloader").fadeOut();
+            toastr.success('Judul berhasil diupdate!','Success');
+            $myIcon.attr('class',$text2);
+          },
+          error:function(error){
+            $(".preloader").fadeOut();
+            toastr.error(error,'Error');
+          }
+        });
+      }
+
+      
+      
+
+
     };
 
     $input.one('blur', save).focus();

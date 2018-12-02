@@ -75,51 +75,27 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <?php foreach ($desc as  $value): ?>
+                                    
+                                
                                 <div class="col-md-3  text-center">
                                     <div class="services">
                                         <span class="iconku">
-                                            <i  class="flaticon-reception"></i>
+                                            <i  class="<?php echo $value['logo_desc']; ?>"></i>
                                         </span>
-                                        <small >change icon</small>
+            <small onclick="editIcon(this,<?php echo $value['id_web_desc']; ?>)">change icon</small>
+            <h3 onclick="editTextJudul(this,<?php echo $value['id_web_desc']; ?>)"><?php echo $value['judul']; ?></h3>
+            <p onclick="editText(this,<?php echo $value['id_web_desc']; ?>)">
+                                            <?php echo $value['short_desc']; ?>
+                                        </p>
+                                    </div>
+                                </div>
 
-                                        <h3 onclick="editTextJudul(this,1)">24/7 Front Desk</h3>
-                                        <p onclick="editText(this,1)">Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3  text-center">
-                                    <div class="services">
-                                        <span class="iconku">
-                                            <i class="flaticon-herbs"></i>
-                                        </span>
-                                        <small >change icon</small>
-                                        <h3 onclick="editTextJudul(this,2)" >Spa Suites</h3>
-                                        <p onclick="editText(this,2)">Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <div class="services">
-                                        <span class="iconku">
-                                            <i class="flaticon-car"></i>
-                                        </span>
-                                        <small >change icon</small>
-                                        <h3 onclick="editTextJudul(this,3)">Transfer Services</h3>
-                                        <p onclick="editText(this,3)">Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <div class="services">
-                                        <span class="iconku">
-                                            <i class="flaticon-cheers"></i>
-                                        </span>
-                                        <small  >change icon</small>
-                                        <h3 onclick="editTextJudul(this,4)">Restaurant &amp; Bar</h3>
-                                        <p onclick="editText(this,4)" >Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-                                    </div>
-                                </div>
-                            </div>
+                                <?php endforeach ?>
+
                             <div class="row">
                                 <div class="col-md-12 text-center ">
-                                <small><a href="https://www.flaticon.com/" style="color:#2869ff;">see list icon in here</a></p></small>
+                                <small><a href="https://fontawesome.com/" style="color:#2869ff;">see list icon in here</a></p></small>
                                 </div>
                             </div>
                         </div>

@@ -128,42 +128,22 @@
 		<div id="colorlib-services">
 			<div class="container">
 				<div class="row">
+
+					<?php foreach ($desc as $value): ?>
+						
 					<div class="col-md-3 animate-box text-center">
 						<div class="services">
 							<span class="icon">
-								<i class="flaticon-reception"></i>
+								<i class="<?php echo $value['logo_desc']; ?>"></i>
 							</span>
-							<h3>24/7 Front Desk</h3>
-							<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
+							<h3><?php echo $value['judul']; ?></h3>
+							<p>
+								<?php echo $value['short_desc']; ?>
+							</p>
 						</div>
 					</div>
-					<div class="col-md-3 animate-box text-center">
-						<div class="services">
-							<span class="icon">
-								<i class="flaticon-herbs"></i>
-							</span>
-							<h3>Spa Suites</h3>
-							<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-						</div>
-					</div>
-					<div class="col-md-3 animate-box text-center">
-						<div class="services">
-							<span class="icon">
-								<i class="flaticon-car"></i>
-							</span>
-							<h3>Transfer Services</h3>
-							<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-						</div>
-					</div>
-					<div class="col-md-3 animate-box text-center">
-						<div class="services">
-							<span class="icon">
-								<i class="flaticon-cheers"></i>
-							</span>
-							<h3>Restaurant &amp; Bar</h3>
-							<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-						</div>
-					</div>
+
+					<?php endforeach ?>
 				</div>
 			</div>
 		</div>
