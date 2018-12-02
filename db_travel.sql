@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Nov 28, 2018 at 08:51 AM
--- Server version: 10.1.32-MariaDB
--- PHP Version: 5.6.36
+-- Host: 127.0.0.1
+-- Generation Time: 02 Des 2018 pada 16.17
+-- Versi Server: 10.1.9-MariaDB
+-- PHP Version: 5.5.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -25,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_contact_us`
+-- Struktur dari tabel `tbl_contact_us`
 --
 
 CREATE TABLE `tbl_contact_us` (
@@ -36,7 +34,7 @@ CREATE TABLE `tbl_contact_us` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_contact_us`
+-- Dumping data untuk tabel `tbl_contact_us`
 --
 
 INSERT INTO `tbl_contact_us` (`id_contact_us`, `nama`, `email`, `pesan`) VALUES
@@ -46,7 +44,7 @@ INSERT INTO `tbl_contact_us` (`id_contact_us`, `nama`, `email`, `pesan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_destinasi`
+-- Struktur dari tabel `tbl_destinasi`
 --
 
 CREATE TABLE `tbl_destinasi` (
@@ -56,7 +54,7 @@ CREATE TABLE `tbl_destinasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_destinasi`
+-- Dumping data untuk tabel `tbl_destinasi`
 --
 
 INSERT INTO `tbl_destinasi` (`id_destinasi`, `nama_destinasi`, `deskripsi`) VALUES
@@ -69,7 +67,7 @@ INSERT INTO `tbl_destinasi` (`id_destinasi`, `nama_destinasi`, `deskripsi`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_fasilitas`
+-- Struktur dari tabel `tbl_fasilitas`
 --
 
 CREATE TABLE `tbl_fasilitas` (
@@ -81,7 +79,7 @@ CREATE TABLE `tbl_fasilitas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_fasilitas`
+-- Dumping data untuk tabel `tbl_fasilitas`
 --
 
 INSERT INTO `tbl_fasilitas` (`id_fasilitas`, `id_paket_wisata`, `lokasi_kedatangan`, `lokasi_keberangkatan`, `deskripsi`) VALUES
@@ -92,7 +90,7 @@ INSERT INTO `tbl_fasilitas` (`id_fasilitas`, `id_paket_wisata`, `lokasi_kedatang
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_gallery`
+-- Struktur dari tabel `tbl_gallery`
 --
 
 CREATE TABLE `tbl_gallery` (
@@ -101,7 +99,7 @@ CREATE TABLE `tbl_gallery` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_gallery`
+-- Dumping data untuk tabel `tbl_gallery`
 --
 
 INSERT INTO `tbl_gallery` (`id_gallery`, `judul`) VALUES
@@ -115,7 +113,7 @@ INSERT INTO `tbl_gallery` (`id_gallery`, `judul`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_gambar`
+-- Struktur dari tabel `tbl_gambar`
 --
 
 CREATE TABLE `tbl_gambar` (
@@ -128,7 +126,7 @@ CREATE TABLE `tbl_gambar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_gambar`
+-- Dumping data untuk tabel `tbl_gambar`
 --
 
 INSERT INTO `tbl_gambar` (`id_gambar`, `file_name`, `location`, `status`, `id`, `token`) VALUES
@@ -181,7 +179,7 @@ INSERT INTO `tbl_gambar` (`id_gambar`, `file_name`, `location`, `status`, `id`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_harga_detail`
+-- Struktur dari tabel `tbl_harga_detail`
 --
 
 CREATE TABLE `tbl_harga_detail` (
@@ -194,7 +192,7 @@ CREATE TABLE `tbl_harga_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_harga_detail`
+-- Dumping data untuk tabel `tbl_harga_detail`
 --
 
 INSERT INTO `tbl_harga_detail` (`id_harga_detail`, `id_paket_wisata`, `nama_paket_harga`, `jumlah_orang`, `harga`, `deskripsi`) VALUES
@@ -205,7 +203,7 @@ INSERT INTO `tbl_harga_detail` (`id_harga_detail`, `id_paket_wisata`, `nama_pake
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_itinetary`
+-- Struktur dari tabel `tbl_itinetary`
 --
 
 CREATE TABLE `tbl_itinetary` (
@@ -215,7 +213,7 @@ CREATE TABLE `tbl_itinetary` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_itinetary`
+-- Dumping data untuk tabel `tbl_itinetary`
 --
 
 INSERT INTO `tbl_itinetary` (`id_itinetary`, `id_paket_wisata`, `deskripsi`) VALUES
@@ -225,7 +223,7 @@ INSERT INTO `tbl_itinetary` (`id_itinetary`, `id_paket_wisata`, `deskripsi`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_link_destinasi_paket_wisata`
+-- Struktur dari tabel `tbl_link_destinasi_paket_wisata`
 --
 
 CREATE TABLE `tbl_link_destinasi_paket_wisata` (
@@ -235,7 +233,7 @@ CREATE TABLE `tbl_link_destinasi_paket_wisata` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_link_destinasi_paket_wisata`
+-- Dumping data untuk tabel `tbl_link_destinasi_paket_wisata`
 --
 
 INSERT INTO `tbl_link_destinasi_paket_wisata` (`id_link_destinasi_paket_wisata`, `id_paket_wisata`, `id_destinasi`) VALUES
@@ -252,7 +250,7 @@ INSERT INTO `tbl_link_destinasi_paket_wisata` (`id_link_destinasi_paket_wisata`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_paket_wisata`
+-- Struktur dari tabel `tbl_paket_wisata`
 --
 
 CREATE TABLE `tbl_paket_wisata` (
@@ -263,7 +261,7 @@ CREATE TABLE `tbl_paket_wisata` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_paket_wisata`
+-- Dumping data untuk tabel `tbl_paket_wisata`
 --
 
 INSERT INTO `tbl_paket_wisata` (`id_paket_wisata`, `nama_paket_wisata`, `deskripsi`, `harga`) VALUES
@@ -275,7 +273,7 @@ INSERT INTO `tbl_paket_wisata` (`id_paket_wisata`, `nama_paket_wisata`, `deskrip
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_pemesanan`
+-- Struktur dari tabel `tbl_pemesanan`
 --
 
 CREATE TABLE `tbl_pemesanan` (
@@ -290,7 +288,7 @@ CREATE TABLE `tbl_pemesanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_pemesanan`
+-- Dumping data untuk tabel `tbl_pemesanan`
 --
 
 INSERT INTO `tbl_pemesanan` (`id_pemesanan`, `id_paket_wisata`, `nama`, `email`, `alamat`, `no_telepon`, `tanggal`, `pesan`) VALUES
@@ -301,7 +299,7 @@ INSERT INTO `tbl_pemesanan` (`id_pemesanan`, `id_paket_wisata`, `nama`, `email`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user`
+-- Struktur dari tabel `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -312,7 +310,7 @@ CREATE TABLE `tbl_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_user`
+-- Dumping data untuk tabel `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`id_user`, `username`, `password`, `level`) VALUES
@@ -323,7 +321,7 @@ INSERT INTO `tbl_user` (`id_user`, `username`, `password`, `level`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_web_about`
+-- Struktur dari tabel `tbl_web_about`
 --
 
 CREATE TABLE `tbl_web_about` (
@@ -335,7 +333,7 @@ CREATE TABLE `tbl_web_about` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_web_desc`
+-- Struktur dari tabel `tbl_web_desc`
 --
 
 CREATE TABLE `tbl_web_desc` (
@@ -346,10 +344,20 @@ CREATE TABLE `tbl_web_desc` (
   `short_desc` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `tbl_web_desc`
+--
+
+INSERT INTO `tbl_web_desc` (`id_web_desc`, `id_web_main`, `judul`, `logo_desc`, `short_desc`) VALUES
+(1, 1, 'Adexe D Amours', 'fa fa-money', 'Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies. Dont drop your bomb.'),
+(2, 1, 'Ini Tu Pesawat', 'fa fa-plane', 'Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies,'),
+(3, 1, 'Kita Berjalan Pakai Mobil', 'fa fa-car', 'Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flow fuck the sampane'),
+(4, 1, 'Apaan sih bangsad', 'fa fa-glass', 'Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies, so, are you can hangout.');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_web_main`
+-- Struktur dari tabel `tbl_web_main`
 --
 
 CREATE TABLE `tbl_web_main` (
@@ -367,16 +375,16 @@ CREATE TABLE `tbl_web_main` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_web_main`
+-- Dumping data untuk tabel `tbl_web_main`
 --
 
 INSERT INTO `tbl_web_main` (`id_web_main`, `nama`, `logo`, `alamat`, `no_telp`, `facebook_link`, `twitter_link`, `instagram_link`, `youtube_link`, `email`, `short_description`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'Luxurius', '638253.png', 'Kita disini sudah cukup lama\r\ntempat tak tersentuh.\r\nkarena kami di ambarawa', '83838203528', 'www.facebook.com', 'www.twitter.com', 'instagram.com', 'youtube.com', 'alifianadexe@gmail.com', 'Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.<br>');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_web_slider`
+-- Struktur dari tabel `tbl_web_slider`
 --
 
 CREATE TABLE `tbl_web_slider` (
@@ -490,92 +498,76 @@ ALTER TABLE `tbl_web_slider`
 --
 ALTER TABLE `tbl_contact_us`
   MODIFY `id_contact_us` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `tbl_destinasi`
 --
 ALTER TABLE `tbl_destinasi`
   MODIFY `id_destinasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT for table `tbl_fasilitas`
 --
 ALTER TABLE `tbl_fasilitas`
   MODIFY `id_fasilitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
 --
 -- AUTO_INCREMENT for table `tbl_gallery`
 --
 ALTER TABLE `tbl_gallery`
   MODIFY `id_gallery` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
 --
 -- AUTO_INCREMENT for table `tbl_gambar`
 --
 ALTER TABLE `tbl_gambar`
   MODIFY `id_gambar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
-
 --
 -- AUTO_INCREMENT for table `tbl_harga_detail`
 --
 ALTER TABLE `tbl_harga_detail`
   MODIFY `id_harga_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `tbl_itinetary`
 --
 ALTER TABLE `tbl_itinetary`
   MODIFY `id_itinetary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tbl_link_destinasi_paket_wisata`
 --
 ALTER TABLE `tbl_link_destinasi_paket_wisata`
   MODIFY `id_link_destinasi_paket_wisata` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
 --
 -- AUTO_INCREMENT for table `tbl_paket_wisata`
 --
 ALTER TABLE `tbl_paket_wisata`
   MODIFY `id_paket_wisata` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT for table `tbl_pemesanan`
 --
 ALTER TABLE `tbl_pemesanan`
   MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT for table `tbl_web_about`
 --
 ALTER TABLE `tbl_web_about`
   MODIFY `id_web_main` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `tbl_web_desc`
 --
 ALTER TABLE `tbl_web_desc`
-  MODIFY `id_web_desc` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `id_web_desc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_web_main`
 --
 ALTER TABLE `tbl_web_main`
   MODIFY `id_web_main` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `tbl_web_slider`
 --
 ALTER TABLE `tbl_web_slider`
   MODIFY `id_web_slider` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
