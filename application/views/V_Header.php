@@ -49,7 +49,8 @@
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/style-landing.css'); ?>">
 
-	
+    <!-- Gallery -->
+    <link href="<?php echo base_url('assets/css/gallery.css') ?>" rel="stylesheet">
 
 	<!-- Modernizr JS -->
 	<script src="<?php echo base_url('assets/js/modernizr-2.6.2.min.js'); ?>"></script>
@@ -87,7 +88,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="#">Luxehotel</a></div>
+							<div id="colorlib-logo"><a href="<?php echo base_url('Landing') ?>">Luxehotel</a></div>
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
@@ -102,8 +103,8 @@
 									</ul>
 								</li>
 								<li><a href="#">Dining &amp; Bar</a></li>
-								<li><a href="#">Aminities</a></li>
-								<li><a href="#">Blog</a></li>
+								<li><a href="<?php echo base_url('Gallery') ?>">Galeri</a></li>
+								<li><a href="<?php echo base_url('Reservasi'); ?>">Reservasi</a></li>
 								<li><a href="#">About</a></li>
 								<li><a href="#">Contact</a></li>
 							</ul>
