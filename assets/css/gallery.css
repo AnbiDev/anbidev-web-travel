@@ -13,9 +13,13 @@
 	padding: 10px;
 }
 
-.column img {
+.gambar {
 	margin-top: 12px;
-	opacity: 0.9;
+	opacity: 0.2;
+}
+
+.gambar:hover {
+	opacity: 1;
 }
 
 .row:after {
@@ -24,6 +28,3 @@
 	clear: both;
 }
 
-img:hover {
-	opacity: 1;
-}
