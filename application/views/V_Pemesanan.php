@@ -3,7 +3,7 @@
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
 						<span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span>
-						<h2>Reservasi</h2>
+						<h2>Pemesanan</h2>
 						<p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 					</div>
 				</div>
@@ -61,7 +61,7 @@
 					<button type="submit" class="btn btn-success">Pesan</button>
 					<button type="button" class="btn btn-inverse" onclick="window.history.go(-1)">Cancel</button>
 				</div>
-
+				<input type="hidden" name="level" value="user">
 			</form>		
 		</div>
 </div>
