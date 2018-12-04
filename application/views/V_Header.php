@@ -53,7 +53,8 @@
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/style-landing.css'); ?>">
 
-	
+    <!-- Gallery -->
+    <link href="<?php echo base_url('assets/css/gallery.css') ?>" rel="stylesheet">
 
 	<!-- Modernizr JS -->
 	<script src="<?php echo base_url('assets/js/modernizr-2.6.2.min.js'); ?>"></script>
@@ -91,14 +92,23 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-2">
-	<div id="colorlib-logo"><a href="#"><?php echo isset($data[0]['nama']) ? $data[0]['nama'] :'Nandemonaiya'; ?></a></div>
+							<div id="colorlib-logo"><a href="<?php echo base_url('Landing') ?>">Luxehotel</a></div>
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
-								<li class="active"><a href="<?php echo base_url(); ?>">Home</a></li>
-								<li><a href="#">Paket Wisata</a></li>
-								<li><a href="#">Destinasi Wisata</a></li>
-								<li><a href="#">Gallery</a></li>
+								<li class="active"><a href="index.html">Home</a></li>
+								<li class="has-dropdown">
+									<a href="rooms-suites.html">Rooms</a>
+									<ul class="dropdown">
+										<li><a href="#">Web Design</a></li>
+										<li><a href="#">eCommerce</a></li>
+										<li><a href="#">Branding</a></li>
+										<li><a href="#">API</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Dining &amp; Bar</a></li>
+								<li><a href="<?php echo base_url('Gallery') ?>">Galeri</a></li>
+								<li><a href="<?php echo base_url('Reservasi'); ?>">Reservasi</a></li>
 								<li><a href="#">About</a></li>
 								<li><a href="#">Contact</a></li>
 							</ul>

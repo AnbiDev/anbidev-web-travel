@@ -99,11 +99,12 @@ $route['Admin/Setting/(:any)/(:any)/(:any)'] = 'Admin/C_Setting/$1/$2/$3';
 
 
 /* User Stuff */
-$route['About']= 'MainMenu/C_AboutUs';
+$route['About'] = 'MainMenu/C_AboutUs';
 
-$route['Login']= 'MainMenu/C_Login';
+$route['Login'] = 'MainMenu/C_Login';
 $route['Login/(:any)']= 'MainMenu/C_Login/$1';
 $route['Login/(:any)/(:any)']= 'MainMenu/C_Login/$1/$2';
 
-$route['Landing']= 'C_Landing';
-
+$route['Landing'] = 'C_Landing';
+$route['Gallery'] = 'C_Gallery';
+$route['Pemesanan'] = 'C_Pemesanan'; 

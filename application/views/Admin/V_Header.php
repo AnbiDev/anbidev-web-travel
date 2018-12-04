@@ -13,10 +13,10 @@
     <title><?php echo $Menu; ?></title>
     
     <!-- Bootstrap Core CSS -->
-    <link  href="<?php echo base_url('assets/css/lib/bootstrap/bootstrap.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/css/lib/bootstrap/bootstrap.min.css'); ?>" rel="stylesheet">
     
      <!--wysihtml5 kit -->
-    <link  href="<?php echo base_url('assets/css/lib/html5-editor/bootstrap-wysihtml5.css'); ?>" rel="stylesheet" />
+    <link href="<?php echo base_url('assets/css/lib/html5-editor/bootstrap-wysihtml5.css'); ?>" rel="stylesheet" />
 
     <!-- Dropzone -->
     <link href="<?php echo base_url('assets/css/lib/dropzone/dropzone.css'); ?>" rel="stylesheet">
@@ -80,8 +80,8 @@
                     <!-- toggle and nav items -->
                     <ul class="navbar-nav mr-auto mt-md-0">
                         <!-- This is  -->
-                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted  " href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-                        <li class="nav-item m-l-10"> <a class="nav-link sidebartoggler hidden-sm-down text-muted  " href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
+                        <li class="nav-item m-l-10"> <a class="nav-link sidebartoggler hidden-sm-down text-muted" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
                        
                        
                     </ul>
@@ -90,7 +90,7 @@
 
                         <!-- Comment -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell"></i>
+                            <a class="nav-link dropdown-toggle text-muted text-muted" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell"></i>
                                 <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn">

@@ -158,7 +158,7 @@ class C_Pemesanan extends CI_Controller {
 		$no_telepon = $this->input->post('no_telepon');
 		$email = $this->input->post('email');
 		$alamat = $this->input->post('alamat');
-
+		$level = $this->input->post('level');
 
 		$data = array( 
 			'nama' => $nama,
@@ -171,8 +171,12 @@ class C_Pemesanan extends CI_Controller {
 		);
 		
 		if($id = $this->M_pemesanan->insert($data)){
-			$this->session->set_flashdata('success','Pemesanan berhasil ditambahkan');			
-			redirect('Admin/Pemesanan');
+			$this->session->set_flashdata('success','Pemesanan berhasil ditambahkan');
+			if ($level = 'user') {
+				redirect('Pemesanan');
+			} elseif ($level = 'admin') {
+				redirect('Admin/Pemesanan');
+			}
 		}else{
 			$this->session->set_flashdata('error','Terjadi error saat insert pemesanan');
 			redirect('Admin/Pemesanan');
