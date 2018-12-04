@@ -23,11 +23,12 @@
                             <h4 class="m-b-0 text-white"><span class="fa fa-gear"></span>&nbsp;About Setting</h4>
                         </div>
                         <div class="card-body">
-                            <form enctype="multipart/form-data" action="<?php echo base_url('Admin/Setting/UpdateMain'); ?>" method="POST">
+                            <form enctype="multipart/form-data" action="<?php echo base_url('Admin/Setting/UpdateAbout'); ?>" method="POST">
                                 <div class="form-body">
                                     <h3 class="card-title m-t-15">Edit untuk mengubah pengaturan utama pada web</h3>
                                     <hr>
 
+                                
                                     <!-- row -->
                                     <div class="row">
                                         <div class="col-12">
@@ -39,6 +40,7 @@
                                         </div>
                                     </div>
                                 </div>
+
 
 
                                 <!--/row-->  

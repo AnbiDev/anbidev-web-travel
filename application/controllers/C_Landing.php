@@ -14,17 +14,21 @@ class C_Landing extends CI_Controller {
 		$this->load->library('encrypt');
 
 		$this->load->model('Admin/M_setting');
-
+		$this->load->model('Admin/M_paket_wisata');
 	}
 	
 	//Landing Page
 	public function index(){
 		
 		$data = array();
+		$data['data'] = $this->M_setting->selectMain();
 		$data['desc'] = $this->M_setting->selectDesc();
-
+		$data['paket_wisata']  = $this->M_paket_wisata->selectAll();
+		
 		$this->load->view('V_Header',$data);
 		$this->load->view('V_Landing',$data);
 		$this->load->view('V_Footer',$data);
 	}
+
+	
 }

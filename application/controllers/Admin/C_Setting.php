@@ -131,76 +131,25 @@ class C_Setting extends CI_Controller {
 		
 	}
 
-	// public function UpdateAbout(){
-	// 	$nama = $this->input->post('nama');
-	// 	$email = $this->input->post('email');
-	// 	$no_telp = $this->input->post('no_telp');
-	// 	$facebook = $this->input->post('facebook');
-	// 	$twitter = $this->input->post('twitter');
-	// 	$instagram = $this->input->post('instagram');
-	// 	$youtube = $this->input->post('youtube');
-	// 	$alamat = $this->input->post('alamat');
-	// 	$short_description = $this->input->post('short_description');
+	public function UpdateAbout(){
+		$about = $this->input->post('about');
+	
+		$data = array(
+			'id_web_main' => 1,
+			'about' => $about
+		);			
 
-	// 	$update = $this->input->post('update');
+		if($this->M_setting->setAbout($data)){
+			$this->session->set_flashdata('success','About Update');
+			redirect('Admin/Setting/About');	
+		}else{
+			$this->session->set_flashdata('error','About Failed');
+			redirect('Admin/Setting/About');
+		}
+	}
 
-	// 	if(!empty($_FILES['icon']['name']) && isset($_FILES['icon']['name'])){
 
-	// 		$config['upload_path'] 			= './assets/images/';
-	// 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
-	// 		$config['max_size']             = 2048;
 
-	// 		$this->load->library('upload', $config);
-
-	// 		if ($this->upload->do_upload('icon')){
-
-	// 			$upload_data = $this->upload->data();
-
-	// 			$data = array(
-	// 				'nama' => $nama,
-	// 				'email' => $email,
-	// 				'no_telp' => $no_telp,
-	// 				'facebook_link' => $facebook,
-	// 				'twitter_link' => $twitter,
-	// 				'instagram_link' => $instagram,
-	// 				'youtube_link' => $youtube,
-	// 				'alamat' => $alamat,
-	// 				'short_description' => $short_description,
-	// 				'logo' => $upload_data['file_name']
-	// 			);			
-
-	// 			if($this->M_setting->setMain($data)){
-	// 				$this->session->set_flashdata('success','Setting Update');
-	// 				redirect('Admin/Setting/Main');	
-	// 			}else{
-	// 				$this->session->set_flashdata('error','Setting Failed');
-	// 				redirect('Admin/Setting/Main');
-	// 			}
-	// 		}else{
-	// 			$this->session->set_flashdata('error',$this->upload->display_errors());
-	// 			redirect('Admin/Setting/Main');	
-	// 		}
-	// 	}else{
-	// 		$data = array(
-	// 			'nama' => $nama,
-	// 			'email' => $email,
-	// 			'no_telp' => $no_telp,
-	// 			'facebook_link' => $facebook,
-	// 			'twitter_link' => $twitter,
-	// 			'instagram_link' => $instagram,
-	// 			'youtube_link' => $youtube,
-	// 			'alamat' => $alamat,
-	// 			'short_description' => $short_description
-	// 		);			
-
-	// 		if($this->M_setting->setMain($data)){
-	// 			$this->session->set_flashdata('success','Setting Update');
-	// 			redirect('Admin/Setting/Main');	
-	// 		}else{
-	// 			$this->session->set_flashdata('error','Setting Failed');
-	// 			redirect('Admin/Setting/Main');
-	// 		}
-	// 	}
 
 	public function UpdateDescTitle(){
 		$judul = $this->input->post('judul');
@@ -217,6 +166,8 @@ class C_Setting extends CI_Controller {
 		echo json_encode($data);
 
 	}
+
+
 
 	public function UpdateDescText(){
 		$short_desc = $this->input->post('short_desc');

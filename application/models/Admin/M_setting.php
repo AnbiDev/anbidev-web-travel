@@ -25,6 +25,11 @@ class M_setting extends CI_Model {
 		return $this->db->update('tbl_web_desc',$data);
 	}
 
+	public function setAbout($data){
+		$this->db->where('id_web_main',$data['id_web_main']);
+		return $this->db->update('tbl_web_about',$data);
+	}
+
 
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-= SELECT SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 	public function selectMain(){

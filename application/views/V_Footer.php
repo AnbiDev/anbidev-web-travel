@@ -2,14 +2,16 @@
 			<div class="container">
 				<div class="row row-pb-md">
 					<div class="col-md-3 colorlib-widget">
-						<h4>Luxehotel</h4>
-						<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+						<h4><?php echo isset($data[0]['nama']) ? $data[0]['nama'] : 'Nandemonaiya'; ?></h4>
+						<p><?php echo isset($data[0]['short_description']) ? $data[0]['short_description'] : 'desc cannot be displayed' ; ?></p>
 						<p>
 							<ul class="colorlib-social-icons">
-								<li><a href="#"><i class="icon-twitter"></i></a></li>
-								<li><a href="#"><i class="icon-facebook"></i></a></li>
-								<li><a href="#"><i class="icon-linkedin"></i></a></li>
-								<li><a href="#"><i class="icon-dribbble"></i></a></li>
+
+<li><a href="<?php echo isset($data[0]['twitter_link']) ? 'https://'.$data[0]['twitter_link']: '#' ?>"><i class="fa fa-twitter"></i></a></li>
+<li><a href="<?php echo isset($data[0]['facebook_link']) ? 'https://'.$data[0]['facebook_link'] : '#' ?>"><i class="fa fa-facebook"></i></a></li>
+<li><a href="<?php echo isset($data[0]['instagram_link']) ? 'https://'.$data[0]['instagram_link'] : '#' ?>"><i class="icon-instagram"></i></a></li>
+<li><a href="<?php echo isset($data[0]['youtube_link']) ? 'https://'.$data[0]['youtube_link'] : '#' ?>"><i class="icon-youtube"></i></a></li>
+
 							</ul>
 						</p>
 					</div>
@@ -17,29 +19,52 @@
 						<h4>Quick Links</h4>
 						<p>
 							<ul class="colorlib-footer-links">
-								<li><a href="#">Accomodation</a></li>
-								<li><a href="#">Dining &amp; Bar</a></li>
-								<li><a href="#">Restaurants</a></li>
-								<li><a href="#">Beach &amp; Resorts</a></li>
+								<li><a href="#">Destination</a></li>
+								<li><a href="#">Paket Wisata</a></li>
+								<li><a href="#">Gallery</a></li>
+								<li><a href="#">About</a></li>
 							</ul>
 						</p>
 					</div>
 					<div class="col-md-3">
-						<h4>Recents Blog Post</h4>
-						<ul class="colorlib-footer-links">
-							<li><a href="#">The Ultimate Packing List For Female Travelers</a></li>
-							<li><a href="#">How These 5 People Found The Path to Their Dream Trip</a></li>
-							<li><a href="#">A Definitive Guide to the Best Dining and Drinking Venues in the City</a></li>
-						</ul>
+						<h4>Recents Gallery Image</h4>
+						<aside id="colorlib-hero" style="min-height: 300px;">
+						<div class="flexslider">
+							<ul class="slides">
+								<li style="background-image: url(<?php echo base_url(); ?>assets/images/landing/img_bg_5.jpg);">
+									<div class="overlay"></div>
+								</li>
+								<li style="background-image: url(<?php echo base_url(); ?>assets/images/landing/img_bg_1.jpg);">
+									<div class="overlay"></div>
+									
+								</li>
+								<li style="background-image: url(<?php echo base_url(); ?>assets/images/landing/img_bg_3.jpg);">
+									<div class="overlay"></div>
+								</li>
+								<li style="background-image: url(<?php echo base_url(); ?>assets/images/landing/img_bg_4.jpg);">
+									<div class="overlay"></div>
+								</li>	   	
+							</ul>
+						</div>
 					</div>
-
+					</aside>
 					<div class="col-md-3 col-md-push-1">
 						<h4>Contact Information</h4>
 						<ul class="colorlib-footer-links">
-							<li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>
-							<li><a href="tel://1234567920">+ 1235 2355 98</a></li>
-							<li><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
-							<li><a href="http://luxehotel.com">luxehotel.com</a></li>
+					<li><?php echo isset($data[0]['alamat']) ? $data[0]['alamat'] : 'Unknown'; ?></li>
+<li><a href="<?php echo isset($data[0]['no_telp']) ? 'https://wa.me/'.$data[0]['no_telp'] : '0000-0000-0000' ;?>">
+						(+62) <?php echo isset($data[0]['no_telp']) ? $data[0]['no_telp'] : '0000-0000-0000' ;?>
+						</a>
+					</li>
+<li><a href="<?php echo isset($data[0]['email']) ? 'mailto:'.$data[0]['email'] : 'unknown@unknown.com' ;?>">
+					<?php echo isset($data[0]['email']) ? $data[0]['email'] : 'unknown@unknown.com' ;?>
+						</a>
+					</li>
+					<li>
+					<a href="<?php echo base_url(); ?>">
+							<?php echo base_url(); ?>
+						</a>
+					</li>
 						</ul>
 					</div>
 				</div>

@@ -73,15 +73,15 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-4">
-							<p class="site">www.yoursitehere.com</p>
+							<p class="site"><?php echo str_replace("http://", "", base_url()); ?></p>
 						</div>
 						<div class="col-xs-8 text-right">
-							<p class="num">Call: +01-123-456</p>
+<p class="num">Call: (+62)<?php echo isset($data[0]['no_telp']) ? $data[0]['no_telp'] : '0000-0000-0000'; ?></p>
 							<ul class="colorlib-social">
-								<li><a href="#"><i class="icon-twitter"></i></a></li>
-								<li><a href="#"><i class="icon-facebook"></i></a></li>
-								<li><a href="#"><i class="icon-linkedin"></i></a></li>
-								<li><a href="#"><i class="icon-dribbble"></i></a></li>
+<li><a href="<?php echo isset($data[0]['twitter_link']) ? 'https://'.$data[0]['twitter_link']: '#' ?>"><i class="fa fa-twitter"></i></a></li>
+<li><a href="<?php echo isset($data[0]['facebook_link']) ? 'https://'.$data[0]['facebook_link'] : '#' ?>"><i class="fa fa-facebook"></i></a></li>
+<li><a href="<?php echo isset($data[0]['instagram_link']) ? 'https://'.$data[0]['instagram_link'] : '#' ?>"><i class="icon-instagram"></i></a></li>
+<li><a href="<?php echo isset($data[0]['youtube_link']) ? 'https://'.$data[0]['youtube_link'] : '#' ?>"><i class="icon-youtube"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -91,23 +91,14 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="#">Luxehotel</a></div>
+	<div id="colorlib-logo"><a href="#"><?php echo isset($data[0]['nama']) ? $data[0]['nama'] :'Nandemonaiya'; ?></a></div>
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
-								<li class="active"><a href="index.html">Home</a></li>
-								<li class="has-dropdown">
-									<a href="rooms-suites.html">Rooms</a>
-									<ul class="dropdown">
-										<li><a href="#">Web Design</a></li>
-										<li><a href="#">eCommerce</a></li>
-										<li><a href="#">Branding</a></li>
-										<li><a href="#">API</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Dining &amp; Bar</a></li>
-								<li><a href="#">Aminities</a></li>
-								<li><a href="#">Blog</a></li>
+								<li class="active"><a href="<?php echo base_url(); ?>">Home</a></li>
+								<li><a href="#">Paket Wisata</a></li>
+								<li><a href="#">Destinasi Wisata</a></li>
+								<li><a href="#">Gallery</a></li>
 								<li><a href="#">About</a></li>
 								<li><a href="#">Contact</a></li>
 							</ul>
