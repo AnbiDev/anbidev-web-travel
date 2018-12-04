@@ -28,20 +28,20 @@
 					</div>
 					<div class="col-md-3">
 						<h4>Recents Gallery Image</h4>
-						<aside id="colorlib-hero" style="min-height: 300px;">
-						<div class="flexslider">
-							<ul class="slides">
-								<li style="background-image: url(<?php echo base_url(); ?>assets/images/landing/img_bg_5.jpg);">
+						<aside id="colorlib-hero" style="min-height: 340px;">
+						<div class="flexslider" style="min-height: 340px;">
+							<ul class="slides" style="min-height: 340px;">
+								<li style="min-height: 340px;height: 340px;background-image: url(<?php echo base_url(); ?>assets/images/landing/img_bg_5.jpg);" >
 									<div class="overlay"></div>
 								</li>
-								<li style="background-image: url(<?php echo base_url(); ?>assets/images/landing/img_bg_1.jpg);">
+								<li style="min-height: 340px;height: 340px;background-image: url(<?php echo base_url(); ?>assets/images/landing/img_bg_1.jpg);">
 									<div class="overlay"></div>
 									
 								</li>
-								<li style="background-image: url(<?php echo base_url(); ?>assets/images/landing/img_bg_3.jpg);">
+								<li style="min-height: 340px;height: 340px;background-image: url(<?php echo base_url(); ?>assets/images/landing/img_bg_3.jpg);">
 									<div class="overlay"></div>
 								</li>
-								<li style="background-image: url(<?php echo base_url(); ?>assets/images/landing/img_bg_4.jpg);">
+								<li style="min-height: 340px;height: 340px;background-image: url(<?php echo base_url(); ?>assets/images/landing/img_bg_4.jpg);">
 									<div class="overlay"></div>
 								</li>	   	
 							</ul>
@@ -62,7 +62,7 @@
 					</li>
 					<li>
 					<a href="<?php echo base_url(); ?>">
-							<?php echo base_url(); ?>
+							<?php echo str_replace("http://", "", base_url()); ?>
 						</a>
 					</li>
 						</ul>

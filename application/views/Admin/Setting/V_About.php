@@ -97,7 +97,7 @@
 
                             <div class="row">
                                 <div class="col-md-12 text-center ">
-                                <small><a href="https://fontawesome.com/" style="color:#2869ff;">see list icon in here</a></p></small>
+                                <small><a href="https://fontawesome.com/icons?d=gallery&m=free" target="_blank" style="color:#2869ff;">see list icon in here</a></p></small>
                                 </div>
                             </div>
                         </div>
