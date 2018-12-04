@@ -98,6 +98,7 @@ foto_upload.on("removedfile",function(a){
 
 
 
+// Galery Add
 function addTitleGallery(th,token = false){
 
   if(!token){
@@ -136,6 +137,7 @@ function addTitleGallery(th,token = false){
 
 }
 
+// Edit Title Gallery
 function editTitle(th,id){
   $.ajax({
     url:base_url+"/Admin/Gallery/getTitle",
@@ -159,6 +161,8 @@ function editTitle(th,id){
  });
 }
 
+
+// Remove File Global
 function removeFile(token,link,th){
   swal({
     title: "Are you sure to delete ?",
@@ -203,7 +207,7 @@ function removeFile(token,link,th){
   
 }
 
-
+// Delete Data GLobal
 function deleteThis($link){
 	swal({
     title: "Are you sure to delete ?",
@@ -227,6 +231,9 @@ function deleteThis($link){
   });
 }
 
+
+
+// Toggle Fasilitas
 function fasilitasToggle(th){
   $.ajax({
     url:base_url+"/Admin/PaketWisata/setFasilitas",
@@ -262,6 +269,8 @@ function fasilitasToggle(th){
  });
 }
 
+
+// Toggle Itinetary
 function itinetaryToggle(th){
   $.ajax({
     url:base_url+"/Admin/PaketWisata/setItinetary",
@@ -296,6 +305,8 @@ function itinetaryToggle(th){
  });
 }
 
+
+// Add Harga In Paket Wisata
 function addHargaDetail(th){
   $.ajax({
     url:base_url+"/Admin/PaketWisata/setHargaDetail",
@@ -336,6 +347,8 @@ function addHargaDetail(th){
 });
 }
 
+
+// Remove Harga in Paket Wisata
 function removeHargaDetail(th){
   var id_harga_detail = $(th).attr('data-harga');
   var id_paket_wisata = $(th).attr('data-wisata');
@@ -382,6 +395,159 @@ function removeHargaDetail(th){
 
 }
 
+/* -=-=-=-=-=-=-=-=-=-=-=---------------=- EDITABLE TEXT FUNCTION -=-=-------------------=-=-=------------=-=-=-=-=-- */
+
+function editTextJudul(th,id){
+    var $element = $(th);
+    var $text1 = $element.text();
+
+    var $input = $('<input />').val($element.text());
+    $element.replaceWith($input);
+
+    var save = function(){
+
+      var $text2 = $input.val();
+      var $p = $('<h3 onclick="editTextJudul(this,'+id+')" />').text($input.val());
+      $input.replaceWith($p);
+
+      if($text1 != $text2){
+        $.ajax({
+            url:base_url + "/Admin/Setting/UpdateDescTitle",
+            type:'POST',
+            dataType:'json',
+            data:{judul:$input.val(),id_web_desc:id},
+            beforeSend:function(){
+             $(".preloader").fadeIn();  
+           },
+           success:function(result){
+            $(".preloader").fadeOut();
+            toastr.success('Judul berhasil diupdate!','Success');
+            
+
+          },
+          error:function(error){
+            $(".preloader").fadeOut();
+            toastr.error(error,'Error');
+          }
+        });
+      }
+
+
+    };
+
+ 
+    $input.one('blur', save).focus();
+
+}
+
+function editText(th,id){
+
+    var $element = $(th);
+    var $text1 = $element.text();
+
+    var $input = $('<textarea rows=8 height=200px />').val($element.text());
+    $element.replaceWith($input);
+
+    var save = function(){
+      var $p = $('<p onclick="editText(this,'+id+')" />').text($input.val());  
+      var $text2 = $input.val();
+      $input.replaceWith($p);
+
+       if($text1 != $text2){
+        $.ajax({
+            url:base_url + "/Admin/Setting/UpdateDescText",
+            type:'POST',
+            dataType:'json',
+            data:{short_desc:$input.val(),id_web_desc:id},
+            beforeSend:function(){
+             $(".preloader").fadeIn();  
+           },
+           success:function(result){
+            $(".preloader").fadeOut();
+            toastr.success('Judul berhasil diupdate!','Success');
+           
+
+          },
+          error:function(error){
+            $(".preloader").fadeOut();
+            toastr.error(error,'Error');
+          }
+        });
+      }
+
+
+    };
+
+    $input.one('blur', save).focus();
+
+}
+
+function editIcon(th,id){
+
+    var $myIcon = $(th).closest('div').find('.iconku').find('i');
+
+    var $element = $(th);
+    var $text1 = $(th).closest('div').find('.iconku').find('i').attr('class');
+
+
+    var $input = $('<input/>').val($text1);
+    $element.replaceWith($input);
+    
+    console.log($text1);
+
+    var save = function(){
+      var $p = $('<small onclick="editIcon(this,'+id+')" />').text('change icon');
+      
+      var $text2 = $input.val();
+
+      $input.replaceWith($p);
+    
+      
+       if($text1 != $text2){
+        $.ajax({
+            url:base_url + "/Admin/Setting/UpdateDescLogo",
+            type:'POST',
+            dataType:'json',
+            data:{logo_desc:$input.val(),id_web_desc:id},
+            beforeSend:function(){
+             $(".preloader").fadeIn();  
+           },
+           success:function(result){
+            $(".preloader").fadeOut();
+            toastr.success('Judul berhasil diupdate!','Success');
+            $myIcon.attr('class',$text2);
+          },
+          error:function(error){
+            $(".preloader").fadeOut();
+            toastr.error(error,'Error');
+          }
+        });
+      }
+
+      
+      
+
+
+    };
+
+    $input.one('blur', save).focus();
+
+}
+
+
+/* -=-=-=-=-=-=-=-=-=-=-=---------------=- READ IMAGE FUNCTION -=-=-------------------=-=-=------------=-=-=-=-=-- */
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('.blah')
+            .attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
 /* --------------------------------------- FORMATING NUMBER FUNCTION --------------------------------------------- */
 function addCommas(nStr)

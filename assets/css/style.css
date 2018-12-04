@@ -6959,3 +6959,38 @@ tbody tr td:last-child {
         overflow: hidden;
         text-overflow:ellipsis;
     }
+
+
+
+
+/* 13 - Icon Flaticon 
+---------------------------------------------------------------------- */
+/*---------------------------------------------------------------*/
+.iconku {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  background: #f7f7f7;
+  width: 120px;
+  height: 120px;
+  display: table;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%; }
+
+.iconku i {
+    display: table-cell;
+    vertical-align: middle;
+    height: 120px;
+    font-size: 60px;
+    color: #4586FF; }
+
+.services h3:hover, .services p:hover{
+  color:#000;
+  cursor: pointer;
+}
+
+.services small:hover{
+  color: #3649f7;
+  cursor: pointer;
+}

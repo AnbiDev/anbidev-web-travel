@@ -21,6 +21,14 @@
                         </li>
                         <li> <a class="" href="<?php echo base_url('Admin/User'); ?>" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">User</span></a>   
                         </li>
+                        <li class="nav-label">Setting</li>
+                        <li> <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-gear"></i><span class="hide-menu">Setting</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="<?php echo base_url('Admin/Setting/Main'); ?>">Main</a></li>
+                                <li><a href="<?php echo base_url('Admin/Setting/About'); ?>">About</a></li>
+                                <li><a href="<?php echo base_url('Admin/Setting/Slider'); ?>">Slider</a></li>
+                            </ul>
+                        </li>
 
                     </ul>
                 </nav>

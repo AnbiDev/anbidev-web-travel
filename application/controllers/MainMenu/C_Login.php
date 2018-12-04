@@ -26,6 +26,10 @@ class C_Login extends CI_Controller {
 	{
 		if (isset($_POST['login'])) {
 			
+			////////* Danger Area *//////////
+			//$this->session->set_userdata('id_user',1);
+			/////////////////////////////////
+
 			$user = $this->input->post('username',true);
 			$pass = md5(md5(md5($this->input->post('password',true))));
 			$cek = $this->M_login->proseslogin($user); 
@@ -35,6 +39,7 @@ class C_Login extends CI_Controller {
 				if($cek->password == $pass){
 					$log = $this->M_login->getData($user,$pass);	
 					$this->session->set_userdata($log[0]);
+
 					redirect('Admin/Dashboard');
 				}else{
 					$this->session->set_flashdata('error','Password salah!');
