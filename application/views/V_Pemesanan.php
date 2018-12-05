@@ -37,17 +37,12 @@
 					<div class="col-lg-12">
                     <label>Paket Wisata</label>
                     <select class="form-control" name="id_paket_wisata" placeholder="Paket Wisata" required="">
-                            <?php 
-
-							$koneksi = mysqli_connect("localhost","root","","db_travel");
-							$sql = mysqli_query($koneksi, "SELECT * FROM tbl_paket_wisata");
-							while ($data = mysqli_fetch_assoc($sql)) {
-							
-							?>
-
-                            <option value="<?php echo $data['id_paket_wisata'] ?>"><?php echo $data['nama_paket_wisata']; ?></option>
+                            
+                            <?php foreach ($paket_wisata as $value): ?>
+                            
+                            <option value="<?php echo $value['id_paket_wisata'] ?>"><?php echo $value['nama_paket_wisata']; ?></option>
                            	
-                        	<?php } ?>
+                        	<?php endforeach ?>
                         </select>
                     </div>
                 </div>

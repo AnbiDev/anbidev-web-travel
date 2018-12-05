@@ -107,4 +107,4 @@ $route['Login/(:any)/(:any)']= 'MainMenu/C_Login/$1/$2';
 
 $route['Landing'] = 'C_Landing';
 $route['Gallery'] = 'C_Gallery';
-$route['Pemesanan'] = 'C_Pemesanan'; 
+$route['Reservasi'] = 'C_Pemesanan'; 
