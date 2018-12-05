@@ -25,7 +25,15 @@ class C_Landing extends CI_Controller {
 		$data['data'] = $this->M_setting->selectMain();
 		$data['desc'] = $this->M_setting->selectDesc();
 		$data['paket_wisata']  = $this->M_paket_wisata->selectAll();
-		$data['gallery'] = $this->M_gallery->getImage();
+		
+
+
+		$gambar = array(
+				'status' => 'gallery'
+			);
+		$data['gallery'] = $this->M_gallery->getImage($gambar);
+		
+		
 		$this->load->view('V_Header',$data);
 		$this->load->view('V_Landing',$data);
 		$this->load->view('V_Footer',$data);
