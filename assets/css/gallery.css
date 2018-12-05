@@ -1,30 +1,19 @@
-.gallery {
-	margin: 0 40px 10px 40px;
-}
+   	.masonry-gallery {
+   		background: #444;
+   	}
 
-.header {
-	text-align: center;
-	padding: 32px;
-}
+   	img {
+   		width: 200px;
+   	}
+   	
+    .masonry-container {
+        padding: 10px; 
+    }
 
-.column {
-	float: left;
-	width: 50%;
-	padding: 10px;
-}
-
-.gambar {
-	margin-top: 12px;
-	opacity: 0.2;
-}
-
-.gambar:hover {
-	opacity: 1;
-}
-
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
+    .masonry-block {
+        background: #fff;
+        display: inline-block;
+        width: 200px;
+        padding: 10px;
+        margin: 10px;
+    }

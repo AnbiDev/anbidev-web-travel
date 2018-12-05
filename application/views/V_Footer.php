@@ -101,7 +101,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="<?php echo base_url('assets/js/bootstrap-datepicker.js'); ?>"></script>
 	<!-- Main -->
 	<script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
+	<!-- Gallery -->
 
+    <script src="<?php echo base_url('assets/js/masonry.pkgd.min.js'); ?>"></script>
+    <script>
+        $(window).on('load', function(){
+            $('div.masonry-container').masonry({
+                columnWidth: 'img.masonry-block',
+                itemSelector: 'img.masonry-block'
+            });
+        });
+    </script> 
 	</body>
 </html>
 

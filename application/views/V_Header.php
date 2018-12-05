@@ -54,7 +54,7 @@
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/style-landing.css'); ?>">
 
     <!-- Gallery -->
-    <link href="<?php echo base_url('assets/css/gallery.css') ?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/gallery.css') ?>">
 
 	<!-- Modernizr JS -->
 	<script src="<?php echo base_url('assets/js/modernizr-2.6.2.min.js'); ?>"></script>
@@ -108,7 +108,7 @@
 								</li>
 								<li><a href="#">Dining &amp; Bar</a></li>
 								<li><a href="<?php echo base_url('Gallery') ?>">Galeri</a></li>
-								<li><a href="<?php echo base_url('Pemesanan'); ?>">Pemesanan</a></li>
+								<li><a href="<?php echo base_url('Reservasi'); ?>">Pemesanan</a></li>
 								<li><a href="#">About</a></li>
 								<li><a href="#">Contact</a></li>
 							</ul>
