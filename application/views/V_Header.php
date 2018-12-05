@@ -108,7 +108,7 @@
 								</li>
 								<li><a href="#">Dining &amp; Bar</a></li>
 								<li><a href="<?php echo base_url('Gallery') ?>">Galeri</a></li>
-								<li><a href="<?php echo base_url('Reservasi'); ?>">Reservasi</a></li>
+								<li><a href="<?php echo base_url('Pemesanan'); ?>">Pemesanan</a></li>
 								<li><a href="#">About</a></li>
 								<li><a href="#">Contact</a></li>
 							</ul>
