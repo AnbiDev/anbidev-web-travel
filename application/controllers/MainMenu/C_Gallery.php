@@ -9,7 +9,7 @@ class C_Gallery extends CI_Controller {
 		$data = array();
 
 		$this->load->view('V_Header',$data);
-		$this->load->view('V_Gallery',$data);
+		$this->load->view('MainMenu/V_Gallery',$data);
 		$this->load->view('V_Footer',$data);
 	}
 }

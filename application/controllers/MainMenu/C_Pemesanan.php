@@ -32,7 +32,7 @@ class C_Pemesanan extends CI_Controller {
 		$data['gallery'] = $this->M_gallery->getImage($gambar);
 		
 		$this->load->view('V_Header',$data);
-		$this->load->view('V_Pemesanan',$data);
+		$this->load->view('MainMenu/V_Pemesanan',$data);
 		$this->load->view('V_Footer',$data);
 	}
 }
