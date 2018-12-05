@@ -28,22 +28,18 @@
 					</div>
 					<div class="col-md-3">
 						<h4>Recents Gallery Image</h4>
-						<aside id="colorlib-hero" style="min-height: 340px;">
-						<div class="flexslider" style="min-height: 340px;">
-							<ul class="slides" style="min-height: 340px;">
-								<li style="min-height: 340px;height: 340px;background-image: url(<?php echo base_url(); ?>assets/images/landing/img_bg_5.jpg);" >
+						<aside id="colorlib-hero" style="min-height: 310px;">
+						<div class="flexslider" style="min-height: 310px;">
+							<ul class="slides" style="min-height: 310px;">
+
+								<?php if (!empty($gallery) && is_array($gallery)): ?>
+								<?php foreach ($gallery as $value): ?>
+								<li style="min-height: 310px;height: 310px;background-image: url(<?php echo base_url(); ?>assets/images/<?php echo $value['file_name']; ?>);" >
 									<div class="overlay"></div>
-								</li>
-								<li style="min-height: 340px;height: 340px;background-image: url(<?php echo base_url(); ?>assets/images/landing/img_bg_1.jpg);">
-									<div class="overlay"></div>
-									
-								</li>
-								<li style="min-height: 340px;height: 340px;background-image: url(<?php echo base_url(); ?>assets/images/landing/img_bg_3.jpg);">
-									<div class="overlay"></div>
-								</li>
-								<li style="min-height: 340px;height: 340px;background-image: url(<?php echo base_url(); ?>assets/images/landing/img_bg_4.jpg);">
-									<div class="overlay"></div>
-								</li>	   	
+								</li>	
+								<?php endforeach ?>
+								<?php endif ?>
+								
 							</ul>
 						</div>
 					</div>
