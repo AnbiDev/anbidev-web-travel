@@ -13,7 +13,7 @@
     .masonry-block {
         background: #fff;
         display: inline-block;
-        width: 200px;
+        width: auto;
         padding: 10px;
         margin: 10px;
     }
