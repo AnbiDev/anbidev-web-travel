@@ -24,12 +24,10 @@ class C_Pemesanan extends CI_Controller {
 		$data = array();
 		$data['data'] = $this->M_setting->selectMain();
 		$data['desc'] = $this->M_setting->selectDesc();
-		$data['paket_wisata'] = $this->M_paket_wisata->selectAll();
+		// $data['paket_wisata'] = $this->M_paket_wisata->selectAll();
 
-		$gambar = array(
-				'status' => 'gallery'
-			);
-		$data['gallery'] = $this->M_gallery->getImage($gambar);
+
+		$data['gallery'] = $this->M_gallery->selectAll();
 		
 		$this->load->view('V_Header',$data);
 		$this->load->view('MainMenu/V_Pemesanan',$data);

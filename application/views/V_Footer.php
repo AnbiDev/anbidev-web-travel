@@ -32,11 +32,12 @@
 						<div class="flexslider" style="min-height: 310px;">
 							<ul class="slides" style="min-height: 310px;">
 
-								<?php if (!empty($gallery) && is_array($gallery)): ?>
-								<?php foreach ($gallery as $value): ?>
+								<?php  $i = 0; if (!empty($gallery) && is_array($gallery)): ?>
+								<?php foreach (array_reverse($gallery) as $value): ?>
 								<li style="min-height: 310px;height: 310px;background-image: url(<?php echo base_url(); ?>assets/images/<?php echo $value['file_name']; ?>);" >
 									<div class="overlay"></div>
-								</li>	
+								</li>
+								<?php if(++$i > 5) break; ?>	
 								<?php endforeach ?>
 								<?php endif ?>
 								
@@ -101,14 +102,18 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="<?php echo base_url('assets/js/bootstrap-datepicker.js'); ?>"></script>
 	<!-- Main -->
 	<script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
+	<!-- BaguetteBox -->
+	<script src="<?php echo base_url('assets/js/lib/baguettebox/baguetteBox.min.js'); ?>"></script> 
 	<!-- Gallery -->
     <script src="<?php echo base_url('assets/js/masonry.pkgd.min.js'); ?>"></script>
+
     <script>
         $(window).load(function(){
             $('div.masonry-container').masonry({
                 columnWidth: 'div.masonry-block',
                 itemSelector: 'div.masonry-block'
             });
+            baguetteBox.run('.baguetteBoxOne');
         });
     </script> 
 	</body>

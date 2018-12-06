@@ -173,7 +173,7 @@ class C_Pemesanan extends CI_Controller {
 		if($id = $this->M_pemesanan->insert($data)){
 			$this->session->set_flashdata('success','Pemesanan berhasil ditambahkan');
 			if ($level = 'user') {
-				redirect('Pemesanan');
+				redirect('Reservasi');
 			} elseif ($level = 'admin') {
 				redirect('Admin/Pemesanan');
 			}
