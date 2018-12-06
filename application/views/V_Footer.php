@@ -99,6 +99,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="<?php echo base_url('assets/js/magnific-popup-options.js'); ?>"></script>
 	<!-- Date Picker -->
 	<script src="<?php echo base_url('assets/js/bootstrap-datepicker.js'); ?>"></script>
+	<!-- BaguetteBox -->
+	<script src="<?php echo base_url('assets/js/lib/baguettebox/baguetteBox.min.js'); ?>"></script> 
 	<!-- Main -->
 	<script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
 

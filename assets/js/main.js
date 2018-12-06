@@ -269,6 +269,7 @@
 	};
 
 	
+
 	$(function(){
 		mobileMenuOutsideClick();
 		offcanvasMenu();
@@ -280,6 +281,7 @@
 		loaderPage();
 		owlCrouselFeatureSlide();
 		datePicker();
+		baguetteBox.run('.baguetteBoxOne');
 	});
 
 

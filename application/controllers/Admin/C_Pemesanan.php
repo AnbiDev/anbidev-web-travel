@@ -158,6 +158,7 @@ class C_Pemesanan extends CI_Controller {
 		$no_telepon = $this->input->post('no_telepon');
 		$email = $this->input->post('email');
 		$alamat = $this->input->post('alamat');
+
 		$level = $this->input->post('level');
 
 		$data = array( 

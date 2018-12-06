@@ -56,6 +56,9 @@
     <!-- Gallery -->
     <link href="<?php echo base_url('assets/css/gallery.css') ?>" rel="stylesheet">
 
+     <!-- BaguetteBox -->
+    <link href="<?php echo base_url('assets/css/lib/baguettebox/baguetteBox.min.css'); ?>" rel="stylesheet">
+
 	<!-- Modernizr JS -->
 	<script src="<?php echo base_url('assets/js/modernizr-2.6.2.min.js'); ?>"></script>
 	<!-- FOR IE9 below -->
@@ -96,20 +99,12 @@
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
-								<li class="active"><a href="index.html">Home</a></li>
-								<li class="has-dropdown">
-									<a href="rooms-suites.html">Rooms</a>
-									<ul class="dropdown">
-										<li><a href="#">Web Design</a></li>
-										<li><a href="#">eCommerce</a></li>
-										<li><a href="#">Branding</a></li>
-										<li><a href="#">API</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Dining &amp; Bar</a></li>
+								<li><a href="<?php echo base_url(); ?>">Home</a></li>
+								<li><a href="<?php echo base_url(''); ?>">Paket Wisata</a></li>
+								<li><a href="<?php echo base_url(''); ?>">Destinasi Wisata</a></li>
 								<li><a href="<?php echo base_url('Gallery') ?>">Galeri</a></li>
-								<li><a href="<?php echo base_url('Reservasi'); ?>">Reservasi</a></li>
-								<li><a href="#">About</a></li>
+								<li><a href="<?php echo base_url('Pemesanan'); ?>">Pemesanan</a></li>
+								<li><a href="<?php echo base_url('About'); ?>">About</a></li>
 								<li><a href="#">Contact</a></li>
 							</ul>
 						</div>
