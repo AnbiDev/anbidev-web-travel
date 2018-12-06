@@ -88,7 +88,7 @@ foto_upload.on("removedfile",function(a){
 		cache:false,
 		dataType: 'json',
 		success: function(){
-			toastr.success('Image Uploaded','Success');
+			toastr.success('Image Deleted!','Success');
 		},
 		error: function(error){
 			toastr.error(error,'Error');
@@ -188,7 +188,7 @@ function removeFile(token,link,th){
        },
        success:function(result){
          $(".preloader").fadeOut();
-         $(th).parent().remove();
+         $(th).parent().parent().remove();
          swal("Deleted !!", "Hey, your image file has been deleted !!", "success");
          toastr.success('Delete Image','Success');
        },
