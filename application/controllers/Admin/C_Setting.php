@@ -201,41 +201,56 @@ class C_Setting extends CI_Controller {
 		echo json_encode($data);
 
 	}
-		
-	// }
-	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= INSERT SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
-	
-	// Insert Setting
-	public function Insert(){
-		
-		$nama_setting = $this->input->post('nama_setting');
-		$deskripsi = $this->input->post('deskripsi');
 
-		$data = array( 
-			'nama_setting' => $nama_setting,
-			'deskripsi' => $deskripsi
-		);
-		
-		if($id = $this->M_setting->insert($data)){
-			
-			/* Encrypt ID */
-			$encrypted_string = $this->encrypt->encode($id);
-			$id = str_replace(array('+', '/', '='), array('-', '_', '~'), $encrypted_string);
-			
-			redirect('Admin/Setting/Image/'.$id);
-		}else{
-			$this->session->set_flashdata('error','Terjadi error saat insert setting');
-			redirect('Admin/Setting');
-		}
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= SLIDER PAGE -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
 
+
+
+	//Slidder Index
+	public function Slider(){
+		$this->checkSession();
+		
+		$data['Menu'] = 'Slider Setting';
+		$data['data'] = $this->M_setting->selectSlider();
+
+		// echo "<pre>";
+		// print_r($data);
+		// exit();
+
+		$this->load->view('Admin/V_Header',$data);
+		$this->load->view('Admin/V_Sidebar',$data);
+		$this->load->view('Admin/Setting/V_Slider',$data);
+		$this->load->view('Admin/V_Footer',$data);
+		
 	}
 
-	// Upload Image Setting
-	public function UploadImage(){
-		$id = $this->input->post('id');
-		$token = $this->input->post('token');
+	//Slidder Add Index
+	public function SliderAdd(){
+		$this->checkSession();
+		
+		$data['Menu'] = 'Slider Setting';
+		$data['data'] = $this->M_setting->selectSlider();
 
-		$config['upload_path'] = './assets/images/';
+		// echo "<pre>";
+		// print_r($data);
+		// exit();
+
+		$this->load->view('Admin/V_Header',$data);
+		$this->load->view('Admin/V_Sidebar',$data);
+		$this->load->view('Admin/Setting/V_SliderAdd',$data);
+		$this->load->view('Admin/V_Footer',$data);
+		
+	}
+
+	// Upload Add Slider
+	public function UploadSlider(){
+		
+		$judul = $this->input->post('judul');
+		$deskripsi = $this->input->post('deskripsi');
+		$link_to = $this->input->post('link_to');
+
+
+		$config['upload_path'] 			= 	'./assets/images/';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
 		// $config['max_size']             = 1024;
 
@@ -244,109 +259,25 @@ class C_Setting extends CI_Controller {
 		if ($this->upload->do_upload('file')){
 
 			$upload_data = $this->upload->data();
-			$data = array(
-				'id' => $id,
-				'status' => 'setting',
-				'file_name' => $upload_data['file_name'],
-				'location' => $upload_data['full_path'],
-				'token' => $token
-			);			
-			$this->M_setting->insertImage($data);
-		}else{
-			echo $this->upload->display_errors();
+
+
+			$slider = array(
+				'judul' => $upload_data['file_name']
+			);
+
+			if($id = $this->M_setting->setSlider($slider)){
+				$data = array(
+					'id' => $id,
+					'status' => 'slidder',
+					'file_name' => $upload_data['file_name'],
+					'location' => $upload_data['full_path'],
+					'token' => $token
+				);			
+				
+				$this->M_setting->insertImage($data);	
+			}			
 		}
-
-	}
-
-	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= UPDATE SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
-	
-	public function Update(){
-
-		$id_setting = $this->input->post('id');
-		$nama_setting = $this->input->post('nama_setting');
-		$deskripsi = $this->input->post('deskripsi');
-
-		$data = array( 
-			'nama_setting' => $nama_setting,
-			'deskripsi' => $deskripsi
-		);
-		
-		if($id = $this->M_setting->update($data,$id_setting)){
-			$this->session->set_flashdata('success','Setting berhasil diupdate');	
-			redirect('Admin/Setting');
-		}else{
-			$this->session->set_flashdata('error','Terjadi error saat update setting');
-			redirect('Admin/Setting');
-		}
-	}
-	
-	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= DELETE SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
-	
-	//Untuk menghapus foto
-	function RemoveImage(){
-
-		//Ambil token foto
-		$token = $this->input->post('token');
-
-		$data  = array(
-			'token' => $token
-		);
-
-		if($result = $this->M_setting->getImage($data)){
-
-			$filename = $result[0]['file_name'];
-			$path = str_replace("index.php", "",$_SERVER['SCRIPT_NAME']);
-			$file = $_SERVER['CONTEXT_DOCUMENT_ROOT'].$path.'assets/images/'.$filename;
 			
-			$this->M_setting->removeImage($data);
-			if(file_exists($file)){	
-				unlink($file);
-			}
-			// }
-			// echo $file;
-		}
-		echo "{}";
-
-	}	
-
-	function Delete($id){
-		/* Decrypt ID */			
-		$plaintext_string = str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
-		$plaintext_string = $this->encrypt->decode($plaintext_string);
-
-		$image = array(
-			'id' => $plaintext_string,
-			'status' => 'setting'
-		);
-
-		// Remove all picture
-		if($result = $this->M_setting->getImage($image)){
-			foreach($result as $value) {
-				$filename = $value['file_name'];
-				$path = str_replace("index.php", "",$_SERVER['SCRIPT_NAME']);
-				$file = $_SERVER['CONTEXT_DOCUMENT_ROOT'].$path.'assets/images/'.$filename;
-
-				$this->M_setting->removeImage($image);
-				if(file_exists($file)){
-					unlink($file);
-				}
-			}
-			
-		}
-
-
-		$data = array(
-			'id_setting' => $plaintext_string
-		);
-
-		if($this->M_setting->delete($data)){
-			$this->session->set_flashdata('success' , "Setting berhasil didelete");
-			redirect('Admin/Setting');
-		}else{
-			$this->session->set_flashdata('error' ,"Ada kesalahan saat menghapus data");
-			redirect('Admin/Setting');
-		}
-
 	}
 
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= FUNCTION SECTION -=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=- */	
@@ -358,7 +289,7 @@ class C_Setting extends CI_Controller {
 		}else{
 			$this->session->set_flashdata('error' ,$this->upload->display_errors());
 			redirect('Admin/Setting');
-		}
+		}   
 	}
 
 	public function checkSession(){

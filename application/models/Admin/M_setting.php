@@ -11,6 +11,10 @@ class M_setting extends CI_Model {
 		$this->load->library('session');
 	}
 
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-= INSERT SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+	public function insertImage($data){
+		return $this->db->insert('tbl_web_slider');	
+	}
 
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-= SET SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 
@@ -30,8 +34,15 @@ class M_setting extends CI_Model {
 		return $this->db->update('tbl_web_about',$data);
 	}
 
+	public function setSlider($data){
+		 $this->db->insert('tbl_web_slider',$data);
+		 return $this->db->insert_id();
+	}	
+
+
 
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-= SELECT SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+	
 	public function selectMain(){
 		$this->db->select('*');
 		$this->db->from('tbl_web_main');
@@ -68,6 +79,21 @@ class M_setting extends CI_Model {
 		}
 	}
 
+	public function selectSlider(){
+		$this->db->select('*');
+		$this->db->from("tbl_web_slider");
+		$this->db->join("tbl_gambar","tbl_gambar.id = tbl_web_slider.id_web_slider","inner");
+		$this->db->where('tbl_gambar.status','slider');
+		
+		$data = $this->db->get();
+		
+		if($data->num_rows() > 0){
+			return $data->result_array();
+		}else{
+			return false;
+		}
+	}
+
 
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-= DELETE SECTION -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 	public function removeImage($data){
@@ -78,5 +104,7 @@ class M_setting extends CI_Model {
 		return $this->db->delete('tbl_destinasi',$data);
 	}
 	
+
+
 
 }
