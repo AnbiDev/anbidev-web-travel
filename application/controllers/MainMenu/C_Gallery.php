@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class C_Gallery extends CI_Controller {
+class C_Gallery extends CI_Controller
+{
 
 	public function __construct()
 	{
@@ -9,7 +10,7 @@ class C_Gallery extends CI_Controller {
 
 		$this->load->helper('form');
 		$this->load->helper('url');
-		$this->load->helper('html');	
+		$this->load->helper('html');
 		$this->load->library('session');
 		$this->load->library('encrypt');
 
@@ -18,16 +19,17 @@ class C_Gallery extends CI_Controller {
 	}
 
 	//Landing Page
-	public function index(){
-		
+	public function index()
+	{
+
 		$data = array();
 		$data['data'] = $this->M_setting->selectMain();
 		$data['desc'] = $this->M_setting->selectDesc();
 
 		$data['gallery'] = $this->M_gallery->selectAll();
 
-		$this->load->view('V_Header',$data);
-		$this->load->view('MainMenu/V_Gallery',$data);
-		$this->load->view('V_Footer',$data);
+		$this->load->view('V_Header', $data);
+		$this->load->view('MainMenu/V_Gallery', $data);
+		$this->load->view('V_Footer', $data);
 	}
 }

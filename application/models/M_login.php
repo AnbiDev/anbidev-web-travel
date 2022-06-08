@@ -1,8 +1,9 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class M_login extends CI_Model {
+class M_login extends CI_Model
+{
 
 	public function __construct()
 	{
@@ -13,13 +14,14 @@ class M_login extends CI_Model {
 	}
 
 
-	public function getData($user,$pass){
-		return $this->db->get_where('tbl_user',array('username' => $user, 'password' => $pass))->result_array();
+	public function getData($user, $pass)
+	{
+		return $this->db->get_where('tbl_user', array('username' => $user, 'password' => $pass))->result_array();
 	}
 
 	public function proseslogin($user)
 	{
-		$this->db->where('username',$user);
+		$this->db->where('username', $user);
 		return $this->db->get('tbl_user')->row();
 	}
 }
